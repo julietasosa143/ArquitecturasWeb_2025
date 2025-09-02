@@ -42,6 +42,6 @@ public class Facture_Producto {
                 ", idFactura" + idFactura +
                 ", IdProducto" + IdProducto +
                 ", cantidad" + cantidad +
-                "}";
+                '}';
     }
 }
