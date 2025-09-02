@@ -1,17 +1,17 @@
 package entities;
 
-public class Facture_Producto {
+public class Factura_Producto {
     private Integer idFactura;
     private Integer IdProducto;
     private Integer cantidad;
 
-    public Facture_Producto(Integer idFactura, Integer IdProducto, Integer cantidad) {
+    public Factura_Producto(Integer idFactura, Integer IdProducto, Integer cantidad) {
         this.idFactura = idFactura;
         this.IdProducto = IdProducto;
         this.cantidad = cantidad;
     }
 
-    public Facture_Producto() {}
+    public Factura_Producto() {}
 
     public Integer getIdFactura() {
         return idFactura;
