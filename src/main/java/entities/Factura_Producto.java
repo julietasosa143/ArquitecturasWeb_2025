@@ -1,6 +1,7 @@
 package entities;
 
 public class Factura_Producto {
+
     private Integer idFactura;
     private Integer IdProducto;
     private Integer cantidad;
@@ -45,3 +46,5 @@ public class Factura_Producto {
                 '}';
     }
 }
+
+
