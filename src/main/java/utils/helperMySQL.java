@@ -1,4 +1,5 @@
 package utils;
+import java.awt.font.TextHitInfo;
 import java.io.FileReader;
 import java.io.Reader;
 import java.io.IOException;
@@ -16,43 +17,38 @@ import java.sql.SQLException;
 
 public class helperMySQL {
     private Connection conn;
+
     public helperMySQL() {
         String driver = "com.mysql.cj.jdbc.Driver";
         String uri = "jdbc:mysql://localhost:3306/arquidb";
 
-        try{
+        try {
             Class.forName(driver).getDeclaredConstructor().newInstance();
-        }catch (InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException | ClassNotFoundException e){
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException |
+                 InvocationTargetException | ClassNotFoundException e) {
             e.printStackTrace();
             System.exit(1);
         }
-        try{
-            conn = DriverManager.getConnection(uri,"root","");
+        try {
+            conn = DriverManager.getConnection(uri, "root", "");
             conn.setAutoCommit(false);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void closeConnection(){
-          if(conn != null){
-              try{
-                  conn.close();
-              }catch (Exception e){
-                  e.printStackTrace();
-              }
+    public void closeConnection() {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
-    }
 
 
-    public void dropTables()throws SQLException {
-        String dropCliente = "DROP TABLE IF EXISTS CLIENTE";
-        this.conn.prepareStatement(dropCliente).execute();
-        this.conn.commit();
-
-        String dropFactura = "DROP TABLE IF EXISTS FACTURA";
-        this.conn.prepareStatement(dropFactura).execute();
-        this.conn.commit();
+    public void dropTables() throws SQLException {
 
         String dropFactura_producto = "DROP TABLE IF EXISTS FACTURA_PRODUCTO";
         this.conn.prepareStatement(dropFactura_producto).execute();
@@ -61,34 +57,27 @@ public class helperMySQL {
         String dropProducto = "DROP TABLE IF EXISTS PRODUCTO";
         this.conn.prepareStatement(dropProducto).execute();
         this.conn.commit();
+
+
+        String dropFactura = "DROP TABLE IF EXISTS FACTURA";
+        this.conn.prepareStatement(dropFactura).execute();
+        this.conn.commit();
+
+
+
+
+        String dropCliente = "DROP TABLE IF EXISTS CLIENTE";
+        this.conn.prepareStatement(dropCliente).execute();
+        this.conn.commit();
     }
 
-    public void createTables()throws SQLException{
-        String tableCliente= "CREATE TABLE IF NOT EXISTS Cliente("+
+    public void createTables() throws SQLException {
+        String tableCliente = "CREATE TABLE IF NOT EXISTS Cliente(" +
                 "idCliente INT NOT NULL, " +
                 "nombre VARCHAR (500) , " +
                 "email VARCHAR(150) ," +
                 "CONSTRAINT Client_pk PRIMARY KEY (idCliente));";
         this.conn.prepareStatement(tableCliente).execute();
-        this.conn.commit();
-
-
-        String tableFactura ="CREATE TABLE IF NOT EXISTS Factura(" +
-                "idFactura INT NOT NULL, " +
-                "id_cliente INT, " +
-                "CONSTRAINT Factura_pk PRIMARY KEY (idFactura), "+
-                "CONSTRAINT Fk_idCliente FOREIGN KEY (idCliente) REFERENCES cliente(idCliente));";
-        this.conn.prepareStatement(tableFactura).execute();
-        this.conn.commit();
-
-        String tableFacturaProducto = "CREATE TABLE IF NOT EXISTS Factura_Producto(" +
-                "idFactura INT NOT NULL, " +
-                "idProducto INT NOT NULL, " +
-                "cantidad INT NOT NULL, " +
-                "CONSTRAINT Factura_Producto_pk PRIMARY KEY (idFactura, idProducto), " +
-                "CONSTRAINT FK_Factura FOREIGN KEY (idFactura) REFERENCES factura(idFactura), " +
-                "CONSTRAINT FK_Producto FOREIGN KEY (idProducto) REFERENCES producto(idProducto));";
-        this.conn.prepareStatement(tableFacturaProducto).execute();
         this.conn.commit();
 
         String tableProducto = "CREATE TABLE IF NOT EXISTS Producto(" +
@@ -98,17 +87,49 @@ public class helperMySQL {
                 "CONSTRAINT Producto_pk PRIMARY KEY (idProducto));";
         this.conn.prepareStatement(tableProducto).execute();
         this.conn.commit();
+
+
+        String tableFactura = "CREATE TABLE IF NOT EXISTS Factura(" +
+                "idFactura INT NOT NULL, " +
+                "idCliente INT, " +
+                "CONSTRAINT Factura_pk PRIMARY KEY (idFactura)); ";
+        this.conn.prepareStatement(tableFactura).execute();
+        this.conn.commit();
+
+        String tableFacturaProducto = "CREATE TABLE IF NOT EXISTS Factura_Producto(" +
+                "idFactura INT NOT NULL, " +
+                "idProducto INT NOT NULL, " +
+                "cantidad INT NOT NULL, " +
+                "CONSTRAINT Factura_Producto_pk PRIMARY KEY (idFactura, idProducto)); " ;
+        this.conn.prepareStatement(tableFacturaProducto).execute();
+        this.conn.commit();
+
+        String fkFactura = "ALTER TABLE Factura " +
+                "ADD CONSTRAINT FK_Cliente FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente);";
+        this.conn.prepareStatement(fkFactura).execute();
+        this.conn.commit();
+
+        String fkFacturaProducto1 = "ALTER TABLE Factura_Producto " +
+                "ADD CONSTRAINT FK_Factura_Producto1 FOREIGN KEY (idProducto) REFERENCES Producto(idProducto);";
+        this.conn.prepareStatement(fkFacturaProducto1).execute();
+        this.conn.commit();
+
+        String fkFacturaProducto2 = "ALTER TABLE Factura_Producto " +
+                "ADD CONSTRAINT FK_Factura_Producto2 FOREIGN KEY (idFactura) REFERENCES Factura(idFactura);";
+        this.conn.prepareStatement(fkFacturaProducto2).execute();
+        this.conn.commit();
     }
 
     private Iterable<CSVRecord> getData(String archivo) throws IOException {
-        String path = "src\\main\\resources\\" + archivo;
+        String path = "src/main/resources/csv_files/" + archivo;
         Reader in = new FileReader(path);
-        String [] header = {};
+        String[] header = {};
         CSVParser csvParser = CSVFormat.EXCEL.withHeader(header).parse(in);
 
         Iterable<CSVRecord> records = csvParser.getRecords();
         return records;
     }
+
     public void populateDB() throws SQLException {
         try {
             System.out.println("Populating DB...");
@@ -197,12 +218,13 @@ public class helperMySQL {
                 }
             }
             System.out.println("Facturas-Productos insertados");
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
-        private int insertCliente(Cliente cliente, Connection conn) throws SQLException {
-        String insert = "INSERT INTO Cliente (nombre, email) VALUES (?, ?, ?)";
+
+    private int insertCliente(Cliente cliente, Connection conn) throws SQLException {
+        String insert = "INSERT INTO Cliente (idCliente, nombre, email) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(insert);
@@ -212,13 +234,14 @@ public class helperMySQL {
             if (ps.executeUpdate() == 0) {
                 throw new SQLException("No se pudo insertar");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             closePsAndCommit(conn, ps);
         }
         return 0;
     }
+
     private int insertProducto(Producto producto, Connection conn) throws SQLException {
         String insert = "INSERT INTO Producto (idProducto, nombre, valor) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
@@ -230,14 +253,14 @@ public class helperMySQL {
             if (ps.executeUpdate() == 0) {
                 throw new SQLException("No se pudo insertar");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             closePsAndCommit(conn, ps);
         }
         return 0;
     }
+
     private int insertFactura(Factura factura, Connection conn) throws SQLException {
         String insert = "INSERT INTO Factura (idFactura, idCliente) VALUES (?, ?)";
         PreparedStatement ps = null;
@@ -248,14 +271,15 @@ public class helperMySQL {
             if (ps.executeUpdate() == 0) {
                 throw new SQLException("No se pudo insertar");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             closePsAndCommit(conn, ps);
         }
         return 0;
 
     }
+
     private int insertFactura_Producto(Factura_Producto fp, Connection conn) throws SQLException {
         String insert = "INSERT INTO Factura_Producto (idFactura, idProducto, cantidad) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
@@ -264,22 +288,23 @@ public class helperMySQL {
             ps.setInt(1, fp.getIdFactura());
             ps.setInt(2, fp.getIdProducto());
             ps.setInt(3, fp.getCantidad());
-            if (ps.executeUpdate() == 0){
+            if (ps.executeUpdate() == 0) {
                 throw new SQLException("No se pudo insertar");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             closePsAndCommit(conn, ps);
         }
         return 0;
     }
-    private void closePsAndCommit(Connection conn, PreparedStatement ps){
-        if (conn != null){
+
+    private void closePsAndCommit(Connection conn, PreparedStatement ps) {
+        if (conn != null) {
             try {
                 ps.close();
                 conn.commit();
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
