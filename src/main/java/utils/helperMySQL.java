@@ -109,7 +109,7 @@ public class helperMySQL {
         Iterable<CSVRecord> records = csvParser.getRecords();
         return records;
     }
-    public void populateDB() throws Exception {
+    public void populateDB() throws SQLException {
         try {
             System.out.println("Populating DB...");
 
@@ -201,7 +201,7 @@ public class helperMySQL {
             e.printStackTrace();
         }
     }
-        private int insertCliente(Cliente cliente, Connection conn) throws Exception {
+        private int insertCliente(Cliente cliente, Connection conn) throws SQLException {
         String insert = "INSERT INTO Cliente (nombre, email) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
         try {
@@ -210,7 +210,7 @@ public class helperMySQL {
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getEmail());
             if (ps.executeUpdate() == 0) {
-                throw new Exception("No se pudo insertar");
+                throw new SQLException("No se pudo insertar");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -219,7 +219,7 @@ public class helperMySQL {
         }
         return 0;
     }
-    private int insertProducto(Producto producto, Connection conn) throws Exception {
+    private int insertProducto(Producto producto, Connection conn) throws SQLException {
         String insert = "INSERT INTO Producto (idProducto, nombre, valor) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
         try {
@@ -228,7 +228,7 @@ public class helperMySQL {
             ps.setString(2, producto.getNombre());
             ps.setFloat(3, producto.getValor());
             if (ps.executeUpdate() == 0) {
-                throw new Exception("No se pudo insertar");
+                throw new SQLException("No se pudo insertar");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -238,7 +238,7 @@ public class helperMySQL {
         }
         return 0;
     }
-    private int insertFactura(Factura factura, Connection conn) throws Exception {
+    private int insertFactura(Factura factura, Connection conn) throws SQLException {
         String insert = "INSERT INTO Factura (idFactura, idCliente) VALUES (?, ?)";
         PreparedStatement ps = null;
         try {
@@ -246,7 +246,7 @@ public class helperMySQL {
             ps.setInt(1, factura.getIdFactura());
             ps.setInt(2, factura.getIdCliente());
             if (ps.executeUpdate() == 0) {
-                throw new Exception("No se pudo insertar");
+                throw new SQLException("No se pudo insertar");
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -256,7 +256,7 @@ public class helperMySQL {
         return 0;
 
     }
-    private int insertFactura_Producto(Factura_Producto fp, Connection conn) throws Exception {
+    private int insertFactura_Producto(Factura_Producto fp, Connection conn) throws SQLException {
         String insert = "INSERT INTO Factura_Producto (idFactura, idProducto, cantidad) VALUES (?, ?, ?)";
         PreparedStatement ps = null;
         try {
@@ -265,7 +265,7 @@ public class helperMySQL {
             ps.setInt(2, fp.getIdProducto());
             ps.setInt(3, fp.getCantidad());
             if (ps.executeUpdate() == 0){
-                throw new Exception("No se pudo insertar");
+                throw new SQLException("No se pudo insertar");
             }
         }catch (SQLException e){
             e.printStackTrace();
