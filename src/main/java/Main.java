@@ -1,7 +1,10 @@
+import dao.ClienteDAO;
+import dto.ClienteDTO;
 import factory.AbstractFactory;
 import utils.helperMySQL;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,9 +20,13 @@ public class Main {
             System.out.println("///////////////////////////////");
             System.out.println("///////////////////////////////");
             System.out.println();
+            ClienteDAO cliente = chosenFactory.getClienteDAO();
 
-
-
+            System.out.println("Lista de clientes ordenada por facturacion");
+            List<ClienteDTO> listadoClientes = cliente.findClientesByOrderBilling();
+            for(ClienteDTO clienteDTO : listadoClientes) {
+                System.out.println(clienteDTO.toString());
+            }
         }catch(SQLException e){
             e.printStackTrace();
         }

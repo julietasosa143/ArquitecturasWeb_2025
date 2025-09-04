@@ -1,5 +1,7 @@
 package factory;
 
+import dao.ClienteDAO;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,5 +50,10 @@ public class MySQLDAOFactory extends AbstractFactory {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public ClienteDAO getClienteDAO() {
+        return new ClienteDAO(createConnection());
     }
 }
