@@ -1,6 +1,7 @@
 package factory;
 
 import dao.ClienteDAO;
+import dao.ProductoDAO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -56,4 +57,6 @@ public class MySQLDAOFactory extends AbstractFactory {
     public ClienteDAO getClienteDAO() {
         return new ClienteDAO(createConnection());
     }
+    @Override
+    public ProductoDAO getProductoDAO() {return new  ProductoDAO(createConnection());}
 }

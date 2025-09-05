@@ -15,10 +15,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class helperMySQL {
+public class HelperMySQL {
     private Connection conn;
 
-    public helperMySQL() {
+    public HelperMySQL() {
         String driver = "com.mysql.cj.jdbc.Driver";
         String uri = "jdbc:mysql://localhost:3306/arquidb";
 
