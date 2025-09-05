@@ -37,11 +37,9 @@ public class ClienteDTO {
     }
 
     public String toString(){
-        return "CLienteDTO{" +
-                "nombre='" + nombre + '\'' +
-                ",email='" + email + '\'' +
-                ",facturacion=" + billing +
-                '}';
+        return "Nombre" + nombre +
+                ",email='" + email +
+                ",facturacion=" + billing;
 
 
     }
