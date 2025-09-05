@@ -1,7 +1,9 @@
 import dao.ClienteDAO;
+import dao.ProductoDAO;
 import dto.ClienteDTO;
+import dto.ProductoDTO;
 import factory.AbstractFactory;
-import utils.helperMySQL;
+import utils.HelperMySQL;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         try {
-            helperMySQL dbMySQL = new helperMySQL();
+            HelperMySQL dbMySQL = new HelperMySQL();
             dbMySQL.dropTables();
             dbMySQL.createTables();
             dbMySQL.populateDB();
@@ -27,6 +29,11 @@ public class Main {
             for(ClienteDTO clienteDTO : listadoClientes) {
                 System.out.println(clienteDTO.toString());
             }
+            ProductoDAO producto = chosenFactory.getProductoDAO();
+            System.out.println("Producto que mas recaudo");
+
+            ProductoDTO productoMasRecaudo = producto.findBestSeller();
+            System.out.println(productoMasRecaudo.toString());
         }catch(SQLException e){
             e.printStackTrace();
         }
