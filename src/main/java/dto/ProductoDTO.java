@@ -35,8 +35,8 @@ public class ProductoDTO {
         this.totalRecaudado = totalRecaudado;
     }
     public String toString(){
-        return "Producto" + nombre+
-                "ID " +idProducto+
-                "Total recaudado" +totalRecaudado;
+        return "Producto " + nombre+
+                " ID: " +idProducto+
+                " Total recaudado: " +totalRecaudado;
     }
 }
