@@ -23,11 +23,13 @@ public class HelperMySQL {
         String uri = "jdbc:mysql://localhost:3306/arquidb";
 
         try {
-            Class.forName(driver).getDeclaredConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException |
-                 InvocationTargetException | ClassNotFoundException e) {
+            Class.forName(driver);
+            this.conn= java.sql.DriverManager.getConnection(uri, "root","");
+        } catch ( IllegalArgumentException  | ClassNotFoundException e) {
             e.printStackTrace();
             System.exit(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         try {
             conn = DriverManager.getConnection(uri, "root", "");
@@ -48,7 +50,12 @@ public class HelperMySQL {
     }
 
 
-    public void dropTables() throws SQLException {
+   public void dropTables() throws SQLException {
+
+        try { this.conn.prepareStatement("ALTER TABLE Factura DROP FOREIGN KEY FK_Cliente;").execute(); } catch (SQLException ignored) {}
+        try { this.conn.prepareStatement("ALTER TABLE Factura_Producto DROP FOREIGN KEY FK_Factura_Producto1;").execute(); } catch (SQLException ignored) {}
+        try { this.conn.prepareStatement("ALTER TABLE Factura_Producto DROP FOREIGN KEY FK_Factura_Producto2;").execute(); } catch (SQLException ignored) {}
+        this.conn.commit();
 
         String dropFactura_producto = "DROP TABLE IF EXISTS FACTURA_PRODUCTO";
         this.conn.prepareStatement(dropFactura_producto).execute();
@@ -69,9 +76,12 @@ public class HelperMySQL {
         String dropCliente = "DROP TABLE IF EXISTS CLIENTE";
         this.conn.prepareStatement(dropCliente).execute();
         this.conn.commit();
+
+
     }
 
     public void createTables() throws SQLException {
+
         String tableCliente = "CREATE TABLE IF NOT EXISTS Cliente(" +
                 "idCliente INT NOT NULL, " +
                 "nombre VARCHAR (500) , " +
@@ -110,14 +120,12 @@ public class HelperMySQL {
         this.conn.commit();
 
         String fkFacturaProducto1 = "ALTER TABLE Factura_Producto " +
-                "ADD CONSTRAINT FK_Factura_Producto1 FOREIGN KEY (idProducto) REFERENCES Producto(idProducto);";
+                "ADD CONSTRAINT FK_Factura_Producto1 FOREIGN KEY (idProducto) REFERENCES Producto(idProducto), " +
+                "ADD CONSTRAINT FK_Factura_Producto2 FOREIGN KEY (idFactura) REFERENCES Factura(idFactura);";
         this.conn.prepareStatement(fkFacturaProducto1).execute();
         this.conn.commit();
 
-        String fkFacturaProducto2 = "ALTER TABLE Factura_Producto " +
-                "ADD CONSTRAINT FK_Factura_Producto2 FOREIGN KEY (idFactura) REFERENCES Factura(idFactura);";
-        this.conn.prepareStatement(fkFacturaProducto2).execute();
-        this.conn.commit();
+
     }
 
     private Iterable<CSVRecord> getData(String archivo) throws IOException {
