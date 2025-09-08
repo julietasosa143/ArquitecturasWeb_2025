@@ -57,23 +57,23 @@ public class HelperMySQL {
         try { this.conn.prepareStatement("ALTER TABLE Factura_Producto DROP FOREIGN KEY FK_Factura_Producto2;").execute(); } catch (SQLException ignored) {}
         this.conn.commit();
 
-        String dropFactura_producto = "DROP TABLE IF EXISTS FACTURA_PRODUCTO";
+        String dropFactura_producto = "DROP TABLE IF EXISTS Factura_Producto";
         this.conn.prepareStatement(dropFactura_producto).execute();
         this.conn.commit();
 
-        String dropProducto = "DROP TABLE IF EXISTS PRODUCTO";
+        String dropProducto = "DROP TABLE IF EXISTS Producto";
         this.conn.prepareStatement(dropProducto).execute();
         this.conn.commit();
 
 
-        String dropFactura = "DROP TABLE IF EXISTS FACTURA";
+        String dropFactura = "DROP TABLE IF EXISTS Factura";
         this.conn.prepareStatement(dropFactura).execute();
         this.conn.commit();
 
 
 
 
-        String dropCliente = "DROP TABLE IF EXISTS CLIENTE";
+        String dropCliente = "DROP TABLE IF EXISTS Cliente";
         this.conn.prepareStatement(dropCliente).execute();
         this.conn.commit();
 
