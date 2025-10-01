@@ -4,13 +4,13 @@ public class Carrera {
     @Id
     private int idCarrera;
     private String nombreCarrera;
+    private int duracion;
 
-    @OneToMany(mappedBy = "carrera")
-    private List<Inscripcion> inscripciones = new ArrayList<>();
 
     public Carrera() {
         this.idCarrera = idCarrera;
         this.nombreCarrera = nombreCarrera;
+        this.duracion = duracion;
     }
 
     public String getNombreCarrera() {
@@ -30,5 +30,7 @@ public class Carrera {
         this.inscripciones = inscripciones;
     }
 
+    @OneToMany(mappedBy = "carrera")
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
 }
