@@ -87,4 +87,9 @@ public class Estudiante {
     public void setCiudadResidencia(String ciudadResidencia) {
         this.ciudadResidencia = ciudadResidencia;
     }
+
+    @Override
+    public String toString() {
+        return "Estudiante " + nombreEstudiante +", "+ apellidoEstudiante+ " DNI: "+ dniEstudiante+" libreta nro: "+luEstudiante + " genero: "+ generoEstudiante+" ciudad de residencia: "+ciudadResidencia ;
+    }
 }
