@@ -1,4 +1,4 @@
-package dao;
+package entities;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
