@@ -1,25 +1,35 @@
 package dao;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class Inscripcion {
-    @Id
+    @EmbeddedId
     private InscripcionId id;
+    @ManyToOne
+    @MapsId("idCarrera")
+    @JoinColumn(name="idCarrera")
+    private Carrera idCarrera;
+
+    @ManyToOne
+    @MapsId("dniEstudiante")
+    @JoinColumn(name="dniEstudiante")
+    private Estudiante dniEstudiante;
     @Column
     private LocalDate fechaInscripcion;
     @Column(nullable = true)
     private LocalDate fechaGraduacion;
 
-    public Inscripcion(InscripcionId id, LocalDate fechaInscripcion) {
+    public Inscripcion(Carrera  idCarrera,Estudiante dniEstudiante ,InscripcionId id, LocalDate fechaInscripcion) {
+        this.idCarrera = idCarrera;
+        this.dniEstudiante = dniEstudiante;
         this.id = id;
         this.fechaInscripcion = fechaInscripcion;
 
     }
+
+    public Inscripcion(){}
 
     public InscripcionId getId() {
         return id;
