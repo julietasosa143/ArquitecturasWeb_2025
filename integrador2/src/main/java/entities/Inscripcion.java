@@ -1,4 +1,4 @@
-package dao;
+package entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;

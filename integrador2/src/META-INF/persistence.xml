@@ -6,10 +6,10 @@
     <persistence-unit name="Example">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>dao.Inscripcion</class>
-        <class>dao.InscripcionId</class>
-        <class>dao.Estudiante</class>
-        <class>dao.Carrera</class>
+        <class>entities.Inscripcion</class>
+        <class>entities.InscripcionId</class>
+        <class>entities.Estudiante</class>
+        <class>entities.Carrera</class>
 
         <properties>
 
