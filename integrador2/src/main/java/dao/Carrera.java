@@ -8,7 +8,9 @@ import java.util.List;
 public class Carrera {
     @Id
     private int idCarrera;
+    @Column
     private String nombreCarrera;
+    @Column
     private int duracion;
 
 
@@ -35,7 +37,7 @@ public class Carrera {
         this.inscripciones = inscripciones;
     }
 
-    @OneToMany(mappedBy = "carrera")
+    @OneToMany(mappedBy = "idCarrera")
     private List<Inscripcion> inscripciones = new ArrayList<>();
 
 }
