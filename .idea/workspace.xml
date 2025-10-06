@@ -4,177 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be950b2a-67b3-4bee-9723-93dbbce85c20" name="Changes" comment="">
+    <list default="true" id="c846c1d5-089f-4576-a753-896510c914e6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dto/ReporteCarrerasDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dto/ReporteCarrerasDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dto/CarreraInscriptosDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dto/CarreraInscriptosDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;cristiangithub2&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/julietasosa143/ArquitecturasWeb_2025.git&quot;,
-    &quot;accountId&quot;: &quot;19a33141-f44a-45cc-87b8-2c912292808c&quot;
-  }
-}</component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 7
-}</component>
-  <component name="ProjectId" id="32CRtAAKSXvxdJi34W0sQw76RNe" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main (1).executor": "Run",
     "Application.Main.executor": "Run",
-    "Docker.docker-compose.yml.db: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025/integrador2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+    "git-widget-placeholder": "feature-cristian",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/integrador2" />
-      <recent name="C:\Users\julie\IdeaProjects\ArquitecturasWeb_2025\integrador1\src\main\java\entities" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/integrador2/src/main/resources/META-INF/" />
-      <recent name="$PROJECT_DIR$/integrador2/src/META-INF" />
-      <recent name="$PROJECT_DIR$/integrador2/src/main/resources/META-INF/maven" />
-      <recent name="$PROJECT_DIR$/integrador2/src/main/resources" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Main (1)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="integrador2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="ArquitecturasWeb_integrador1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ArquitecturasWeb_2025" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ArquitecturasWeb_2025" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="be950b2a-67b3-4bee-9723-93dbbce85c20" name="Changes" comment="" />
-      <created>1756922779440</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1756922779440</updated>
-      <workItem from="1758566433617" duration="84000" />
-      <workItem from="1759169649377" duration="752000" />
-      <workItem from="1759170494701" duration="7099000" />
-      <workItem from="1759774764164" duration="7955000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

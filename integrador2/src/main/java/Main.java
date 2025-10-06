@@ -1,5 +1,6 @@
 import dao.CarreraDao;
 import dao.EstudianteDao;
+import dto.CarreraInscriptosDTO;
 import dto.ReporteCarrerasDTO;
 import entities.Estudiante;
 import helper.HelperMySQL;
@@ -45,6 +46,20 @@ public class Main {
         List<ReporteCarrerasDTO>carreras = carreraDao.generateReport();
         for (ReporteCarrerasDTO c : carreras) {
             System.out.println(c);
+        }
+        //recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos
+        List<CarreraInscriptosDTO> carreras1 =carreraDao.carrerasConEstudiantesOrdenados();
+        for (CarreraInscriptosDTO c : carreras1) {
+            System.out.println(c);
+        }
+        //recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
+        List<Estudiante> estudiantesCiudad= estudianteDao.estudiantesPorCarreraYciudad("TUDAI","Rauch");
+        if(estudiantesCiudad.isEmpty()){
+            System.out.println("No existe el estudiantes de esa carrera, en esa ciudad");
+        }else {
+            for (Estudiante e : estudiantesCiudad) {
+                System.out.println(e);
+            }
         }
     }
 }

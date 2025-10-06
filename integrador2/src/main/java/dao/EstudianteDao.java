@@ -57,14 +57,16 @@ public class EstudianteDao {
 
     }
 // g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
-    public List<Estudiante> estudiantesPorCarreraYciudad(int idCarrera, String ciudad){
+    public List<Estudiante> estudiantesPorCarreraYciudad(String nombreC, String ciudad){
         return em.createQuery(
-                "SELECT i.dniEstudiante " +
+                "SELECT e " +
                         "FROM Inscripcion i " +
-                        "WHERE i.idCarrera = :idCarrera " +
-                        "AND i.dniEstudiante.ciudadResidencia = :ciudad", Estudiante.class
+                        "JOIN i.dniEstudiante e " +
+                        "JOIN i.idCarrera c "+
+                        " WHERE c.nombreCarrera = :nombreC " +
+                        "AND e.ciudadResidencia = :ciudad", Estudiante.class
         )
-                .setParameter("idCarrera", idCarrera)
+                .setParameter("nombreC", nombreC)
                 .setParameter("ciudad", ciudad)
                 .getResultList();
     }

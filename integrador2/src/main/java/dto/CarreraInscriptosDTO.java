@@ -20,5 +20,11 @@ public class CarreraInscriptosDTO {
     public void setCantidadInscriptos(Long cantidadInscriptos) {
         this.cantidadInscriptos = cantidadInscriptos;
     }
-
+    @Override
+    public String toString() {
+        return "CarreraInscriptosDTO{" +
+                "nombreCarrera='" + nombreCarrera + '\'' +
+                ", cantidadInscriptos=" + cantidadInscriptos +
+                '}';
+    }
 }
