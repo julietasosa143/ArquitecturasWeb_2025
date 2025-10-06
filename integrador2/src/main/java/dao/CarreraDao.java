@@ -1,6 +1,6 @@
 package dao;
 
-import dto.CarreraInscriptosDTO;
+import dto.ReporteCarrerasDTO;
 import entities.Carrera;
 import entities.Estudiante;
 import helper.JpaUtil;
@@ -28,13 +28,12 @@ public class CarreraDao {
     }
     //f) Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
 
-    public List<CarreraInscriptosDTO> carrerasConCantidadInscriptos() {
+    public List<Carrera> carrerasConEstudiantesOrdenados(){
         return em.createQuery(
-                "SELECT new dto.CarreraInscriptosDTO(c.nombreCarrera, COUNT(i)) " +
-                        "FROM Inscripcion i JOIN i.idCarrera c " +
-                        "GROUP BY c.nombreCarrera " +
+                "SELECT c FROM Carrera c JOIN c.inscripciones i " +
+                        "GROUP BY c " +
                         "ORDER BY COUNT(i) DESC",
-                CarreraInscriptosDTO.class
+                Carrera.class
         ).getResultList();
     }
     // g) Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
@@ -46,6 +45,24 @@ public class CarreraDao {
         ).setParameter("id", idCarrera)
                 .setParameter("ciudad", ciudad)
                 .getResultList();
+    }
+    //3) Generar un reporte de las carreras, que para cada carrera incluya información de los
+    //inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
+    //los años de manera cronológica
+    public List<ReporteCarrerasDTO> generateReport() {
+        return em.createQuery(
+                "SELECT new dto.ReporteCarrerasDTO(" +
+                        "c.nombreCarrera, " +
+                        "YEAR(i.fechaInscripcion), " +
+                        "COUNT(i), " +
+                        "SUM(CASE WHEN i.fechaGraduacion IS NOT NULL THEN 1 ELSE 0 END)" +
+                        ") " +
+                        "FROM Inscripcion i " +
+                        "JOIN i.idCarrera c " +
+                        "GROUP BY c.nombreCarrera, YEAR(i.fechaInscripcion) " +
+                        "ORDER BY c.nombreCarrera ASC, YEAR(i.fechaInscripcion) ASC",
+                ReporteCarrerasDTO.class
+        ).getResultList();
     }
 }
 
