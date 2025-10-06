@@ -36,16 +36,7 @@ public class CarreraDao {
                 Carrera.class
         ).getResultList();
     }
-    // g) Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
-    public List<Estudiante> estudiantesPorCarreraYciudad(int idCarrera, String ciudad){
-        return em.createQuery(
-                "SELECT i.dniEstudiante " +
-                        "FROM Inscripcion i " +
-                        "WHERE i.idCarrera.idCarrera = :id AND i.dniEstudiante.ciudadResidencia = :ciudad", Estudiante.class
-        ).setParameter("id", idCarrera)
-                .setParameter("ciudad", ciudad)
-                .getResultList();
-    }
+
     //3) Generar un reporte de las carreras, que para cada carrera incluya información de los
     //inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
     //los años de manera cronológica
@@ -64,5 +55,6 @@ public class CarreraDao {
                 ReporteCarrerasDTO.class
         ).getResultList();
     }
+
 }
 
