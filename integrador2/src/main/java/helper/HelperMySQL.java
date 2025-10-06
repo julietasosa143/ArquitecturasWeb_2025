@@ -35,6 +35,12 @@ public class HelperMySQL {
         // Estudiantes
         for(CSVRecord row : getData("estudiantes.csv")){
             int dni = Integer.parseInt(row.get("DNI"));
+            Estudiante existing = em.find(Estudiante.class, dni);
+            if(existing != null){
+                System.out.println("el estudiante  ya existe, la salteo.");
+                continue;
+            }
+
             String nombre = row.get("nombre");
             String apellido = row.get("apellido");
             int edad = Integer.parseInt(row.get("edad"));
@@ -48,6 +54,11 @@ public class HelperMySQL {
         // Carreras
         for(CSVRecord row : getData("carreras.csv")){
             int id = Integer.parseInt(row.get("id_carrera"));
+            Carrera existing = em.find(Carrera.class, id);
+            if(existing != null){
+                System.out.println("La carrera c ya existe, la salteo.");
+                continue;
+            }
             String nombre = row.get("carrera");
             int duracion = Integer.parseInt(row.get("duracion"));
 
@@ -81,16 +92,16 @@ public class HelperMySQL {
             Inscripcion existing = em.find(Inscripcion.class, insId);
 
             if (existing == null) {
-                // No existe, creamos y persistimos
+
                 ec = new Inscripcion(c, e, inicio, fin, antiguedad);
                 em.persist(ec);
             } else {
-                // Ya existe, opcionalmente actualizar datos
+
                 ec = existing;
                 ec.setInicio(inicio);
                 ec.setFin(fin);
                 ec.setAntiguedad(antiguedad);
-                // No hace falta persist, porque la entidad ya está en el EntityManager
+
             }
         }
 
