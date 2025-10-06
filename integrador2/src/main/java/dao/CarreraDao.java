@@ -43,15 +43,15 @@ public class CarreraDao {
     public List<ReporteCarrerasDTO> generateReport() {
         return em.createQuery(
                 "SELECT new dto.ReporteCarrerasDTO(" +
-                        "c.nombreCarrera, " +
-                        "YEAR(i.fechaInscripcion), " +
+                "c.nombreCarrera, " +
+                        "i.fechaInscripcion, " +
                         "COUNT(i), " +
-                        "SUM(CASE WHEN i.fechaGraduacion IS NOT NULL THEN 1 ELSE 0 END)" +
+                        "COUNT(CASE WHEN i.fechaGraduacion != 0 THEN 1 END)" +
                         ") " +
                         "FROM Inscripcion i " +
                         "JOIN i.idCarrera c " +
-                        "GROUP BY c.nombreCarrera, YEAR(i.fechaInscripcion) " +
-                        "ORDER BY c.nombreCarrera ASC, YEAR(i.fechaInscripcion) ASC",
+                        "GROUP BY c.nombreCarrera, i.fechaInscripcion " +
+                        "ORDER BY c.nombreCarrera ASC, i.fechaInscripcion ASC",
                 ReporteCarrerasDTO.class
         ).getResultList();
     }
