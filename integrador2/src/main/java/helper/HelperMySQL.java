@@ -8,6 +8,7 @@ import org.apache.commons.csv.CSVRecord;
 import javax.persistence.EntityManager;
 import java.io.FileReader;
 import java.io.Reader;
+import java.time.LocalDate;
 import java.util.List;
 
 public class HelperMySQL {
@@ -18,13 +19,18 @@ public class HelperMySQL {
     }
 
     private List<CSVRecord> getData(String archivo) throws Exception {
-        Reader in = new FileReader("src/main/resources/csv_files/" + archivo);
+        java.io.InputStream is = HelperMySQL.class.getClassLoader()
+                .getResourceAsStream("csv_files/" + archivo);
+        if (is == null) {
+            throw new RuntimeException("Archivo CSV no encontrado: " + archivo);
+        }
+        java.io.Reader in = new java.io.InputStreamReader(is);
         CSVParser parser = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(in);
         return parser.getRecords();
     }
-
     public void populateDB() throws Exception {
         em.getTransaction().begin();
+
 
         // Estudiantes
         for(CSVRecord row : getData("estudiantes.csv")){
@@ -34,9 +40,8 @@ public class HelperMySQL {
             int edad = Integer.parseInt(row.get("edad"));
             String genero = row.get("genero");
             String ciudad = row.get("ciudad");
-            Long LU = Long.parseLong(row.get("LU"));
-
-            Estudiante e = new Estudiante(dni, nombre, apellido, edad, genero, LU, ciudad);
+            int LU = Integer.parseInt(row.get("LU"));
+            Estudiante e = new Estudiante(dni,LU, nombre, apellido, edad, genero, ciudad);
             em.persist(e);
         }
 
@@ -52,19 +57,45 @@ public class HelperMySQL {
 
         // EstudiaCarrera
         for(CSVRecord row : getData("estudianteCarrera.csv")){
-            Long LU = Long.parseLong(row.get("id_estudiante"));
+            int dniEstudiante = Integer.parseInt(row.get("id_estudiante"));
             int idCarrera = Integer.parseInt(row.get("id_carrera"));
             int inicio = Integer.parseInt(row.get("inscripcion"));
             int fin = Integer.parseInt(row.get("graduacion"));
             int antiguedad = Integer.parseInt(row.get("antiguedad"));
 
-            Estudiante e = em.find(Estudiante.class, LU);
+
+            Estudiante e = em.find(Estudiante.class, dniEstudiante);
             Carrera c = em.find(Carrera.class, idCarrera);
 
-            EstudiaCarrera ec = new EstudiaCarrera(e, c, inicio, fin, antiguedad);
-            em.persist(ec);
+            if(c == null){
+                System.out.println("No existe el carrera con el id: " + idCarrera);
+                continue;
+            }
+            if(e == null){
+                System.out.println("No existe el estudiante con el id: " + dniEstudiante);
+                continue;
+            }
+            Inscripcion ec;
+
+            InscripcionId insId = new InscripcionId(idCarrera, dniEstudiante);
+            Inscripcion existing = em.find(Inscripcion.class, insId);
+
+            if (existing == null) {
+                // No existe, creamos y persistimos
+                ec = new Inscripcion(c, e, inicio, fin, antiguedad);
+                em.persist(ec);
+            } else {
+                // Ya existe, opcionalmente actualizar datos
+                ec = existing;
+                ec.setInicio(inicio);
+                ec.setFin(fin);
+                ec.setAntiguedad(antiguedad);
+                // No hace falta persist, porque la entidad ya está en el EntityManager
+            }
         }
 
         em.getTransaction().commit();
     }
+
+
 }

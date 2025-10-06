@@ -17,15 +17,20 @@ public class Inscripcion {
     @JoinColumn(name="dniEstudiante")
     private Estudiante dniEstudiante;
     @Column
-    private LocalDate fechaInscripcion;
+    private int fechaInscripcion;
     @Column(nullable = true)
-    private LocalDate fechaGraduacion;
+    private int fechaGraduacion;
+    @Column
+    private int antiguedad;
 
-    public Inscripcion(Carrera  idCarrera,Estudiante dniEstudiante ,InscripcionId id, LocalDate fechaInscripcion) {
+
+    public Inscripcion(Carrera idCarrera, Estudiante dniEstudiante,int inicio ,int fin ,int antiguedad){
         this.idCarrera = idCarrera;
         this.dniEstudiante = dniEstudiante;
-        this.id = id;
-        this.fechaInscripcion = fechaInscripcion;
+        this.id = new InscripcionId(this.getIdCarrera(), this.getDniEstudiante());
+        this.fechaInscripcion = inicio;
+        this.fechaGraduacion = fin;
+        this.antiguedad = antiguedad;
 
     }
 
@@ -35,19 +40,41 @@ public class Inscripcion {
         return id;
     }
 
-    public LocalDate getFechaInscripcion() {
+    public int getFechaInscripcion() {
         return fechaInscripcion;
     }
 
-    public void setFechaInscripcion(LocalDate fechaInscripcion) {
+    public void setFechaInscripcion(int fechaInscripcion) {
         this.fechaInscripcion = fechaInscripcion;
     }
 
-    public LocalDate getFechaGraduacion() {
+    public int getFechaGraduacion() {
         return fechaGraduacion;
     }
 
-    public void setFechaGraduacion(LocalDate fechaGraduacion) {
+    public void setFechaGraduacion(int fechaGraduacion) {
         this.fechaGraduacion = fechaGraduacion;
+    }
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public int getIdCarrera() {
+        return idCarrera.getIdCarrera();
+    }
+    public int getDniEstudiante() {
+         return this.dniEstudiante.getDniEstudiante();
+    }
+
+    public void setInicio(int inicio) {
+        this.fechaInscripcion = inicio;
+
+    }
+    public void setFin(int fin) {
+        this.fechaGraduacion = fin;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
     }
 }
