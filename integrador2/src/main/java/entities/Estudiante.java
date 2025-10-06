@@ -68,6 +68,10 @@ public class Estudiante {
         return edad;
     }
 
+    public void setDniEstudiante(int dniEstudiante) {
+        this.dniEstudiante = dniEstudiante;
+    }
+
     public void setEdad(int edad) {
         this.edad = edad;
     }
