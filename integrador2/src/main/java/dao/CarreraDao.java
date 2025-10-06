@@ -1,5 +1,6 @@
 package dao;
 
+import dto.CarreraInscriptosDTO;
 import dto.ReporteCarrerasDTO;
 import entities.Carrera;
 import entities.Estudiante;
@@ -28,12 +29,14 @@ public class CarreraDao {
     }
     //f) Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
 
-    public List<Carrera> carrerasConEstudiantesOrdenados(){
+    public List<CarreraInscriptosDTO> carrerasConEstudiantesOrdenados(){
         return em.createQuery(
-                "SELECT c FROM Carrera c JOIN c.inscripciones i " +
-                        "GROUP BY c " +
+                "SELECT new dto.CarreraInscriptosDTO(c.nombreCarrera, COUNT(i)) " +
+                        "FROM Carrera c " +
+                        "JOIN c.inscripciones i " +
+                        "GROUP BY c.nombreCarrera " +
                         "ORDER BY COUNT(i) DESC",
-                Carrera.class
+                CarreraInscriptosDTO.class
         ).getResultList();
     }
 
