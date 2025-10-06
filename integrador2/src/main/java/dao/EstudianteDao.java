@@ -17,49 +17,44 @@ public class EstudianteDao {
     }
 
     public void darDeAltaEstudiante(Estudiante estudiante) {
-        try{em.getTransaction().begin();
-        em.persist(estudiante);
-        em.getTransaction().commit();}
-        finally {
-            em.close();
+        em.getTransaction().begin();
+        em.merge(estudiante);
+        em.getTransaction().commit();
+
+
+    }
+
+    public List<Estudiante> getAllEstudiantesByLU() {
+        String spql = "SELECT e FROM Estudiante e ORDER BY e.luEstudiante";
+        Query query = em.createQuery(spql);
+        List<Estudiante> estudiantes = query.getResultList();
+        for(Estudiante estudiante : estudiantes){
+            System.out.println(estudiante.toString());
         }
-
-    }
-
-    public void getAllEstudiantesByLU() {
-        try{em.getTransaction().begin();
-            String spql = "SELECT e FROM Estudiante e ORDER BY e.luEstudiante";
-            Query query=em.createQuery(spql);
-            List<Estudiante> estudiantes = query.getResultList();
-            for(Estudiante estudiante:estudiantes){
-                System.out.println(estudiante.toString());
-            }
-
-        }finally{em.close();}
+        return estudiantes;
 
 
     }
 
-    public void findEstudianteByLU(int luEstudiante){
-        try{em.getTransaction().begin();
+    public Estudiante findEstudianteByLU(int luEstudiante){
+
             String spql= "Select e from Estudiante e WHERE e.luEstudiante =:luEstudiante ";
             TypedQuery<Estudiante> typedQuery= em.createQuery(spql,Estudiante.class);
             typedQuery.setParameter("luEstudiante", luEstudiante);
-            List<Estudiante> estudiantes =typedQuery.getResultList();
-            for(Estudiante estudiante:estudiantes){
-                System.out.println(estudiante.toString());
-            }
+            Estudiante estudiante =typedQuery.getSingleResult();
 
-        }finally{em.close();}
+            return estudiante;
+
     }
-    public void findEstudianteByGender(String gender){
-        try{em.getTransaction().begin();
+    public List<Estudiante> findEstudianteByGender(String gender){
+
             String spql= "Select e from Estudiante e WHERE e.generoEstudiante =:gender ";
             TypedQuery<Estudiante> typedQuery= em.createQuery(spql,Estudiante.class);
             typedQuery.setParameter("gender", gender);
-            System.out.println( typedQuery.getSingleResult().toString());
+            List<Estudiante> estudiantes = typedQuery.getResultList();
 
-        }finally{em.close();}
+            return estudiantes;
+
     }
 
 }
