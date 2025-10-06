@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be950b2a-67b3-4bee-9723-93dbbce85c20" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/entities/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/entities/Estudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/helper/HelperMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/helper/HelperMySQL.java" afterDir="false" />
-    </list>
+    <list default="true" id="be950b2a-67b3-4bee-9723-93dbbce85c20" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
