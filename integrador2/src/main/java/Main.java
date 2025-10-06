@@ -4,6 +4,7 @@ import helper.HelperMySQL;
 import helper.JpaUtil;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -14,7 +15,7 @@ public class Main {
 
         //crear estudiante
         Estudiante estudiante = new Estudiante();
-        estudiante.setDniEstudiante(000000);
+        estudiante.setDniEstudiante(400000);
         estudiante.setNombreEstudiante("Paula");
         estudiante.setApellidoEstudiante("Rodriguez");
 
@@ -22,7 +23,19 @@ public class Main {
         estudianteDao.darDeAltaEstudiante(estudiante);
         System.out.println("se creo el estudiante");
 
+        //recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
+        List<Estudiante>estudiantes = estudianteDao.getAllEstudiantesByLU();
+        for (Estudiante e : estudiantes) {
+            System.out.println(e);
+        }
+        //recuperar un estudiante, en base a su número de libreta universitaria.
+        Estudiante estudiante1 = estudianteDao.findEstudianteByLU(72976);
+        System.out.println(estudiante1);
 
-
+        // recuperar todos los estudiantes, en base a su género.
+        List<Estudiante> estudiantesG = estudianteDao.findEstudianteByGender("Male");
+        for (Estudiante e : estudiantesG) {
+            System.out.println(e);
+        }
     }
 }
