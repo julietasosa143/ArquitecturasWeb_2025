@@ -37,15 +37,7 @@ public class CarreraDao {
                 CarreraInscriptosDTO.class
         ).getResultList();
     }
-    // g) Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
-    public List<Estudiante> estudiantesPorCarreraYciudad(int idCarrera, String ciudad){
-        return em.createQuery(
-                "SELECT i.dniEstudiante " +
-                        "FROM Inscripcion i " +
-                        "WHERE i.idCarrera.idCarrera = :id AND i.dniEstudiante.ciudadResidencia = :ciudad", Estudiante.class
-        ).setParameter("id", idCarrera)
-                .setParameter("ciudad", ciudad)
-                .getResultList();
-    }
+
+
 }
 
