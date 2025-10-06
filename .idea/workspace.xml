@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be950b2a-67b3-4bee-9723-93dbbce85c20" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador1/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador1/src/main/java/utils/HelperMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador1/src/main/java/utils/HelperMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/entities/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/entities/Carrera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/entities/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/entities/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/entities/Inscripcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/entities/Inscripcion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/entities/InscripcionId.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/entities/InscripcionId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/helper/HelperMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/helper/HelperMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/helper/JpaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/helper/JpaUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +33,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "cristiangithub2"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/julietasosa143/ArquitecturasWeb_2025.git",
+    "accountId": "19a33141-f44a-45cc-87b8-2c912292808c"
+  }
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -38,6 +59,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main (1).executor": "Run",
     "Application.Main.executor": "Run",
     "Docker.docker-compose.yml.db: Compose Deployment.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
@@ -46,9 +68,9 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature-miriam",
+    "git-widget-placeholder": "feature-cristian",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris_gabi/Descargas/JPAEjemplo",
+    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025/integrador2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -61,10 +83,25 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/integrador2" />
       <recent name="C:\Users\julie\IdeaProjects\ArquitecturasWeb_2025\integrador1\src\main\java\entities" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/integrador2/src/main/resources/META-INF/" />
+      <recent name="$PROJECT_DIR$/integrador2/src/META-INF" />
+      <recent name="$PROJECT_DIR$/integrador2/src/main/resources/META-INF/maven" />
+      <recent name="$PROJECT_DIR$/integrador2/src/main/resources" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="integrador2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ArquitecturasWeb_integrador1" />
@@ -112,6 +149,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
@@ -136,6 +174,7 @@
       <workItem from="1758566433617" duration="84000" />
       <workItem from="1759169649377" duration="752000" />
       <workItem from="1759170494701" duration="7099000" />
+      <workItem from="1759774764164" duration="7955000" />
     </task>
     <servers />
   </component>

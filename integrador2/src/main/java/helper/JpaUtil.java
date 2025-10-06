@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 public class JpaUtil {
 
         private static final EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("Example");
+                Persistence.createEntityManagerFactory("integrador2");
 
         public static EntityManager getEntityManager() {
             return emf.createEntityManager();
