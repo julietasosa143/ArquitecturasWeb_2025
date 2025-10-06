@@ -17,7 +17,7 @@ public class Estudiante {
     @Column
     private int edad;
     @Column
-    private char generoEstudiante;
+    private String generoEstudiante;
     @Column
     private String ciudadResidencia;
     @OneToMany (mappedBy="dniEstudiante")
@@ -28,7 +28,7 @@ public class Estudiante {
         super();
     }
 
-    public Estudiante (int id, int luUniversitaria, String nombre, String apellido, int edad, char genero, String ciudadResidencia) {
+    public Estudiante (int id, int luUniversitaria, String nombre, String apellido, int edad, String genero, String ciudadResidencia) {
         super();
         this.dniEstudiante = id;
         this.luEstudiante = luUniversitaria;
@@ -72,11 +72,11 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public char getGeneroEstudiante() {
+    public String getGeneroEstudiante() {
         return generoEstudiante;
     }
 
-    public void setGeneroEstudiante(char generoEstudiante) {
+    public void setGeneroEstudiante(String generoEstudiante) {
         this.generoEstudiante = generoEstudiante;
     }
 

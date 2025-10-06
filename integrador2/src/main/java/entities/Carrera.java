@@ -15,11 +15,15 @@ public class Carrera {
 
 
     public Carrera() {
+        super();
+    }
+
+    public Carrera(int idCarrera, String nombreCarrera, int duracion) {
+        super();
         this.idCarrera = idCarrera;
         this.nombreCarrera = nombreCarrera;
         this.duracion = duracion;
     }
-
     public String getNombreCarrera() {
         return nombreCarrera;
     }
@@ -39,5 +43,17 @@ public class Carrera {
 
     @OneToMany(mappedBy = "idCarrera")
     private List<Inscripcion> inscripciones = new ArrayList<>();
+    public int getIdCarrera() {
+        return idCarrera;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+
 
 }
