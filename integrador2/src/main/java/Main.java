@@ -1,4 +1,6 @@
+import dao.CarreraDao;
 import dao.EstudianteDao;
+import dto.ReporteCarrerasDTO;
 import entities.Estudiante;
 import helper.HelperMySQL;
 import helper.JpaUtil;
@@ -11,7 +13,7 @@ public class Main {
         EntityManager em = JpaUtil.getEntityManager();
         HelperMySQL hp = new HelperMySQL(em);
         hp.populateDB();
-        EstudianteDao estudianteDao = new EstudianteDao(em);
+        EstudianteDao estudianteDao = new EstudianteDao();
 
         //crear estudiante
         Estudiante estudiante = new Estudiante();
@@ -36,6 +38,13 @@ public class Main {
         List<Estudiante> estudiantesG = estudianteDao.findEstudianteByGender("Male");
         for (Estudiante e : estudiantesG) {
             System.out.println(e);
+        }
+
+        //punto 3
+        CarreraDao carreraDao = new CarreraDao(em);
+        List<ReporteCarrerasDTO>carreras = carreraDao.generateReport();
+        for (ReporteCarrerasDTO c : carreras) {
+            System.out.println(c);
         }
     }
 }
