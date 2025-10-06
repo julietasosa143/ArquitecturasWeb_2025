@@ -15,9 +15,6 @@ public class EstudianteDao {
     public EstudianteDao() {
         this.em = JpaUtil.getEntityManager();
     }
-    public  EstudianteDao(EntityManager em) {
-        this.em = em;
-    }
 
     public void darDeAltaEstudiante(Estudiante estudiante) {
         try{em.getTransaction().begin();
