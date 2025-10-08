@@ -13,15 +13,13 @@ public class CarreraDao {
     private EntityManager em;
 
     public CarreraDao(EntityManager em) {
-        this.em = JpaUtil.getEntityManager();
+        this.em = em;
     }
     public void create(Carrera c){
-        try{em.getTransaction().begin();
-            em.persist(c);
-            em.getTransaction().commit();
-        }finally{
-            em.close();
-        }
+        em.getTransaction().begin();
+        em.merge(c);
+        em.getTransaction().commit();
+
 
     }
     public Carrera buscarPorId(int id){
@@ -52,7 +50,7 @@ public class CarreraDao {
                         "COUNT(CASE WHEN i.fechaGraduacion != 0 THEN 1 END)" +
                         ") " +
                         "FROM Inscripcion i " +
-                        "JOIN i.idCarrera c " +
+                        "JOIN i.carrera c " +
                         "GROUP BY c.nombreCarrera, i.fechaInscripcion " +
                         "ORDER BY c.nombreCarrera ASC, i.fechaInscripcion ASC",
                 ReporteCarrerasDTO.class

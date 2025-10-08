@@ -10,12 +10,12 @@ public class Inscripcion {
     @ManyToOne
     @MapsId("idCarrera")
     @JoinColumn(name="idCarrera")
-    private Carrera idCarrera;
+    private Carrera carrera;
 
     @ManyToOne
     @MapsId("dniEstudiante")
     @JoinColumn(name="dniEstudiante")
-    private Estudiante dniEstudiante;
+    private Estudiante estudiante;
     @Column
     private int fechaInscripcion;
     @Column(nullable = true)
@@ -24,9 +24,9 @@ public class Inscripcion {
     private int antiguedad;
 
 
-    public Inscripcion(Carrera idCarrera, Estudiante dniEstudiante,int inicio ,int fin ,int antiguedad){
-        this.idCarrera = idCarrera;
-        this.dniEstudiante = dniEstudiante;
+    public Inscripcion(Carrera carrera, Estudiante estudiante,int inicio ,int fin ,int antiguedad){
+        this.carrera = carrera;
+        this.estudiante = estudiante;
         this.id = new InscripcionId(this.getIdCarrera(), this.getDniEstudiante());
         this.fechaInscripcion = inicio;
         this.fechaGraduacion = fin;
@@ -34,11 +34,12 @@ public class Inscripcion {
 
     }
     public Inscripcion(Carrera carrera, Estudiante estudiante){
-        this.idCarrera = carrera;
-        this.dniEstudiante = estudiante;
+        this.carrera = carrera;
+        this.estudiante = estudiante;
         this.fechaInscripcion= LocalDate.now().getYear();
         this.fechaGraduacion = 0;
         this.antiguedad = 0;
+        this.id = new InscripcionId(this.getIdCarrera(), this.getDniEstudiante());
     }
 
     public Inscripcion(){}
@@ -67,10 +68,10 @@ public class Inscripcion {
     }
 
     public int getIdCarrera() {
-        return idCarrera.getIdCarrera();
+        return carrera.getIdCarrera();
     }
     public int getDniEstudiante() {
-         return this.dniEstudiante.getDniEstudiante();
+         return this.estudiante.getDniEstudiante();
     }
 
     public void setInicio(int inicio) {

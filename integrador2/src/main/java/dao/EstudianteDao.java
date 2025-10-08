@@ -12,8 +12,8 @@ public class EstudianteDao {
 
     private EntityManager em;
 
-    public EstudianteDao() {
-        this.em = JpaUtil.getEntityManager();
+    public EstudianteDao(EntityManager em) {
+        this.em = em;
     }
 
     public void darDeAltaEstudiante(Estudiante estudiante) {
@@ -61,8 +61,8 @@ public class EstudianteDao {
         return em.createQuery(
                 "SELECT e " +
                         "FROM Inscripcion i " +
-                        "JOIN i.dniEstudiante e " +
-                        "JOIN i.idCarrera c "+
+                        "JOIN i.estudiante e " +
+                        "JOIN i.carrera c "+
                         " WHERE c.nombreCarrera = :nombreC " +
                         "AND e.ciudadResidencia = :ciudad", Estudiante.class
         )
