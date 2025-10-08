@@ -17,7 +17,7 @@ public class Main {
         EntityManager em = JpaUtil.getEntityManager();
         HelperMySQL hp = new HelperMySQL(em);
         hp.populateDB();
-        EstudianteDao estudianteDao = new EstudianteDao();
+        EstudianteDao estudianteDao = new EstudianteDao(em);
 
         //crear estudiante
         Estudiante paulaR = new Estudiante();
@@ -34,9 +34,11 @@ public class Main {
         System.out.println("se creo el estudiante");
 
         // B- matricular a un estudiante en una carrera
+        System.out.println("se inscribe paula en la carrera lta");
         Inscripcion inscripcion1 = new Inscripcion(lta, paulaR);
         InscripcionDao inscripcionDao = new InscripcionDao(em);
         inscripcionDao.enroll(inscripcion1);
+
 
         // C- recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
         List<Estudiante>estudiantes = estudianteDao.getAllEstudiantesByLU();

@@ -12,6 +12,8 @@ public class Carrera {
     private String nombreCarrera;
     @Column
     private int duracion;
+    @OneToMany(mappedBy = "carrera")
+    private List<Inscripcion> inscripciones;
 
 
     public Carrera() {
@@ -41,8 +43,6 @@ public class Carrera {
         this.inscripciones = inscripciones;
     }
 
-    @OneToMany(mappedBy = "idCarrera")
-    private List<Inscripcion> inscripciones = new ArrayList<>();
     public int getIdCarrera() {
         return idCarrera;
     }

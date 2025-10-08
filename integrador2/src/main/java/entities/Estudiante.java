@@ -20,7 +20,7 @@ public class Estudiante {
     private String generoEstudiante;
     @Column
     private String ciudadResidencia;
-    @OneToMany (mappedBy="dniEstudiante")
+    @OneToMany (mappedBy="estudiante")
     private List <Inscripcion> inscripciones= new ArrayList<Inscripcion>();
 
 

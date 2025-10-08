@@ -11,17 +11,14 @@ import java.time.LocalDate;
 public class InscripcionDao {
     private EntityManager em;
     public InscripcionDao(EntityManager em){
-        this.em = JpaUtil.getEntityManager();
+        this.em = em;
     }
 
     //B) Inscribir a un estudiante en una Carrera
     public void enroll (Inscripcion inscripcion){
-        try {
-            em.getTransaction().begin();
-            em.persist(inscripcion);
-            em.getTransaction().commit();
-        }finally {
-            em.close();
-        }
+        em.getTransaction().begin();
+        em.merge(inscripcion);
+        em.getTransaction().commit();
+
     }
 }
