@@ -33,6 +33,13 @@ public class Inscripcion {
         this.antiguedad = antiguedad;
 
     }
+    public Inscripcion(Carrera carrera, Estudiante estudiante){
+        this.idCarrera = carrera;
+        this.dniEstudiante = estudiante;
+        this.fechaInscripcion= LocalDate.now().getYear();
+        this.fechaGraduacion = 0;
+        this.antiguedad = 0;
+    }
 
     public Inscripcion(){}
 

@@ -15,8 +15,7 @@ public class InscripcionDao {
     }
 
     //B) Inscribir a un estudiante en una Carrera
-    public void enroll (Estudiante e, Carrera c){
-        Inscripcion  inscripcion = new Inscripcion(c, e, LocalDate.now().getYear(), 0, 0);
+    public void enroll (Inscripcion inscripcion){
         try {
             em.getTransaction().begin();
             em.persist(inscripcion);
