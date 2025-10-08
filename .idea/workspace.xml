@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c846c1d5-089f-4576-a753-896510c914e6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dto/CarreraInscriptosDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dto/CarreraInscriptosDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +19,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "git-widget-placeholder": "feature-cristian",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>

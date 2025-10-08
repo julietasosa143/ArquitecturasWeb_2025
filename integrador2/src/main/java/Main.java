@@ -1,8 +1,11 @@
 import dao.CarreraDao;
 import dao.EstudianteDao;
+import dao.InscripcionDao;
 import dto.CarreraInscriptosDTO;
 import dto.ReporteCarrerasDTO;
+import entities.Carrera;
 import entities.Estudiante;
+import entities.Inscripcion;
 import helper.HelperMySQL;
 import helper.JpaUtil;
 
@@ -17,42 +20,44 @@ public class Main {
         EstudianteDao estudianteDao = new EstudianteDao();
 
         //crear estudiante
-        Estudiante estudiante = new Estudiante();
-        estudiante.setDniEstudiante(400000);
-        estudiante.setNombreEstudiante("Paula");
-        estudiante.setApellidoEstudiante("Rodriguez");
+        Estudiante paulaR = new Estudiante();
+        paulaR.setDniEstudiante(400000);
+        paulaR.setNombreEstudiante("Paula");
+        paulaR.setApellidoEstudiante("Rodriguez");
 
-        // dar de alta
-        estudianteDao.darDeAltaEstudiante(estudiante);
+        Carrera lta = new Carrera(16,"Licenciatura en Tecnologia Ambiental", 5);
+        CarreraDao carreraDao = new CarreraDao(em);
+        carreraDao.create(lta);
+
+        // A- dar de alta un estudiante
+        estudianteDao.darDeAltaEstudiante(paulaR);
         System.out.println("se creo el estudiante");
 
-        //recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
+        // B- matricular a un estudiante en una carrera
+        Inscripcion inscripcion1 = new Inscripcion(lta, paulaR);
+        InscripcionDao inscripcionDao = new InscripcionDao(em);
+        inscripcionDao.enroll(inscripcion1);
+
+        // C- recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
         List<Estudiante>estudiantes = estudianteDao.getAllEstudiantesByLU();
         for (Estudiante e : estudiantes) {
             System.out.println(e);
         }
-        //recuperar un estudiante, en base a su número de libreta universitaria.
+        // D- recuperar un estudiante, en base a su número de libreta universitaria.
         Estudiante estudiante1 = estudianteDao.findEstudianteByLU(72976);
         System.out.println(estudiante1);
 
-        // recuperar todos los estudiantes, en base a su género.
+        // E- recuperar todos los estudiantes, en base a su género.
         List<Estudiante> estudiantesG = estudianteDao.findEstudianteByGender("Male");
         for (Estudiante e : estudiantesG) {
             System.out.println(e);
         }
-
-        //punto 3
-        CarreraDao carreraDao = new CarreraDao(em);
-        List<ReporteCarrerasDTO>carreras = carreraDao.generateReport();
-        for (ReporteCarrerasDTO c : carreras) {
-            System.out.println(c);
-        }
-        //recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos
-        List<CarreraInscriptosDTO> carreras1 =carreraDao.carrerasConEstudiantesOrdenados();
+        // F- recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos
+        List<CarreraInscriptosDTO> carreras1 = carreraDao.carrerasConEstudiantesOrdenados();
         for (CarreraInscriptosDTO c : carreras1) {
             System.out.println(c);
         }
-        //recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
+        // G- recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
         List<Estudiante> estudiantesCiudad= estudianteDao.estudiantesPorCarreraYciudad("TUDAI","Rauch");
         if(estudiantesCiudad.isEmpty()){
             System.out.println("No existe el estudiantes de esa carrera, en esa ciudad");
@@ -60,6 +65,13 @@ public class Main {
             for (Estudiante e : estudiantesCiudad) {
                 System.out.println(e);
             }
+        }
+        //3- Generar un reporte de las carreras, que para cada carrera incluya
+        // información de los inscriptos y egresados por año.
+        // Se deben ordenar las carreras alfabéticamente, y presentar los años de manera cronológica.
+        List<ReporteCarrerasDTO>carreras = carreraDao.generateReport();
+        for (ReporteCarrerasDTO c : carreras) {
+            System.out.println(c);
         }
     }
 }
