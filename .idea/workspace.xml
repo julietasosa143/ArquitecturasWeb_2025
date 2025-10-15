@@ -5,35 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c846c1d5-089f-4576-a753-896510c914e6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/EstudianteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/CarreraDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/EstudianteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/dao/InscripcionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/dao/InscripcionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/entities/Inscripcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/entities/Inscripcion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "cristiangithub2"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://cristiangithub2@github.com/julietasosa143/ArquitecturasWeb_2025.git",
+    "accountId": "19a33141-f44a-45cc-87b8-2c912292808c"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="3479r9c3WekBNSL8dufnnOh0r97" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feature-cristian",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="integrador2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="integrador3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.integrador3.Integrador3Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -44,7 +78,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
