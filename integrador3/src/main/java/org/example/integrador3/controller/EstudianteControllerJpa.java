@@ -26,13 +26,13 @@ public class EstudianteControllerJpa {
     }
 
     @PostMapping("/estudiantes")
-    public ResponseEntity<EstudianteResponseDTO> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
+    public ResponseEntity<String> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
         try{
-            EstudianteResponseDTO estudianteDTO = estudianteService.create();
-            return ResponseEntity.status(HttpStatus.CREATED).body(estudianteDTO);
+             this.estudianteService.create(estudiante);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Estudiante creado");
         }catch (Exception ex){
             //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("\"{\\\"error\\\":\\\"Error. No se pudo crear. \\\"}\"");
         }
     }
     @GetMapping("/")
@@ -55,7 +55,7 @@ public class EstudianteControllerJpa {
         }
     }
 
-    @GetMapping("/")
+
 
 
 
