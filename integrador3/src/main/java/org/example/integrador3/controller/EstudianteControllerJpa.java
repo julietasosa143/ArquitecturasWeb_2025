@@ -1,4 +1,62 @@
 package org.example.integrador3.controller;
 
+import org.apache.coyote.Response;
+import org.example.integrador3.dto.request.EstudianteRequestDTO;
+import org.example.integrador3.dto.response.EstudianteResponseDTO;
+import org.example.integrador3.model.Estudiante;
+import org.example.integrador3.service.EstudianteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("estudiante")
 public class EstudianteControllerJpa {
+    //borrar despues pero tira error por que falta el @service de estudianteService
+    @Qualifier("estudianteService")
+    @Autowired
+    private final EstudianteService estudianteService;
+
+    public EstudianteControllerJpa(@Qualifier("estudianteService") EstudianteService estudianteService) {
+        this.estudianteService = estudianteService;
+    }
+
+    @PostMapping("/estudiantes")
+    public ResponseEntity<EstudianteResponseDTO> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
+        try{
+            EstudianteResponseDTO estudianteDTO = estudianteService.create();
+            return ResponseEntity.status(HttpStatus.CREATED).body(estudianteDTO);
+        }catch (Exception ex){
+            //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+    @GetMapping("/")
+    public ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesOrderByEdad( int edad) {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body( estudianteService.getAllByEdad(edad));
+        }catch (Exception e){
+            //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping("/search")
+    public  ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesBY(EstudianteRequestDTO estudiante) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.search(estudiante));
+        }catch (Exception e){
+            //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping("/")
+
+
+
 }
