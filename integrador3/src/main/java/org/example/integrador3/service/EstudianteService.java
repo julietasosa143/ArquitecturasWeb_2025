@@ -24,8 +24,8 @@ public class EstudianteService {
         this.estudianteRepository.create(requestDTO.getName(),requestDTO.getLastName(),requestDTO.getGender(),requestDTO.getDNI(),requestDTO.getCity());
     }
 
-    public List<EstudianteResponseDTO> getAllByEdad(int edad){
-        List<Estudiante> estudiantes= this.estudianteRepository.getAllByOrder(edad);
+    public List<EstudianteResponseDTO> getAllByEdad(){
+        List<Estudiante> estudiantes= this.estudianteRepository.getAllByOrder();
 
         return estudiantes.stream()
                 .map(estudiante -> new EstudianteResponseDTO(estudiante.getName(),estudiante.getLastName(),estudiante.getGender(),estudiante.getDNI(),estudiante.getCity()))
