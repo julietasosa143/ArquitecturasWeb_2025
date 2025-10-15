@@ -36,9 +36,9 @@ public class EstudianteControllerJpa {
         }
     }
     @GetMapping("/")
-    public ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesOrderByEdad( int edad) {
+    public ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesOrderByEdad( ) {
         try{
-            return ResponseEntity.status(HttpStatus.OK).body( estudianteService.getAllByEdad(edad));
+            return ResponseEntity.status(HttpStatus.OK).body( estudianteService.getAllByEdad());
         }catch (Exception e){
             //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
