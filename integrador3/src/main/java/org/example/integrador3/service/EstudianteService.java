@@ -20,22 +20,27 @@ public class EstudianteService {
         this.estudianteRepository = estudianteRepository;
     }
 
-    public void create(EstudianteRequestDTO requestDTO){
-        this.estudianteRepository.create(requestDTO.getName(),requestDTO.getLastName(),requestDTO.getGender(),requestDTO.getDNI(),requestDTO.getCity());
+    public EstudianteResponseDTO create(EstudianteRequestDTO requestDTO){
+        Estudiante estudiante = new Estudiante(requestDTO.getDniEstudiante(),requestDTO.getNombreEstudiante(),requestDTO.getApellidoEstudiante(), requestDTO.getEdad(), requestDTO.getGeneroEstudiante(),requestDTO.getCiudadResidencia());
+        Estudiante estudianteAgregado= this.estudianteRepository.save(estudiante);
+        //si no se crea el save tira una excepcion
+       return   new EstudianteResponseDTO(estudianteAgregado.getNombreEstudiante(),estudianteAgregado.getApellidoEstudiante(),estudianteAgregado.getGeneroEstudiante(),estudianteAgregado.getEdadEstudiante(),estudianteAgregado.getDniEstudiante(),estudianteAgregado.getCiudadResidencia());
+
     }
 
     public List<EstudianteResponseDTO> getAllByEdad(){
-        List<Estudiante> estudiantes= this.estudianteRepository.getAllByOrder();
+        List<Estudiante> estudiantes= this.estudianteRepository.getAllByAge();
 
         return estudiantes.stream()
-                .map(estudiante -> new EstudianteResponseDTO(estudiante.getName(),estudiante.getLastName(),estudiante.getGender(),estudiante.getDNI(),estudiante.getCity()))
+                .map(estudiante -> new EstudianteResponseDTO(estudiante.getNombreEstudiante(),estudiante.getApellidoEstudiante(),estudiante.getGeneroEstudiante(),estudiante.getEdadEstudiante(),estudiante.getDniEstudiante(),estudiante.getCiudadResidencia()))
                 .toList();
     }
     public List<EstudianteResponseDTO> search(EstudianteRequestDTO requestDTO){
-        List<Estudiante> estudiantes = this.estudianteRepository.search(estudiante.getName(),estudiante.getLastName(),estudiante.getGender(),estudiante.getDNI(),estudiante.getCity());
+                                                                        //public EstudianteRequestDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante, int edad,int dniEstudiante, String ciudadResidencia)
+        List<Estudiante> estudiantes = this.estudianteRepository.search(requestDTO.getNombreEstudiante(),requestDTO.getApellidoEstudiante(),requestDTO.getGeneroEstudiante(),requestDTO.getEdad(),requestDTO.getDniEstudiante(),requestDTO.getCiudadResidencia());
 
         return estudiantes.stream()
-                .map(estudiante -> new EstudianteResponseDTO(estudiante.getName(),estudiante.getLastName(),estudiante.getGender(),estudiante.getDNI(),estudiante.getCity()))
+                .map(estudiante -> new EstudianteResponseDTO(estudiante.getNombreEstudiante(),estudiante.getApellidoEstudiante(),estudiante.getGeneroEstudiante(),estudiante.getEdadEstudiante(),estudiante.getDniEstudiante(),estudiante.getCiudadResidencia()))
                 .toList();
     }
 
