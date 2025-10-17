@@ -29,6 +29,7 @@ public class LoadDataBase {
     public InscripcionRepository inscripcionRepository;
 
     private List<CSVRecord> getData(String archivo) throws Exception {
+        System.out.println("Buscando archivo en ruta: csv_files/" + archivo);
         InputStream is = getClass().getClassLoader().getResourceAsStream("csv_files/"+archivo);
         if (is == null) {
             throw new RuntimeException("Archivo CSV no encontrado: " + archivo);
@@ -57,7 +58,7 @@ public class LoadDataBase {
                     row.get("genero"),
                     row.get("ciudad")
             );
-            estudianteRepository.save(e);
+            estudianteRepository.saveAndFlush(e);
         }
 
 
@@ -70,7 +71,7 @@ public class LoadDataBase {
             Carrera c = new Carrera(id,
                     row.get("carrera"),
                     Integer.parseInt(row.get("duracion")));
-            carreraRepository.save(c);
+            carreraRepository.saveAndFlush(c);
         }
 
 
@@ -78,7 +79,7 @@ public class LoadDataBase {
             int dniEstudiante = Integer.parseInt(row.get("id_estudiante"));
             int idCarrera = Integer.parseInt(row.get("id_carrera"));
 
-            Estudiante e = estudianteRepository.getById(dniEstudiante);
+            Estudiante e = estudianteRepository.findById(dniEstudiante).orElse(null);
             Carrera c = carreraRepository.findById(idCarrera).orElse(null);
             if (e == null || c == null) continue;
 
