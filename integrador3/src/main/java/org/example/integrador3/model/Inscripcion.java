@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class Inscripcion {
     @EmbeddedId
     private InscripcionId id;
+
     @ManyToOne
     @MapsId("idCarrera")
     @JoinColumn(name="idCarrera")
@@ -37,6 +38,18 @@ public class Inscripcion {
         this.antiguedad = 0;
         this.id = new InscripcionId(this.getIdCarrera(), this.getLibretaUniversitaria());
     }
+
+    public Inscripcion(Carrera carrera, Estudiante estudiante, int fechaInscripcion, int fechaGraduacion, int antiguedad){
+        this.carrera = carrera;
+        this.estudiante = estudiante;
+        this.fechaInscripcion = fechaInscripcion;
+        this.fechaGraduacion = fechaGraduacion;
+        this.antiguedad = antiguedad;
+        this.id = new InscripcionId(carrera.getIdCarrera(),estudiante.getDniEstudiante());
+
+
+    }
+
     public int getIdCarrera() {
         return this.carrera.getId();
     }

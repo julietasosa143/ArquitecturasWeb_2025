@@ -6,9 +6,6 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import javax.persistence.EntityManager;
-import java.io.FileReader;
-import java.io.Reader;
-import java.time.LocalDate;
 import java.util.List;
 
 public class HelperMySQL {
