@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/InscripcionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/resources/csv_files/carreras.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/resources/csv_files/estudianteCarrera.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/resources/csv_files/estudiantes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador2/src/main/java/helper/HelperMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador2/src/main/java/helper/HelperMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Carrera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Inscripcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Inscripcion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/InscripcionId.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/InscripcionId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/util/LoadDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/util/LoadDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +39,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
