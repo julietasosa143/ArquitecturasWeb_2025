@@ -2,7 +2,7 @@ package org.example.integrador3.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +25,11 @@ public class Carrera {
         this.duracionCarrera = duracionCarrera;
     }
 
+    public Carrera(Integer id, String nombreCarrera, int duracionCarrera) {
+        this.idCarrera = id;
+        this.nombreCarrera = nombreCarrera;
+        this.duracionCarrera = duracionCarrera;
+    }
     public int getId() {
         return idCarrera;
     }

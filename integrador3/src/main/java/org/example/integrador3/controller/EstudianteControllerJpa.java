@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("estudiante")
+@RequestMapping("estudiantes")
 public class EstudianteControllerJpa {
     //borrar despues pero tira error por que falta el @service de estudianteService
     @Qualifier("estudianteService")
@@ -25,7 +25,7 @@ public class EstudianteControllerJpa {
         this.estudianteService = estudianteService;
     }
 
-    @PostMapping("/estudiantes")
+    @PostMapping("/")
     public ResponseEntity<?> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
         try{
              EstudianteResponseDTO estudianteResponseDTO =estudianteService.create(estudiante);

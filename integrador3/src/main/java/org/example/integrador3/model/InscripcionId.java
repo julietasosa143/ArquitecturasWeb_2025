@@ -2,9 +2,10 @@ package org.example.integrador3.model;
 
 import lombok.Data;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
+
 
 @Embeddable
 @Data
