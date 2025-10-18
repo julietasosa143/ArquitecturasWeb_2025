@@ -11,7 +11,7 @@ import java.util.List;
 public class Carrera {
     @Id
     @Column(name = "id_carrera")
-    private int idCarrera;
+    private Integer idCarrera;
     @Column
     private String nombreCarrera;
     @Column
@@ -30,7 +30,7 @@ public class Carrera {
         this.nombreCarrera = nombreCarrera;
         this.duracionCarrera = duracionCarrera;
     }
-    public int getId() {
+    public Integer getId() {
         return idCarrera;
     }
 
