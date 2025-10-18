@@ -18,5 +18,5 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,Integer> 
             +"(:dni is null or e.dniEstudiante  =:dni) AND"
             +"(:city is null or e.ciudadResidencia LIKE %:city%)"
         )
-    public List<Estudiante> search(String nombre, String apellido, String genero, int edad,int dni,String city);
+    public List<Estudiante> search(String nombre, String apellido, String genero, Integer edad,Integer dni,String city);
 }
