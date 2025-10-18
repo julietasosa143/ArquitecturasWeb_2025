@@ -6,10 +6,10 @@ public class EstudianteResponseDTO {
     private String generoEstudiante;
     private int dniEstudiante;
     private String ciudadResidencia;
-    private int edad;
+    private Integer edad;
 
 
-    public EstudianteResponseDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante,int edad, int dniEstudiante, String ciudadResidencia) {
+    public EstudianteResponseDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante,Integer edad, int dniEstudiante, String ciudadResidencia) {
         this.nombreEstudiante = nombreEstudiante;
         this.apellidoEstudiante = apellidoEstudiante;
         this.generoEstudiante = generoEstudiante;
@@ -18,11 +18,11 @@ public class EstudianteResponseDTO {
         this.edad = edad;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
