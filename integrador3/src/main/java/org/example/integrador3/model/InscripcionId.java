@@ -11,12 +11,12 @@ import java.util.Objects;
 @Data
 public class InscripcionId implements Serializable {
     private int idCarrera;
-    private int libretaUniversitaria;
+    private int dniEstudiante;
 
     public InscripcionId(){super();}
-    public InscripcionId(int idCarrera, int libretaUniversitaria){
+    public InscripcionId(int idCarrera, int dniEstudiante){
         this.idCarrera = idCarrera;
-        this.libretaUniversitaria = libretaUniversitaria;
+        this.dniEstudiante = dniEstudiante;
     }
     public int getIdCarrera() {
         return idCarrera;
@@ -24,11 +24,11 @@ public class InscripcionId implements Serializable {
     public void setIdCarrera(int idCarrera) {
         this.idCarrera = idCarrera;
     }
-    public int getLibretaUniversitaria() {
-        return libretaUniversitaria;
+    public int getDniEstudiante() {
+        return dniEstudiante;
     }
-    public void setLibretaUniversitaria(int libretaUniversitaria) {
-        this.libretaUniversitaria= libretaUniversitaria;
+    public void setDniEstudiante(int dniEstudiante) {
+        this.dniEstudiante= dniEstudiante;
     }
     @Override
     public boolean equals(Object o) {
@@ -36,10 +36,10 @@ public class InscripcionId implements Serializable {
         if (!(o instanceof InscripcionId)) return false;
         InscripcionId that = (InscripcionId) o;
         return idCarrera == that.idCarrera &&
-                libretaUniversitaria == that.libretaUniversitaria;
+                dniEstudiante == that.dniEstudiante;
     }
     @Override
     public int hashCode() {
-        return Objects.hash(idCarrera, libretaUniversitaria);
+        return Objects.hash(idCarrera, dniEstudiante);
     }
 }
