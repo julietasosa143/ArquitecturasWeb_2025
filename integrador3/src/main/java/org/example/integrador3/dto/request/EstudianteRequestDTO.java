@@ -4,12 +4,12 @@ public class EstudianteRequestDTO {
     private  String nombreEstudiante;
     private String apellidoEstudiante;
     private String generoEstudiante;
-    private int dniEstudiante;
+    private Integer dniEstudiante;
     private String ciudadResidencia;
-    private int edad;
+    private Integer edad;
 
 
-    public EstudianteRequestDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante, int edad, int dniEstudiante, String ciudadResidencia) {
+    public EstudianteRequestDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante, Integer edad, Integer dniEstudiante, String ciudadResidencia) {
         this.nombreEstudiante = nombreEstudiante;
         this.apellidoEstudiante = apellidoEstudiante;
         this.generoEstudiante = generoEstudiante;
@@ -43,19 +43,19 @@ public class EstudianteRequestDTO {
     public void setGeneroEstudiante(String generoEstudiante) {
         this.generoEstudiante = generoEstudiante;
     }
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
-    public int getDniEstudiante() {
+    public Integer getDniEstudiante() {
         return dniEstudiante;
     }
 
-    public void setDniEstudiante(int dniEstudiante) {
+    public void setDniEstudiante(Integer dniEstudiante) {
         this.dniEstudiante = dniEstudiante;
     }
 

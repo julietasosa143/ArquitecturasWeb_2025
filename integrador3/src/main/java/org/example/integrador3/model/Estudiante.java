@@ -10,10 +10,10 @@ import java.util.List;
 @Data
 public class Estudiante {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int libretaUniversitaria;
-    @Column
+    @Column(name="dni_estudiante", nullable=false, unique=true)
     private int dniEstudiante;
+    @Column
+    private int libretaUniversitaria;
     @Column
     private String nombreEstudiante;
     @Column
@@ -40,6 +40,17 @@ public class Estudiante {
     }
 
 
+    public Estudiante(int dniEstudiante,String nombre,String apellido, int edad, String generoEstudiante, String ciudadResidencia,int libretaUniversitaria) {
+        this.dniEstudiante = dniEstudiante;
+        this.apellidoEstudiante=apellido;
+        this.edadEstudiante = edad;
+        this.nombreEstudiante=nombre;
+        this.generoEstudiante=generoEstudiante;
+        this.ciudadResidencia=ciudadResidencia;
+        this.libretaUniversitaria=libretaUniversitaria;
+
+
+    }
 
     public int getLibretaUniversitaria() {
         return libretaUniversitaria;
