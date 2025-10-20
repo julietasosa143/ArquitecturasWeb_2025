@@ -43,6 +43,10 @@ public class Estudiante {
 
     }
 
+    public void setLibretaUniversitaria(int libretaUniversitaria) {
+        this.libretaUniversitaria = libretaUniversitaria;
+    }
+
     public int getLibretaUniversitaria() {
         return libretaUniversitaria;
     }

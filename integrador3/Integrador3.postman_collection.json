@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "1d6fc138-71e1-423a-8072-d8c49bebeb28",
+		"name": "Integrador3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24039281"
+	},
+	"item": [
+		{
+			"name": "traer 1 estudiante segun su nro de libreta universitaria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/estudiantes/search?nroLu=79150",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"estudiantes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "nroLu",
+							"value": "79150"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "traer todos los estudiantes por edad descendente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/estudiantes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"estudiantes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dar de alta un estudiante",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombreEstudiante\": \"Max\",\r\n        \"apellidoEstudiante\": \"Verstappen\",\r\n        \"generoEstudiante\": \"Genderfluid\",\r\n        \"edad\": 25,\r\n        \"dniEstudiante\": 34567896,\r\n        \"ciudadResidencia\": \"Amsterdam\",\r\n        \"nroLu\": 89890\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8081/estudiantes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"estudiantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "traer todos los estudiantes en base a su genero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/estudiantes/search?generoEstudiante=male",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"estudiantes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "generoEstudiante",
+							"value": "male"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "matricular un estudiante en una carrera",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCarrera\": 1,\r\n    \"dniEstudiante\": 12706636\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/inscripciones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"inscripciones",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperar las carreras con estudiantes inscriptos y ordenar por cantidad de inscriptos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/carreras/inscriptos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"carreras",
+						"inscriptos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recuperar los estudiantes de una determinada carrera filtrados por ciudad de residencia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/estudiantes/ciudadycarrera?nombreCarrera=TUDAI&ciudadResidencia=Paquera",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"estudiantes",
+						"ciudadycarrera"
+					],
+					"query": [
+						{
+							"key": "nombreCarrera",
+							"value": "TUDAI"
+						},
+						{
+							"key": "ciudadResidencia",
+							"value": "Paquera"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generar un reporte de las carreras, que para cada carrera incluya información de los inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar los años de manera cronológica.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/carreras/reporteCarreras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"carreras",
+						"reporteCarreras"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

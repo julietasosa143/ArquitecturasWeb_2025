@@ -3,6 +3,7 @@ package org.example.integrador3.controller;
 import org.example.integrador3.dto.request.CarreraRequestDTO;
 import org.example.integrador3.dto.response.CarreraInscriptosResponseDTO;
 import org.example.integrador3.dto.response.CarreraResponseDTO;
+import org.example.integrador3.dto.response.ReporteCarrerasResponseDTO;
 import org.example.integrador3.service.CarreraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,6 +44,17 @@ public class CarreraControllerJpa {
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("{\"error\":\"No se pudieron obtener las carreras con inscriptos.\"}");
+        }
+    }
+
+    @GetMapping("/reporteCarreras")
+    public ResponseEntity<?> getReporteCarreras() {
+        try {
+            List<ReporteCarrerasResponseDTO> result = carreraService.getReporte();
+            return ResponseEntity.status(HttpStatus.OK).body(result);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("{\"error\":\"No se pudo generar el reporte.\"}");
         }
     }
 }
