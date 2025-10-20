@@ -25,7 +25,8 @@ public class EstudianteControllerJpa {
         this.estudianteService = estudianteService;
     }
 
-    @PostMapping("/")
+    //dar de alta un estudiante
+    @PostMapping
     public ResponseEntity<?> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
         try{
              EstudianteResponseDTO estudianteResponseDTO =estudianteService.create(estudiante);
@@ -35,6 +36,7 @@ public class EstudianteControllerJpa {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("\"{\\\"error\\\":\\\"Error. No se pudo crear. \\\"}\"");
         }
     }
+    //c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
     @GetMapping("/")
     public ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesOrderByEdad( ) {
         try{
@@ -45,6 +47,7 @@ public class EstudianteControllerJpa {
         }
     }
 
+    //recuperar un estudiante, en base a su número de libreta universitaria, recuperar todos los estudiantes, en base a su género, recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
     @GetMapping("/search")
     public  ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesBY(EstudianteRequestDTO estudiante) {
         try {
