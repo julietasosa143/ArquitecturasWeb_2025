@@ -7,15 +7,25 @@ public class EstudianteResponseDTO {
     private int dniEstudiante;
     private String ciudadResidencia;
     private Integer edad;
+    private Integer libretaUniversitaria;
 
 
-    public EstudianteResponseDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante,Integer edad, int dniEstudiante, String ciudadResidencia) {
+    public EstudianteResponseDTO(String nombreEstudiante, String apellidoEstudiante, String generoEstudiante,Integer edad, int dniEstudiante, String ciudadResidencia,  Integer libretaUniversitaria) {
         this.nombreEstudiante = nombreEstudiante;
         this.apellidoEstudiante = apellidoEstudiante;
         this.generoEstudiante = generoEstudiante;
         this.dniEstudiante = dniEstudiante;
         this.ciudadResidencia = ciudadResidencia;
         this.edad = edad;
+        this.libretaUniversitaria = libretaUniversitaria;
+    }
+
+    public Integer getLibretaUniversitaria() {
+        return libretaUniversitaria;
+    }
+
+    public void setLibretaUniversitaria(Integer libretaUniversitaria) {
+        this.libretaUniversitaria = libretaUniversitaria;
     }
 
     public Integer getEdad() {

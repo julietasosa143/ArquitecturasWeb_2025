@@ -30,15 +30,6 @@ public class Estudiante {
     public Estudiante() {
         super();
     }
-    public Estudiante(int dniEstudiante, String nombre, String apellido, int edad, String genero, String ciudadResidencia) {
-        this.dniEstudiante = dniEstudiante;
-        this.nombreEstudiante = nombre;
-        this.apellidoEstudiante = apellido;
-        this.edadEstudiante = edad;
-        this.generoEstudiante = genero;
-        this.ciudadResidencia = ciudadResidencia;
-    }
-
 
     public Estudiante(int dniEstudiante,String nombre,String apellido, int edad, String generoEstudiante, String ciudadResidencia,int libretaUniversitaria) {
         this.dniEstudiante = dniEstudiante;
@@ -50,6 +41,10 @@ public class Estudiante {
         this.libretaUniversitaria=libretaUniversitaria;
 
 
+    }
+
+    public void setLibretaUniversitaria(int libretaUniversitaria) {
+        this.libretaUniversitaria = libretaUniversitaria;
     }
 
     public int getLibretaUniversitaria() {
