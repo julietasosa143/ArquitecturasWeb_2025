@@ -46,6 +46,19 @@ public class EstudianteControllerJpa {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+    @GetMapping("/{dni_estudiante}")
+    public ResponseEntity<EstudianteResponseDTO> getEstudianteByDNI(
+            @PathVariable("dni_estudiante") Integer dniEstudiante) {
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(estudianteService.getEstudianteByDNI(dniEstudiante));
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+    }
 
     //recuperar un estudiante, en base a su número de libreta universitaria, recuperar todos los estudiantes, en base a su género, recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
     @GetMapping("/search")
