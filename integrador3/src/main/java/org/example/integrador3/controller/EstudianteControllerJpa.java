@@ -3,6 +3,7 @@ package org.example.integrador3.controller;
 import org.apache.coyote.Response;
 import org.example.integrador3.dto.request.EstudianteRequestDTO;
 import org.example.integrador3.dto.response.EstudianteResponseDTO;
+import org.example.integrador3.dto.response.EstudiantesPorCarreraCiudadResponseDTO;
 import org.example.integrador3.model.Estudiante;
 import org.example.integrador3.service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,16 @@ public class EstudianteControllerJpa {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @GetMapping ("/ciudadycarrera")
+    public ResponseEntity<List<EstudiantesPorCarreraCiudadResponseDTO>> getPorCiudadyCarrera(EstudiantesPorCarreraCiudadRequestDTO request){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(estudianteService.getEstudiantesXCarrerayCiudad(request.getNombreCarrera(), request.getCiudadResidencia()));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
 
 
 

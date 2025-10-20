@@ -2,6 +2,7 @@ package org.example.integrador3.service;
 
 import org.example.integrador3.dto.request.EstudianteRequestDTO;
 import org.example.integrador3.dto.response.EstudianteResponseDTO;
+import org.example.integrador3.dto.response.EstudiantesPorCarreraCiudadResponseDTO;
 import org.example.integrador3.model.Estudiante;
 import org.example.integrador3.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,13 @@ public class EstudianteService {
     public EstudianteResponseDTO getEstudianteByDNI(Integer dniEstudiante){
         Estudiante requerido= this.estudianteRepository.getById(dniEstudiante);
         return new EstudianteResponseDTO(requerido.getNombreEstudiante(), requerido.getApellidoEstudiante(), requerido.getGeneroEstudiante(), requerido.getEdadEstudiante(), requerido.getDniEstudiante(), requerido.getCiudadResidencia(), requerido.getLibretaUniversitaria());
+    }
+
+    public List<EstudiantesPorCarreraCiudadResponseDTO> getEstudiantesXCarrerayCiudad(String carrera, String ciudad){
+        List<EstudiantesPorCarreraCiudadResponseDTO> estudiantes = this.estudianteRepository.getPorCarrerayCiudad(carrera, ciudad);
+        return estudiantes.stream()
+                .map(estudiante -> new EstudiantesPorCarreraCiudadResponseDTO(estudiante.getNombreEstudiante(),estudiante.getApellidoEstudiante(),estudiante.getCiudadResidencia(), estudiante.getNombreCarrera()))
+                .toList();
     }
 
 
