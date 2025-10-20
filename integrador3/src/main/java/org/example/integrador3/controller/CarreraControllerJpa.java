@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/carrera")
+@RequestMapping("/carreras")
 public class CarreraControllerJpa {
 
     @Qualifier("carreraService")
@@ -24,7 +24,7 @@ public class CarreraControllerJpa {
         this.carreraService = carreraService;
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> createCarrera(@RequestBody CarreraRequestDTO carrera) {
         try {
             CarreraResponseDTO created = this.carreraService.create(carrera);

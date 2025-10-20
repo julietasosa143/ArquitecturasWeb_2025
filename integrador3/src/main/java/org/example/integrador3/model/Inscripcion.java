@@ -36,7 +36,7 @@ public class Inscripcion {
         this.fechaInscripcion = LocalDate.now().getYear();
         this.fechaGraduacion = 0;
         this.antiguedad = 0;
-        this.id = new InscripcionId(this.getIdCarrera(), this.getDniEstudiante());
+        this.id = new InscripcionId(carrera.getIdCarrera(), estudiante.getDniEstudiante());
     }
 
     public Inscripcion( Carrera carrera, Estudiante estudiante, int fechaInscripcion, int fechaGraduacion, int antiguedad){

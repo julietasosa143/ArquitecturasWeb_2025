@@ -12,7 +12,7 @@ public class CarreraInscriptosResponseDTO {
         this.cantidadInscriptos = cantidadInscriptos;
     }
 
-    public long getCantidadCarrera() {
+    public long getCantidadInscriptos() {
         return cantidadInscriptos;
     }
 }
