@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c846c1d5-089f-4576-a753-896510c914e6" name="Changes" comment="">
-<<<<<<< Updated upstream
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/EstudianteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/CarreraControllerJpa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/request/CarreraRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/response/CarreraInscriptosResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/response/CarreraResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/CarreraService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> Stashed changes
+      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Carrera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,77 +29,68 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-<<<<<<< Updated upstream
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "cristiangithub2"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;cristiangithub2&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://cristiangithub2@github.com/julietasosa143/ArquitecturasWeb_2025.git",
-    "accountId": "19a33141-f44a-45cc-87b8-2c912292808c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://cristiangithub2@github.com/julietasosa143/ArquitecturasWeb_2025.git&quot;,
+    &quot;accountId&quot;: &quot;19a33141-f44a-45cc-87b8-2c912292808c&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
-  <component name="ProjectId" id="3479r9c3WekBNSL8dufnnOh0r97" />
-=======
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="341R2KujTn5rtRNRsoGtMaSEpOS" />
->>>>>>> Stashed changes
+  <component name="ProjectId" id="34CW3MmVyoeEAVEdotbMxtK0s8s" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
-<<<<<<< Updated upstream
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature-cristian",
-=======
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.Integrador3Application.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
->>>>>>> Stashed changes
+    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-<<<<<<< Updated upstream
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="integrador2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="integrador3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.integrador3.Integrador3Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.integrador3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Spring Boot.Integrador3Application" />
       </list>
     </recent_temporary>
   </component>
-=======
->>>>>>> Stashed changes
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -111,13 +101,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c846c1d5-089f-4576-a753-896510c914e6" name="Changes" comment="" />
-      <created>1760378893626</created>
+      <changelist id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="" />
+      <created>1760717837941</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1760378893626</updated>
-      <workItem from="1760378898858" duration="1332000" />
-      <workItem from="1760382544504" duration="359000" />
+      <updated>1760717837941</updated>
+      <workItem from="1760717843045" duration="68000" />
+      <workItem from="1760717922230" duration="977000" />
+      <workItem from="1760727013744" duration="338000" />
     </task>
     <servers />
   </component>

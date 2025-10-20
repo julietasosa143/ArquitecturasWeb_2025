@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("estudiante")
+@RequestMapping("estudiantes")
 public class EstudianteControllerJpa {
     //borrar despues pero tira error por que falta el @service de estudianteService
     @Qualifier("estudianteService")
@@ -25,26 +25,29 @@ public class EstudianteControllerJpa {
         this.estudianteService = estudianteService;
     }
 
-    @PostMapping("/estudiantes")
-    public ResponseEntity<EstudianteResponseDTO> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
+    //dar de alta un estudiante
+    @PostMapping
+    public ResponseEntity<?> createEstudiante(@RequestBody EstudianteRequestDTO estudiante) {
         try{
-            EstudianteResponseDTO estudianteDTO = estudianteService.create();
-            return ResponseEntity.status(HttpStatus.CREATED).body(estudianteDTO);
+             EstudianteResponseDTO estudianteResponseDTO =estudianteService.create(estudiante);
+            return ResponseEntity.status(HttpStatus.CREATED).body( estudianteResponseDTO);
         }catch (Exception ex){
             //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("\"{\\\"error\\\":\\\"Error. No se pudo crear. \\\"}\"");
         }
     }
+    //c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
     @GetMapping("/")
-    public ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesOrderByEdad( int edad) {
+    public ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesOrderByEdad( ) {
         try{
-            return ResponseEntity.status(HttpStatus.OK).body( estudianteService.getAllByEdad(edad));
+            return ResponseEntity.status(HttpStatus.OK).body( estudianteService.getAllByEdad());
         }catch (Exception e){
             //podemos retornar un texto que diga el error pero tendriamos que retornar de tipo <?>
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
+    //recuperar un estudiante, en base a su número de libreta universitaria, recuperar todos los estudiantes, en base a su género, recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
     @GetMapping("/search")
     public  ResponseEntity<List<EstudianteResponseDTO>> getAllEstudiantesBY(EstudianteRequestDTO estudiante) {
         try {
@@ -55,7 +58,7 @@ public class EstudianteControllerJpa {
         }
     }
 
-    @GetMapping("/")
+
 
 
 

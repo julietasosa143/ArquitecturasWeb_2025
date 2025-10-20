@@ -8,12 +8,12 @@ import org.example.integrador3.model.Carrera;
 import java.util.List;
 
 @Repository
-public interface CarreraRepository extends JpaRepository<Carrera, Long>{
+public interface CarreraRepository extends JpaRepository<Carrera,Integer> {
     //Recupera las carreras con estudiantes inscriptos, ordenadas por cantidad de inscriptos
-    @Query("SELECT new org.example.integrador3.dto.response.CarreraInscriptosResponseDTO(c.nombre, COUNT(e)) " +
-    "FROM Carrera c " +
-    "JOIN c.estudiantes e " +
-    "GROUP BY c.nombre " +
-    "ORDER BY COUNT(e) DESC")
+    @Query("SELECT new org.example.integrador3.dto.response.CarreraInscriptosResponseDTO(c.nombreCarrera, COUNT(e)) " +
+            "FROM Carrera c " +
+            "JOIN c.inscripciones e " +
+            "GROUP BY c.nombreCarrera " +
+            "ORDER BY COUNT(e) DESC")
     List<CarreraInscriptosResponseDTO> findCarreraConInscriptosOrdenadas();
 }

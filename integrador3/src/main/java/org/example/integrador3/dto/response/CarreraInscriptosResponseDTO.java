@@ -1,5 +1,4 @@
 package org.example.integrador3.dto.response;
-
 import lombok.Getter;
 
 @Getter
@@ -13,7 +12,7 @@ public class CarreraInscriptosResponseDTO {
         this.cantidadInscriptos = cantidadInscriptos;
     }
 
-    public long getCantidadCarrera() {
+    public long getCantidadInscriptos() {
         return cantidadInscriptos;
     }
 }

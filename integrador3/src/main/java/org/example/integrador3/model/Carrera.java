@@ -2,7 +2,7 @@ package org.example.integrador3.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +10,8 @@ import java.util.List;
 @Data
 public class Carrera {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCarrera;
+    @Column(name = "id_carrera")
+    private Integer idCarrera;
     @Column
     private String nombreCarrera;
     @Column
@@ -25,7 +25,12 @@ public class Carrera {
         this.duracionCarrera = duracionCarrera;
     }
 
-    public int getId() {
+    public Carrera(Integer id, String nombreCarrera, int duracionCarrera) {
+        this.idCarrera = id;
+        this.nombreCarrera = nombreCarrera;
+        this.duracionCarrera = duracionCarrera;
+    }
+    public Integer getId() {
         return idCarrera;
     }
 

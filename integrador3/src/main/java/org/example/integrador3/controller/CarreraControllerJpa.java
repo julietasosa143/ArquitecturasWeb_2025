@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/carrera")
+@RequestMapping("/carreras")
 public class CarreraControllerJpa {
 
     @Qualifier("carreraService")
@@ -22,28 +22,27 @@ public class CarreraControllerJpa {
 
     public CarreraControllerJpa(@Qualifier("carreraService") CarreraService carreraService) {
         this.carreraService = carreraService;
-}
-
-@PostMapping
-public ResponseEntity<?> createCarrera(@RequestBody CarreraRequestDTO carrera) {
-    try {
-        CarreraResponseDTO created = carreraService.create(carrera);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
-    } catch (Exception ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("{\"error\": \"No se pudo crear la carrera.\"}");
     }
-}
-//Obtener carreras con estudiantes inscriptos, ordenadas por cantidad de inscriptos
-@GetMapping("/inscriptos")
-public ResponseEntity<?> getCarrerasOrdenadasPorInscriptos() {
-    try {
-        List<CarreraInscriptosResponseDTO> result = carreraService.getCarrerasConInscriptosOrdenadas();
-        return ResponseEntity.status(HttpStatus.OK).body(result);
-    } catch (Exception ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("{\"error\":\"No se pudieron obtener las carreras con inscriptos.\"}");
-    }
-}
 
+    @PostMapping("/")
+    public ResponseEntity<?> createCarrera(@RequestBody CarreraRequestDTO carrera) {
+        try {
+            CarreraResponseDTO created = this.carreraService.create(carrera);
+            return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("{\"error\": \"No se pudo crear la carrera.\"}");
+        }
+    }
+    //Obtener carreras con estudiantes inscriptos, ordenadas por cantidad de inscriptos
+    @GetMapping("/inscriptos")
+    public ResponseEntity<?> getCarrerasOrdenadasPorInscriptos() {
+        try {
+            List<CarreraInscriptosResponseDTO> result = carreraService.getCarrerasConInscriptosOrdenadas();
+            return ResponseEntity.status(HttpStatus.OK).body(result);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("{\"error\":\"No se pudieron obtener las carreras con inscriptos.\"}");
+        }
+    }
 }
