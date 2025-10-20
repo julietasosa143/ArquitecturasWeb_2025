@@ -2,7 +2,7 @@ package org.example.integrador3.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -10,14 +10,15 @@ import java.time.LocalDate;
 public class Inscripcion {
     @EmbeddedId
     private InscripcionId id;
+
     @ManyToOne
     @MapsId("idCarrera")
-    @JoinColumn(name="idCarrera")
+    @JoinColumn(name="id_Carrera")
     private Carrera carrera;
 
     @ManyToOne
-    @MapsId("libretaUniversitaria")
-    @JoinColumn(name="libretaUniversitaria")
+    @MapsId("dniEstudiante")
+    @JoinColumn(name="dni_Estudiante")
     private Estudiante estudiante;
 
     @Column
@@ -35,13 +36,25 @@ public class Inscripcion {
         this.fechaInscripcion = LocalDate.now().getYear();
         this.fechaGraduacion = 0;
         this.antiguedad = 0;
-        this.id = new InscripcionId(this.getIdCarrera(), this.getLibretaUniversitaria());
+        this.id = new InscripcionId(carrera.getIdCarrera(), estudiante.getDniEstudiante());
     }
+
+    public Inscripcion( Carrera carrera, Estudiante estudiante, int fechaInscripcion, int fechaGraduacion, int antiguedad){
+        this.carrera = carrera;
+        this.estudiante = estudiante;
+        this.fechaInscripcion = fechaInscripcion;
+        this.fechaGraduacion = fechaGraduacion;
+        this.antiguedad = antiguedad;
+        this.id = new InscripcionId(carrera.getIdCarrera(),estudiante.getDniEstudiante());
+
+
+    }
+
     public int getIdCarrera() {
         return this.carrera.getId();
     }
-    public int getLibretaUniversitaria(){
-        return this.estudiante.getLibretaUniversitaria();
+    public int getDniEstudiante(){
+        return this.estudiante.getDniEstudiante();
     }
     public InscripcionId getId() {
         return id;
