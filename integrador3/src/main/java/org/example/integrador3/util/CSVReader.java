@@ -60,7 +60,7 @@ public  class CSVReader {
             int dni = Integer.parseInt(row.get("DNI"));
             Estudiante existing = er.findById(dni).orElse(null);
             if(existing != null){
-                System.out.println("el estudiante  ya existe, la salteo.");
+                System.out.println("el estudiante  ya existe, lo salteo.");
                 continue;
             }
 
@@ -102,11 +102,9 @@ public  class CSVReader {
             Carrera c = cr.findById( idCarrera).orElse(null);
 
             if(c == null){
-                System.out.println("No existe el carrera con el id: " + idCarrera);
                 continue;
             }
             if(e == null){
-                System.out.println("No existe el estudiante con el id: " + dniEstudiante);
                 continue;
             }
             Inscripcion ec;
