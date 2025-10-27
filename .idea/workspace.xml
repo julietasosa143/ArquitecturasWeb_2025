@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudiantesPorCarreraCiudadRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/response/EstudiantesPorCarreraCiudadResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/response/ReporteCarrerasResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/CarreraControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/CarreraControllerJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Estudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/EstudianteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/CarreraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/CarreraService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/EstudianteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/EstudianteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +34,10 @@
     &quot;accountId&quot;: &quot;19a33141-f44a-45cc-87b8-2c912292808c&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -117,7 +106,10 @@
       <workItem from="1760717843045" duration="68000" />
       <workItem from="1760717922230" duration="977000" />
       <workItem from="1760727013744" duration="338000" />
-      <workItem from="1760984054051" duration="10172000" />
+      <workItem from="1760984054051" duration="10477000" />
+      <workItem from="1761160281223" duration="603000" />
+      <workItem from="1761588393537" duration="1036000" />
+      <workItem from="1761591950120" duration="1662000" />
     </task>
     <servers />
   </component>
