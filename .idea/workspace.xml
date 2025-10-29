@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudiantesPorCarreraCiudadRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/response/EstudiantesPorCarreraCiudadResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/dto/response/ReporteCarrerasResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/controller/CuentaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/controller/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/entities/Cuenta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/entities/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/repository/CuentaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/repository/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/service/CuentaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/service/UsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/utils/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/CarreraControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/CarreraControllerJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/controller/EstudianteControllerJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/model/Estudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/CarreraRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/repository/EstudianteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/CarreraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/CarreraService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/EstudianteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/java/org/example/integrador3/service/EstudianteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/integrador3/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/integrador3/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,40 +46,61 @@
     &quot;accountId&quot;: &quot;19a33141-f44a-45cc-87b8-2c912292808c&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="34CW3MmVyoeEAVEdotbMxtK0s8s" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Integrador3Application.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.Integrador3Application.executor": "Run",
+    "git-widget-placeholder": "feature-julieta",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.configurations.included.in.services": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Integrador3Application">
     <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="integrador3" />
@@ -89,6 +111,70 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microservicioadmin.MicroservicioAdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioBillingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-billing" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microserviciobilling.MicroservicioBillingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioMaintenanceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-maintenance" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microserviciomaintenance.MicroservicioMaintenanceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioScooterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-scooter" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microservicioscooter.MicroservicioScooterApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioStopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-stop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microserviciostop.MicroservicioStopApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioTripApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-trip" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microserviciotrip.MicroservicioTripApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MicroservicioUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="microservicio-user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.microserviciouser.MicroservicioUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TpeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="tpe" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.tpe.TpeApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,7 +203,10 @@
       <workItem from="1760717843045" duration="68000" />
       <workItem from="1760717922230" duration="977000" />
       <workItem from="1760727013744" duration="338000" />
-      <workItem from="1760984054051" duration="10172000" />
+      <workItem from="1760984054051" duration="10477000" />
+      <workItem from="1761160281223" duration="603000" />
+      <workItem from="1761588393537" duration="1036000" />
+      <workItem from="1761591950120" duration="1662000" />
     </task>
     <servers />
   </component>

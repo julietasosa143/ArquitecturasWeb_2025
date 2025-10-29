@@ -2,5 +2,13 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/integrador3/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-billing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-maintenance/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-stop/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-trip/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/src/main/java" charset="UTF-8" />
   </component>
 </project>
