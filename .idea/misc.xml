@@ -8,6 +8,14 @@
         <option value="$PROJECT_DIR$/integrador2/pom.xml" />
         <option value="$PROJECT_DIR$/integrador1/pom.xml" />
         <option value="$PROJECT_DIR$/integrador3/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-billing/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-maintenance/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-scooter/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-stop/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-trip/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-user/pom.xml" />
       </list>
     </option>
   </component>
