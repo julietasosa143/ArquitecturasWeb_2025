@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ErrorDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ViajeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/ViajeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/ViajeExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Pausa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/repository/PausaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/repository/ViajeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/ViajeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/exception/ViajeNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Viaje.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -57,28 +67,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Integrador3Application.executor": "Run",
-    "git-widget-placeholder": "feature-cristian",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Integrador3Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-cristian&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -196,6 +206,7 @@
       <workItem from="1761160281223" duration="603000" />
       <workItem from="1761588393537" duration="1036000" />
       <workItem from="1761591950120" duration="1662000" />
+      <workItem from="1761845808726" duration="10428000" />
     </task>
     <servers />
   </component>
