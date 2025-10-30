@@ -1,37 +1,27 @@
-package entities;
+package DTO;
 
-import jakarta.persistence.*;
+import entities.Pausa;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
-@Entity
 @Data
-@NoArgsConstructor
-public class Viaje {
-    @Id
+public class ViajeDTO {
+
     private Integer id;
-    @Column
     private Integer idParadaInicio;
-    @Column
     private Integer idParadaFin;
-    @OneToMany( mappedBy = "viaje",cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Pausa> pausas;
-    @Column
     private float kilometros;
-    @Column
     private float tiempo;
-    @Column
     private float tarifa;
-    @Column
     private Integer idMonopatin;
-    @Column
     private Integer idUsuario;
 
-    public Viaje(Integer id  ,Integer paradaInicio,Integer paradaFin, float kilometros, float tiempo, float tarifa, Integer monopatin, Integer usuario){
+    public ViajeDTO(Integer id  ,Integer paradaInicio,Integer paradaFin, float kilometros, float tiempo, float tarifa, Integer monopatin, Integer usuario){
         this.id = id;
         this.idParadaInicio = paradaInicio;
         this.idParadaFin = paradaFin;
@@ -44,7 +34,7 @@ public class Viaje {
     }
 
 
-    public  Viaje( Integer id ,Integer pInicio, Integer pFin, float tiempo, Integer monopatin, Integer usuario){
+    public  ViajeDTO( Integer id ,Integer pInicio, Integer pFin, float tiempo, Integer monopatin, Integer usuario){
         this.id = id;
         this.idParadaInicio = pInicio;
         this.idParadaFin = pFin;
@@ -53,6 +43,4 @@ public class Viaje {
         this.idUsuario = usuario;
         this.pausas= new ArrayList<Pausa>();
     }
-
-
 }
