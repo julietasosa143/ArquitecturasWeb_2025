@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/controller/CuentaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/controller/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/entities/Cuenta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/entities/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/repository/CuentaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/repository/UsuarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/service/CuentaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/service/UsuarioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/utils/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +67,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.Integrador3Application.executor": "Run",
-    "git-widget-placeholder": "feature-julieta",
+    "git-widget-placeholder": "feature-cristian",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025",
     "node.js.detected.package.eslint": "true",
