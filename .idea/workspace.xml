@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ErrorDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ViajeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/ViajeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/ViajeExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Pausa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/repository/PausaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/repository/ViajeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/ViajeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/exception/ViajeNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/PausaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/PuasaExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/PausaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/exception/PausaNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Viaje.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +200,7 @@
       <workItem from="1761160281223" duration="603000" />
       <workItem from="1761588393537" duration="1036000" />
       <workItem from="1761591950120" duration="1662000" />
-      <workItem from="1761845808726" duration="10428000" />
+      <workItem from="1761845808726" duration="11629000" />
     </task>
     <servers />
   </component>
