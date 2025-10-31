@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/stops")
 public class ParadaController {
-    private final ParadaService stopService;
+    private final ParadaService paradaService;
 
-    public ParadaController(ParadaService stopService){
-        this.stopService = stopService;
+    public ParadaController(ParadaService paradaService){
+        this.paradaService = paradaService;
     }
 
     @GetMapping("/")

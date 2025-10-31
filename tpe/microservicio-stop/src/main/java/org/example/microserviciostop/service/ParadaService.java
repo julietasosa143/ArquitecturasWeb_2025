@@ -1,6 +1,6 @@
 @Service
 public class ParadaService{
-    private ParadaRepository paradaRepository;
+    private final ParadaRepository paradaRepository;
 
     public ParadaService(ParadaRepository paradaRepository){
 
