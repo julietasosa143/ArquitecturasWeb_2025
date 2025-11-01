@@ -1,4 +1,4 @@
-package entities;
+package org.example.microserviciotrip.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

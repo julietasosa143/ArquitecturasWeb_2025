@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="" />
+    <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoarder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/resources/csv_files/pausas.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/resources/csv_files/viajes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ViajeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ViajeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Pausa.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/entities/Pausa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/entities/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/entities/Viaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/MicroservicioTripApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/MicroservicioTripApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/repository/PausaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/repository/PausaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/repository/ViajeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/repository/ViajeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/PausaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/PausaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/ViajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/resources/application.properties" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,6 +82,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.Integrador3Application.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MicroservicioTripApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature-cristian&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025&quot;,
@@ -86,8 +104,19 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="MicroservicioTripApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Integrador3Application">
+  <component name="RunManager" selected="Spring Boot.MicroservicioTripApplication">
     <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="integrador3" />
@@ -195,6 +224,7 @@
       <workItem from="1761588393537" duration="1036000" />
       <workItem from="1761591950120" duration="1662000" />
       <workItem from="1761845808726" duration="11686000" />
+      <workItem from="1762021523644" duration="4036000" />
     </task>
     <servers />
   </component>
