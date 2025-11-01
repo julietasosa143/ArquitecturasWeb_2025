@@ -1,7 +1,6 @@
-package entities;
+package org.example.microserviciotrip.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +13,15 @@ import java.time.LocalDateTime;
 public class Pausa {
     @Id
     private Integer id;
+    @Column
     private LocalDateTime fechaInicio;
+    @Column
     private LocalDateTime fechaFin;
+    @Column
     private float total;
+    @ManyToOne
+    @JoinColumn(name = "viaje_id")
+    private Viaje viaje;
 
     public  Pausa(Integer id, LocalDateTime fechaInicio, LocalDateTime fechaFin, float total) {
         this.id = id;

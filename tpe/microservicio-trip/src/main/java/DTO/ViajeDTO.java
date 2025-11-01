@@ -1,9 +1,6 @@
 package DTO;
 
-import entities.Pausa;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
+import org.example.microserviciotrip.entities.Pausa;
 import lombok.Data;
 
 import java.util.ArrayList;
