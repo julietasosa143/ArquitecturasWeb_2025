@@ -1,11 +1,11 @@
-id,nombre,apellido,email,telefono,rol,fechaAlta,x,y
-1,Matias,Gomez,matias.gomez@mail.com,1123456789, ,2025-10-01,10,25
-2,Sofia,Perez,sofia.perez@mail.com,1198765432, ,2025-10-05,50,75
-3,Juan,Alvarez,juan.alvarez@mail.com,1155551234, ,2025-10-08,120,30
-4,Camila,Torres,camila.torres@mail.com,1144445678, ,2025-10-10,80,90
-5,Pedro,Nuñez,pedro.nunez@mail.com,1133339876, ,2025-10-12,200,10
-6,Laura,Diaz,laura.diaz@mail.com,1122221111, ,2025-10-15,15,45
-7,Diego,Castro,diego.castro@mail.com,1111110000, ,2025-10-18,60,60
-8,Valeria,Rojas,valeria.rojas@mail.com,1199992222, ,2025-10-20,110,85
-9,Andres,Vidal,andres.vidal@mail.com,1188883333, ,2025-10-22,35,15
-10,Paula,Sosa,paula.sosa@mail.com,1177774444, ,2025-10-25,95,55
+id,nombre,apellido,email,telefono,rol,x,y
+1,Matias,Gomez,matias.gomez@mail.com,1123456789,admin,10,25
+2,Sofia,Perez,sofia.perez@mail.com,1198765432,mantenimiento,50,75
+3,Juan,Alvarez,juan.alvarez@mail.com,1155551234,admin,120,30
+4,Camila,Torres,camila.torres@mail.com,1144445678,user,80,90
+5,Pedro,Nuñez,pedro.nunez@mail.com,1133339876,user,200,10
+6,Laura,Diaz,laura.diaz@mail.com,1122221111,user,15,45
+7,Diego,Castro,diego.castro@mail.com,1111110000,user,60,60
+8,Valeria,Rojas,valeria.rojas@mail.com,1199992222,user,110,85
+9,Andres,Vidal,andres.vidal@mail.com,1188883333,user,35,15
+10,Paula,Sosa,paula.sosa@mail.com,1177774444,user,95,55

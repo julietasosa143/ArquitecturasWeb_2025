@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/config/RestTemplateConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/entities/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/utils/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/utils/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Cuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Cuenta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/utils/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/utils/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/csv_files/cuentas.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/csv_files/cuentas.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/csv_files/usuarios.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/csv_files/usuarios.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +73,8 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.Integrador3Application.executor": "Run",
+    "Spring Boot.MicroservicioTripApplication.executor": "Run",
+    "Spring Boot.MicroservicioUserApplication.executor": "Run",
     "git-widget-placeholder": "feature-julieta",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025",
@@ -90,8 +96,20 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="MicroservicioTripApplication" value="STOPPED" />
+              <entry key="MicroservicioUserApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Integrador3Application">
+  <component name="RunManager" selected="Spring Boot.MicroservicioUserApplication">
     <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="integrador3" />
