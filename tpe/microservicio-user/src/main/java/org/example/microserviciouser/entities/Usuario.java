@@ -24,8 +24,7 @@ public class Usuario {
     private long telefono;
     @Column
     private String rol;
-    @Column
-    private LocalDate fechaAlta;
+
 
     //para ubicacion
     @Column
@@ -35,7 +34,11 @@ public class Usuario {
 
 
     @ManyToMany
-    @JoinTable
+    @JoinTable(
+            name= "usuario_cuenta",
+            joinColumns = @JoinColumn(name="id_usuario"),
+            inverseJoinColumns = @JoinColumn(name="id_cuenta")
+    )
     private List<Cuenta> cuentas;
 
     public Usuario(long id, String nombre, String apellido, String email, long telefono,String rol, float x, float y) {
@@ -48,7 +51,6 @@ public class Usuario {
         this.x = x;
         this.y = y;
         this.rol = null;
-        this.fechaAlta = LocalDate.now();
         this.cuentas = new ArrayList<>();
     }
 
@@ -62,7 +64,6 @@ public class Usuario {
         this.x = x;
         this.y = y;
         this.rol = null;
-        this.fechaAlta = fechaAlta;
     }
 
 }

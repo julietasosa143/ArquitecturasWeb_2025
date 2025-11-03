@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Data
@@ -15,15 +16,18 @@ public class Cuenta {
     @Column
     private double balance;
     @Column
-    private String tipoCuenta;
+    private String estado;
+    @Column
+    LocalDate fechaAlta;
 
     @ManyToMany(mappedBy= "cuentas")
-    private List<Cuenta> usuarios;
+    private List<Usuario> usuarios;
 
-    public Cuenta(long id,  String tipoCuenta, double balance) {
+    public Cuenta(long id, double balance,String estado, LocalDate fechaAlta) {
         this.id = id;
-        this.tipoCuenta = tipoCuenta;
         this.balance = balance;
+        this.estado = estado;
+        this.fechaAlta = fechaAlta;
         this.usuarios = new ArrayList<>();
     }
 
