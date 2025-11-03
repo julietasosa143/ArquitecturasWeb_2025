@@ -8,7 +8,7 @@ import services.exception.PausaNotFoundException;
 import java.time.LocalDate;
 
 @RestControllerAdvice(basePackages = "src.main.java.controller")
-public class PuasaExceptionHandler {
+public class PausaExceptionHandler {
 
     @ExceptionHandler(PausaNotFoundException.class)
     public ErrorDTO handlePausaNotFound(PausaNotFoundException ex) {
