@@ -1,0 +1,7 @@
+spring:
+    data:
+      mongodb:
+        uri: mongodb://mongouser:mongopassword_123@mongodb:27017/db_scooter
+
+server:
+  port: 8083 # Puerto diferente si el microservicio de Usuario está en 8081
