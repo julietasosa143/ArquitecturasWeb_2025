@@ -1,4 +1,4 @@
-package entities;
+package org.example.microserviciouser.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,24 +29,40 @@ public class Usuario {
 
     //para ubicacion
     @Column
-    private int x;
+    private float x;
     @Column
-    private int y;
+    private float y;
 
 
     @ManyToMany
     @JoinTable
     private List<Cuenta> cuentas;
 
-    public Usuario(long id, String nombre, String apellido, String email, int x, int y) {
+    public Usuario(long id, String nombre, String apellido, String email, long telefono,String rol, float x, float y) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+        this.telefono = telefono;
+        this.rol = rol;
         this.x = x;
         this.y = y;
         this.rol = null;
         this.fechaAlta = LocalDate.now();
         this.cuentas = new ArrayList<>();
     }
+
+    public Usuario(long id, String nombre, String apellido, String email,long telefono, String rol, float x, float y, LocalDate fechaAlta){
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.rol = rol;
+        this.x = x;
+        this.y = y;
+        this.rol = null;
+        this.fechaAlta = fechaAlta;
+    }
+
 }

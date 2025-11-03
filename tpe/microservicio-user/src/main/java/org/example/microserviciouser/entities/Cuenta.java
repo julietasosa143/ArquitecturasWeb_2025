@@ -1,7 +1,6 @@
-package entities;
+package org.example.microserviciouser.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
