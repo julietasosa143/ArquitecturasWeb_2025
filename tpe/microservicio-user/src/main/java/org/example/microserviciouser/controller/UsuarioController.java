@@ -1,15 +1,14 @@
-package controller;
+package org.example.microserviciouser.controller;
 
-import entities.Usuario;
+import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.UsuarioService;
+import org.example.microserviciouser.service.UsuarioService;
 
 import java.util.List;
-import java.util.ListResourceBundle;
 
 @RestController
 @RequiredArgsConstructor

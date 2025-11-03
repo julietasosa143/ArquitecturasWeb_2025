@@ -1,11 +1,11 @@
-package service;
+package org.example.microserviciouser.service;
 
 
-import entities.Usuario;
+import org.example.microserviciouser.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import repository.UsuarioRepository;
+import org.example.microserviciouser.repository.UsuarioRepository;
 
 import java.util.List;
 
