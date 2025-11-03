@@ -18,6 +18,12 @@
         <option value="$PROJECT_DIR$/tpe/microservicio-user/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/tpe/microservicio-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-maintenance/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-24" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
