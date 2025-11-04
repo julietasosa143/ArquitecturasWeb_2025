@@ -1,4 +1,4 @@
-version: '2.0'
+version: '3.8'
 
 services:
   db:
@@ -26,6 +26,21 @@ services:
       - "8080:80"
     depends_on:
       - db
+  mongodb:
+    image: mongo:latest # Imagen oficial de MongoDB
+    container_name: mongodb_container
+    restart: always
+    ports:
+      - "27017:27017" # Puerto estándar de MongoDB
+    environment:
+    # Opcional: Define un usuario/contraseña root para administración
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: mongopassword
+    # Opcional: Puedes crear una base de datos inicial, si lo necesitas
+    # MONGO_INITDB_DATABASE: db_scooter
+    volumes:
+      - mongo-data:/data/db
 
 volumes:
   arqui-db-data:
+  mongo-data:

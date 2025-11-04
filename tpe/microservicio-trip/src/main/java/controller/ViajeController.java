@@ -27,7 +27,7 @@ public class ViajeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ViajeDTO> getById(@PathVariable int id) {
+    public ResponseEntity<ViajeDTO> getById(@PathVariable Integer id) {
         ViajeDTO viaje = viajeService.findById(id);
         if (viaje == null) {
             throw new ViajeNotFoundException("No se encontró el viaje con id: " + id);
