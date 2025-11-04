@@ -1,18 +1,29 @@
+package org.example.microserviciostop.controller;
+
+import jakarta.validation.Valid;
+import org.example.microserviciostop.DTO.ParadaDTO;
+import org.example.microserviciostop.service.exception.ParadaNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.example.microserviciostop.service.ParadaService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/stops")
+@RequestMapping("/paradas")
 public class ParadaController {
+
     private final ParadaService paradaService;
 
-    public ParadaController(ParadaService paradaService){
+    public ParadaController(ParadaService paradaService) {
         this.paradaService = paradaService;
     }
 
+
     @GetMapping("/")
-    public ResponseEntity<List<Parada>> getAllParadas(){
-        List<Parada> paradas = stopService.getAll();
+    public ResponseEntity<List<ParadaDTO>> getAll(){
+        List<ParadaDTO> paradas = paradaService.findAll();
         if (paradas.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -20,24 +31,25 @@ public class ParadaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Parada> getParadaById(@PathVariable("id") Long id) {
-        Parada parada = ParadaService.findById(id);
+    public ResponseEntity<ParadaDTO> getById(@PathVariable("id") Long id) {
+        ParadaDTO parada = paradaService.findById(id);
         if (parada == null) {
-            return ResponseEntity.notFound().build();
+            throw new ParadaNotFoundException("No se encontró la parada con id: " + id);
         }
         return ResponseEntity.ok(parada);
     }
 
     @PostMapping("")
-    public ResponseEntity<Parada> save(@RequestBody Parada parada) {
-        Parada paradaNew = paradaService.save(parada);
-        return ResponseEntity.ok(paradaNew);
+    public ResponseEntity<ParadaDTO> save(@Valid @RequestBody ParadaDTO dto) {
+        ParadaDTO paradaNueva = paradaService.save(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(paradaNueva);
     }
 
-    @GetMapping("/byUser/{id}")
-    public ResponseEntity<List<Parada>> getTripsByUserId(@PathVariable("id") Long id) {
-        List<Parada> paradas = paradaService.byUserId(id);
-        return ResponseEntity.ok(paradas);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        paradaService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
+
 }
 
