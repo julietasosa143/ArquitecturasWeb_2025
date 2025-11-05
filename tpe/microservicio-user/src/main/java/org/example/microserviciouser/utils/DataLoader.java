@@ -90,8 +90,9 @@ public class DataLoader {
             }
             double balance = Double.parseDouble(row.get("balance"));
             String estado = row.get("estado");
+            String tipoCuenta = row.get("tipoCuenta");
             LocalDate fechaAlta = LocalDate.parse(row.get("fechaAlta"));
-            Cuenta cuenta = new Cuenta(id, balance, estado, fechaAlta);
+            Cuenta cuenta = new Cuenta(id, balance, estado, tipoCuenta,fechaAlta);
             cuentaRepository.save(cuenta);
         }
     }
