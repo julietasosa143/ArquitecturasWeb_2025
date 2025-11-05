@@ -18,16 +18,19 @@ public class Cuenta {
     @Column
     private String estado;
     @Column
+    private String tipoCuenta;
+    @Column
     LocalDate fechaAlta;
 
     @ManyToMany(mappedBy= "cuentas")
     private List<Usuario> usuarios;
 
-    public Cuenta(long id, double balance,String estado, LocalDate fechaAlta) {
+    public Cuenta(long id, double balance,String estado, String tipoCuenta, LocalDate fechaAlta) {
         this.id = id;
         this.balance = balance;
         this.estado = estado;
         this.fechaAlta = fechaAlta;
+        this.tipoCuenta = tipoCuenta;
         this.usuarios = new ArrayList<>();
     }
 
