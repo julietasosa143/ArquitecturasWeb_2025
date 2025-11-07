@@ -1,4 +1,4 @@
-package services.exception;
+package org.example.microserviciotrip.services.exception;
 
 public class ViajeNotFoundException extends RuntimeException{
 
