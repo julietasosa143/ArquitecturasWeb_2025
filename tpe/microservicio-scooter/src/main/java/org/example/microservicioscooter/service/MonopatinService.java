@@ -2,14 +2,13 @@ package org.example.microservicioscooter.service;
 
 import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
 import org.example.microservicioscooter.entities.Monopatin;
-import org.example.microservicioscooter.fiegnClient.ViajeFeignClient;
+import org.example.microservicioscooter.feignClient.ViajeFeignClient;
 import org.example.microservicioscooter.repository.MonopatinRepository;
 import org.example.microserviciotrip.entities.Pausa;
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
