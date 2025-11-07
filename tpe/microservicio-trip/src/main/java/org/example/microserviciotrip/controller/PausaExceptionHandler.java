@@ -1,9 +1,9 @@
-package controller;
+package org.example.microserviciotrip.controller;
 
-import DTO.ErrorDTO;
+import org.example.microserviciotrip.DTO.ErrorDTO;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import services.exception.PausaNotFoundException;
+import org.example.microserviciotrip.services.exception.PausaNotFoundException;
 
 import java.time.LocalDate;
 

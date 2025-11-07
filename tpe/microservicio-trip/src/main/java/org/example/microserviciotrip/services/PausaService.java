@@ -1,11 +1,11 @@
-package services;
+package org.example.microserviciotrip.services;
 
-import DTO.PausaDTO;
+import org.example.microserviciotrip.DTO.PausaDTO;
 import org.example.microserviciotrip.entities.Pausa;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.example.microserviciotrip.repository.PausaRepository;
-import services.exception.PausaNotFoundException;
+import org.example.microserviciotrip.services.exception.PausaNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
