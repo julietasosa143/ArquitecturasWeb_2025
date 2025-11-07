@@ -1,17 +1,17 @@
-package controller;
+package org.example.microserviciotrip.controller;
 
-import DTO.ViajeDTO;
+import org.example.microserviciotrip.dto.ViajeDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.ViajeService;
-import services.exception.ViajeNotFoundException;
+import org.example.microserviciotrip.services.ViajeService;
+import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/viajes")
+@RequestMapping("api/viajes")
 public class ViajeController {
 
     private ViajeService viajeService;

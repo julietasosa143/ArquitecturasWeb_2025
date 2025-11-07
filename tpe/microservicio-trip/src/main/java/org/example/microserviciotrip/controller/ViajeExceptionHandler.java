@@ -1,10 +1,10 @@
-package controller;
+package org.example.microserviciotrip.controller;
 
-import DTO.ErrorDTO;
+import org.example.microserviciotrip.dto.ErrorDTO;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import services.exception.ViajeNotFoundException;
+import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package DTO;
+package org.example.microserviciotrip.dto;
 
 import org.example.microserviciotrip.entities.Pausa;
 import lombok.Data;
