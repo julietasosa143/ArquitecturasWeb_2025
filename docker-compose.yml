@@ -37,7 +37,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: mongouser
       MONGO_INITDB_ROOT_PASSWORD: mongopassword
     # Opcional: Puedes crear una base de datos inicial, si lo necesitas
-    # MONGO_INITDB_DATABASE: db_scooter
+      MONGO_INITDB_DATABASE: db_scooter
     volumes:
       - mongo-data:/data/db
 
