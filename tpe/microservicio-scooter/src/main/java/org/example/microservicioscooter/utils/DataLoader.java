@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,8 +58,9 @@ public class DataLoader {
             int x = Integer.parseInt(row.get("x"));
             int y = Integer.parseInt(row.get("y"));
             String estado = row.get("estado");
+            LocalDate ultimoService = LocalDate.parse(row.get("ultimoService"));
 
-            Monopatin monopatin = new Monopatin(id, kmRecorridos, x, y, estado);
+            Monopatin monopatin = new Monopatin(id, kmRecorridos, x, y, estado, ultimoService);
             monopatines.add(monopatin);
         }
 

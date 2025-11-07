@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.example.microserviciotrip.repository.ViajeRepository;
 import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,7 +62,9 @@ public class ViajeService {
                 v.getTiempo(),
                 v.getTarifa(),
                 v.getIdMonopatin(),
-                v.getIdUsuario()
+                v.getIdUsuario(),
+                v.getFechaInicio(),
+                v.getFechaFin()
         );
     }
 
@@ -74,7 +77,15 @@ public class ViajeService {
                 dto.getTiempo(),
                 dto.getTarifa(),
                 dto.getIdMonopatin(),
-                dto.getIdUsuario()
+                dto.getIdUsuario(),
+                dto.getFechaInicio(),
+                dto.getFechaFin()
+
         );
+    }
+
+    public List<Viaje> getViajesXMonopatin(long id, LocalDate ultimoService) {
+        List<Viaje> viajes = viajeRepository.getViajesXMonopatin(id, ultimoService);
+        return viajes;
     }
 }
