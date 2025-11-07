@@ -1,4 +1,4 @@
-package org.example.microservicioscooter.fiegnClient;
+package org.example.microservicioscooter.feignClient;
 
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.cloud.openfeign.FeignClient;
