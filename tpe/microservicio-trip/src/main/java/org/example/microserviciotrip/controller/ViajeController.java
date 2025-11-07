@@ -1,6 +1,6 @@
 package org.example.microserviciotrip.controller;
 
-import org.example.microserviciotrip.DTO.ViajeDTO;
+import org.example.microserviciotrip.dto.ViajeDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
