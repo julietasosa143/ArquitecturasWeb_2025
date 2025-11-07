@@ -1,5 +1,6 @@
 package org.example.microserviciotrip.utils;
 
+import jakarta.annotation.PostConstruct;
 import org.example.microserviciotrip.entities.Pausa;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
@@ -25,7 +26,15 @@ public class DataLoaderService {
     @Autowired
     private PausaRepository pausaRepository;
 
-
+    @PostConstruct
+    public void init() {
+        try {
+            System.out.println("Cargando usuarios");
+            populateDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private List<CSVRecord> getData(String archivo) throws Exception {
         java.io.InputStream is = DataLoaderService.class.getClassLoader()
