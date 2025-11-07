@@ -15,6 +15,7 @@ import org.example.microserviciotrip.repository.ViajeRepository;
 
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 @Service
@@ -73,8 +74,10 @@ public class DataLoaderService {
             float tarifa = Float.parseFloat(row.get("tarifa"));
             int idMonopatin = Integer.parseInt(row.get("idMonopatin"));
             int idUsuario = Integer.parseInt(row.get("idUsuario"));
+            LocalDate fechaInicio = LocalDate.parse(row.get("fechaInicio"));
+            LocalDate fechaFin = LocalDate.parse(row.get("fechaFin"));
 
-            Viaje viaje = new Viaje(id, paradaInicio, paradaFin, kilometros, tiempo, tarifa, idMonopatin, idUsuario);
+            Viaje viaje = new Viaje(id, paradaInicio, paradaFin, kilometros, tiempo, tarifa, idMonopatin, idUsuario, fechaInicio, fechaFin);
             viajeRepository.save(viaje);
         }
 

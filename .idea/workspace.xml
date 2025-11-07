@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/dto/ReporteMantenimientoDTOResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/fiegnClient/ViajeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/controller/MonopatinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/controller/MonopatinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/entities/Monopatin.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/entities/Monopatin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/service/MonopatinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/service/MonopatinService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/utils/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/utils/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/resources/csv_files/monopatines.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/resources/csv_files/monopatines.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/dto/ViajeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/dto/ViajeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/entities/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/entities/Viaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/feing/ViajeClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/repository/ViajeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/repository/ViajeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/ViajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/resources/csv_files/viajes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/resources/csv_files/viajes.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +89,7 @@
     "Spring Boot.MicroservicioScooterApplication.executor": "Run",
     "Spring Boot.MicroservicioTripApplication.executor": "Run",
     "Spring Boot.MicroservicioUserApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature-julieta",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/cris_gabi/Descargas/micro_integrador3",
     "node.js.detected.package.eslint": "true",
@@ -130,7 +147,7 @@
     </configuration>
     <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="gateway" />
+      <module name="geteway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.GatewayApplication" />
       <extension name="coverage">
         <pattern>
@@ -267,6 +284,11 @@
           <url>file://$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/security/jwt/JwtFilter.java</url>
           <line>59</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/service/MonopatinService.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

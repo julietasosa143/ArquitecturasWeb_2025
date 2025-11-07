@@ -2,9 +2,17 @@ package org.example.microserviciotrip.repository;
 
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
+    @Query("SELECT v FROM Viaje v "
+            +"WHERE v.idMonopatin = :idMonopatin "
+            +"AND v.fechaFin > :ultimoService")
+    public List<Viaje> getViajesXMonopatin(long id, LocalDate ultimoService);
 
 }
