@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpe/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,7 @@
     "Spring Boot.MicroservicioUserApplication.executor": "Run",
     "git-widget-placeholder": "feature-cristian",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025/tpe/getway",
+    "last_opened_file_path": "/home/cris_gabi/Descargas/micro_integrador3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -255,6 +254,7 @@
       <workItem from="1761767324695" duration="3509000" />
       <workItem from="1762369405745" duration="603000" />
       <workItem from="1762476079829" duration="8628000" />
+      <workItem from="1762521748132" duration="333000" />
     </task>
     <servers />
   </component>

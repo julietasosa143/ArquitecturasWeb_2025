@@ -11,7 +11,7 @@ import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/viajes")
+@RequestMapping("api/viajes")
 public class ViajeController {
 
     private ViajeService viajeService;
