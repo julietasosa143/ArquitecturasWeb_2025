@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Tarifa {
     @Id
-    private Integer id;
+    private Long id;
     @Column
     private double tMinuto;
     @Column
@@ -20,11 +20,11 @@ public class Tarifa {
     @Column
     private LocalDate fechaExpiracion;
 
-    public Tarifa(double tMinuto, double tPausa, LocalDate fechaExpiracion) {
+    public Tarifa(Long id, double tMinuto, double tPausa, LocalDate fechaExpiracion) {
+        this.id = id;
         this.tMinuto = tMinuto;
         this.tPausa = tPausa;
         this.fechaExpiracion = fechaExpiracion;
     }
-
 
 }
