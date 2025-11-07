@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface ParadaRepository extends JpaRepository<Parada, Long> {
 
-    List<Parada> findByUserId(Long id);
 }

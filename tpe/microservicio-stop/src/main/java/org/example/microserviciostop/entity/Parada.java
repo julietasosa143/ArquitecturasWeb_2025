@@ -24,11 +24,4 @@ public class Parada{
     @Column
     private int y;
 
-    public Parada(Long id, String direccion, String nombre, int x, int y) {
-        this.id = id;
-        this.direccion = direccion;
-        this.nombre = nombre;
-        this.x = x;
-        this.y = y;
-    }
 }
