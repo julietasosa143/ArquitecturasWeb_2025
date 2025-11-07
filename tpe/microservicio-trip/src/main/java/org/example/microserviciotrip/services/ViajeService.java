@@ -1,7 +1,7 @@
 package org.example.microserviciotrip.services;
 
 
-import org.example.microserviciotrip.DTO.ViajeDTO;
+import org.example.microserviciotrip.dto.ViajeDTO;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

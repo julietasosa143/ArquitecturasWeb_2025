@@ -1,6 +1,6 @@
 package org.example.microserviciotrip.services;
 
-import org.example.microserviciotrip.DTO.PausaDTO;
+import org.example.microserviciotrip.dto.PausaDTO;
 import org.example.microserviciotrip.entities.Pausa;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

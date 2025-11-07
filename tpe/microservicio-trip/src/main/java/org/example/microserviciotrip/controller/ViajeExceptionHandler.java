@@ -1,6 +1,6 @@
 package org.example.microserviciotrip.controller;
 
-import org.example.microserviciotrip.DTO.ErrorDTO;
+import org.example.microserviciotrip.dto.ErrorDTO;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
