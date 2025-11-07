@@ -1,12 +1,12 @@
-package services;
+package org.example.microserviciotrip.services;
 
 
-import DTO.ViajeDTO;
+import org.example.microserviciotrip.DTO.ViajeDTO;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.example.microserviciotrip.repository.ViajeRepository;
-import services.exception.ViajeNotFoundException;
+import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;

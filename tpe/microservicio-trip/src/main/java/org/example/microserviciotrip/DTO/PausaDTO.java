@@ -1,4 +1,4 @@
-package DTO;
+package org.example.microserviciotrip.DTO;
 
 import lombok.Data;
 

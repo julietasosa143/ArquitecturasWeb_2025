@@ -5,7 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/docker/auth.db.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/GatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/controller/JwtController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/entity/Authority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/repository/AuthorityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/security/AuthorityConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/security/DomainUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/security/jwt/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/security/jwt/TokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/service/dto/login/LoginDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/service/dto/user/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ErrorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/DTO/ErrorDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/PausaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/DTO/PausaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/DTO/ViajeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/DTO/ViajeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/PausaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/PausaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/PausaExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/PausaExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/controller/ViajeExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/utils/DataLoaderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/PausaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/PausaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/ViajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/exception/PausaNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/exception/PausaNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/services/exception/ViajeNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/exception/ViajeNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +91,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.GatewayApplication.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -65,13 +99,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.GatewayApplication (1).executor": "Run",
     "Spring Boot.Integrador3Application.executor": "Run",
     "Spring Boot.MicroservicioScooterApplication.executor": "Run",
     "Spring Boot.MicroservicioTripApplication.executor": "Run",
     "Spring Boot.MicroservicioUserApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature-cristian",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/julie/IdeaProjects/ArquitecturasWeb_2025",
+    "last_opened_file_path": "/home/cris_gabi/IdeaProjects/ArquitecturasWeb_2025/tpe/getway",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,6 +116,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tpe" />
+      <recent name="$PROJECT_DIR$/tpe/" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -95,6 +136,7 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
+              <entry key="GatewayApplication (1)" value="STOPPED" />
               <entry key="MicroservicioScooterApplication" value="STOPPED" />
               <entry key="MicroservicioTripApplication" value="STOPPED" />
               <entry key="MicroservicioUserApplication" value="STOPPED" />
@@ -104,7 +146,42 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroservicioScooterApplication">
+  <component name="RunManager" selected="Spring Boot.MicroservicioTripApplication">
+    <configuration name="GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.GatewayApplication" />
+      <module name="gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.GatewayApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="micro.example.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Integrador3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="integrador3" />
@@ -185,6 +262,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.GatewayApplication (1)" />
+        <item itemvalue="Application.GatewayApplication" />
         <item itemvalue="Spring Boot.Integrador3Application" />
       </list>
     </recent_temporary>
@@ -213,10 +292,22 @@
       <workItem from="1761591950120" duration="1662000" />
       <workItem from="1761767324695" duration="3509000" />
       <workItem from="1762369405745" duration="603000" />
+      <workItem from="1762476079829" duration="8628000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tpe/gateway/src/main/java/org/example/security/jwt/JwtFilter.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

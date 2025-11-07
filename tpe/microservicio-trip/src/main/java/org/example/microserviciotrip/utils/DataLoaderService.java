@@ -25,8 +25,10 @@ public class DataLoaderService {
     @Autowired
     private PausaRepository pausaRepository;
 
+
+
     private List<CSVRecord> getData(String archivo) throws Exception {
-        java.io.InputStream is = DataLoarder.class.getClassLoader()
+        java.io.InputStream is = DataLoaderService.class.getClassLoader()
                 .getResourceAsStream("csv_files/" + archivo);
         if (is == null) {
             throw new RuntimeException("Archivo CSV no encontrado: " + archivo);
