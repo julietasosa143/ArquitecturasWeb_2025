@@ -1,5 +1,6 @@
 package org.example.microserviciotrip.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
+@JsonIgnoreProperties({"viaje"})
 public class Pausa {
     @Id
     private Integer id;

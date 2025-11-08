@@ -9,19 +9,19 @@ import java.util.List;
 @Data
 public class ViajeDTO {
 
-    private Integer id;
-    private Integer idParadaInicio;
-    private Integer idParadaFin;
+    private long id;
+    private long idParadaInicio;
+    private long idParadaFin;
     private List<Pausa> pausas;
     private double kilometros;
     private double tiempo;
     private double tarifa;
-    private Integer idMonopatin;
-    private Integer idUsuario;
+    private long idMonopatin;
+    private long idUsuario;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
 
-    public ViajeDTO(Integer id  ,Integer paradaInicio,Integer paradaFin, double kilometros, double tiempo, double tarifa, Integer monopatin, Integer usuario, LocalDate fechaInicio, LocalDate fechaFin) {
+    public ViajeDTO(long id  ,long paradaInicio,long paradaFin, double kilometros, double tiempo, double tarifa, long monopatin, long usuario, LocalDate fechaInicio, LocalDate fechaFin) {
         this.id = id;
         this.idParadaInicio = paradaInicio;
         this.idParadaFin = paradaFin;
@@ -36,7 +36,7 @@ public class ViajeDTO {
     }
 
 
-    public  ViajeDTO( Integer id ,Integer pInicio, Integer pFin, double tiempo, Integer monopatin, Integer usuario, LocalDate fechaInicio){
+    public  ViajeDTO( long id ,long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDate fechaInicio){
         this.id = id;
         this.idParadaInicio = pInicio;
         this.idParadaFin = pFin;

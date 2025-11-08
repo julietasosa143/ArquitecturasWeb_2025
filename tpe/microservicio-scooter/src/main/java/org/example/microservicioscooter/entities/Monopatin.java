@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@Document
+@Document(collection = "monopatins")
 public class Monopatin {
     @Id
     private long id;

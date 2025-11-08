@@ -1,5 +1,6 @@
 package org.example.microserviciotrip.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,13 +14,15 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Viaje {
     @Id
-    private Integer id;
+    private long id;
     @Column
-    private Integer idParadaInicio;
+    private long idParadaInicio;
     @Column
-    private Integer idParadaFin;
+    private long idParadaFin;
     @OneToMany( mappedBy = "viaje",cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Pausa> pausas;
     @Column
@@ -29,15 +32,15 @@ public class Viaje {
     @Column
     private double tarifa;
     @Column
-    private Integer idMonopatin;
+    private long idMonopatin;
     @Column
-    private Integer idUsuario;
+    private long idUsuario;
     @Column
     private LocalDate fechaInicio;
     @Column
     private LocalDate fechaFin;
 
-    public Viaje(Integer id  ,Integer paradaInicio,Integer paradaFin, double kilometros, double tiempo, double tarifa, Integer monopatin, Integer usuario,  LocalDate fechaInicio, LocalDate fechaFin) {
+    public Viaje(long id  ,long paradaInicio,long paradaFin, double kilometros, double tiempo, double tarifa, long monopatin, long usuario,  LocalDate fechaInicio, LocalDate fechaFin) {
         this.id = id;
         this.idParadaInicio = paradaInicio;
         this.idParadaFin = paradaFin;
@@ -52,7 +55,7 @@ public class Viaje {
     }
 
 
-    public  Viaje(Integer id , Integer pInicio, Integer pFin, double tiempo, Integer monopatin, Integer usuario, LocalDate fechaInicio){
+    public  Viaje(long id , long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDate fechaInicio){
         this.id = id;
         this.idParadaInicio = pInicio;
         this.idParadaFin = pFin;

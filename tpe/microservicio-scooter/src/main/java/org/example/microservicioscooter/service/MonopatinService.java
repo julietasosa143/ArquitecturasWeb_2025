@@ -9,6 +9,7 @@ import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +56,10 @@ public class MonopatinService {
     }
 
     public ReporteMantenimientoDTOResponse getReporteMantenimientoSinPausa(long id){
-        List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id, repository.findById(id).get().getUltimoService());
+        System.out.println("Monopatín encontrado: " + repository.findById(1L).get());
+        LocalDate fecha = repository.findById(1L).get().getUltimoService();
+        System.out.println("Fecha de último service: " + fecha);
+        List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id,fecha);
         double kmRecorridos =0;
         double tiempoTotal = 0;
         for(Viaje v: viajes){
@@ -67,7 +71,11 @@ public class MonopatinService {
 
     }
     public ReporteMantenimientoDTOResponse getReporteMantenimientoConPausa(long id){
-        List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id, repository.findById(id).get().getUltimoService());
+        System.out.println("Monopatín encontrado: " + repository.findById(1L).get());
+        LocalDate fecha = repository.findById(1L).get().getUltimoService();
+        System.out.println("Fecha de último service: " + fecha);
+        List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id, fecha);
+
         double kmRecorridos =0;
         double tiempoTotal = 0;
         double tiempoPausas=0;
