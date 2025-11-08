@@ -1,12 +1,15 @@
 package org.example.microservicioscooter.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.microservicioscooter.dto.MonopatinDTO;
 import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
 import org.example.microservicioscooter.entities.Monopatin;
 import org.example.microservicioscooter.service.MonopatinService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/monopatines")
@@ -70,6 +73,15 @@ public class MonopatinController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/cantidadViajes/anio/")
+    public ResponseEntity<List<MonopatinDTO>> getMonopatinesConMasDeXViajes(
+            @RequestParam int cantidadMinViajes,
+            @RequestParam int anio){
+        List<MonopatinDTO> monopatines= monopatinService.
+
+    }
+
 
     //@GetMapping(" ")
     //hacer getAll
