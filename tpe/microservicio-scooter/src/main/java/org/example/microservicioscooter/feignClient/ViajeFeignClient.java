@@ -1,0 +1,20 @@
+package org.example.microservicioscooter.feignClient;
+
+import org.example.microserviciotrip.entities.Viaje;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@FeignClient(name="microservicio-trip", url="http://localhost:8081/api/viajes")
+public interface ViajeFeignClient {
+
+    @GetMapping("/porMonopatin/{id}")
+    public List<Viaje> getViajesXMonopatin(
+            @RequestParam("monopatinId") Long monopatinId,
+            @RequestParam("ultimoService") LocalDate ultimoService
+    );
+}
+

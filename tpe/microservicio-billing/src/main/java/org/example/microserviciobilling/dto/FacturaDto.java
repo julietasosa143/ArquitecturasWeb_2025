@@ -1,27 +1,22 @@
-package org.example.microserviciobilling.entities;
+package org.example.microserviciobilling.dto;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
 @Data
-@NoArgsConstructor
-public class Factura {
-    @Id
+public class FacturaDto {
     private Long id;
-    @Column
     private double cobroTotal;
-    @Column
     private LocalDate fechaCreacion;
 
-    public Factura(Long id, double cobroTotal, LocalDate fechaCreacion) {
+    public FacturaDto(Long id, double cobroTotal, LocalDate fechaCreacion) {
         this.id = id;
         this.cobroTotal = cobroTotal;
         this.fechaCreacion = fechaCreacion;
     }
 }
+
+

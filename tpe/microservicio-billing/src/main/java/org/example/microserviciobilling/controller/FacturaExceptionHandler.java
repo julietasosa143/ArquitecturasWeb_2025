@@ -1,18 +1,18 @@
-package org.example.microserviciostop.controller;
+package org.example.microserviciobilling.controller;
 
+import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
 import org.example.microserviciostop.DTO.ErrorDTO;
-import org.example.microserviciostop.service.exception.ParadaNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDate;
 
-@RestControllerAdvice(basePackages = "org.example.microserviciostop.controller")
-public class ParadaExceptionHandler {
+@RestControllerAdvice(basePackages = "org.example.microserviciobilling.controller")
+public class FacturaExceptionHandler {
 
-    @ExceptionHandler(ParadaNotFoundException.class)
-    public ErrorDTO handleParadaNotFound(ParadaNotFoundException ex) {
+    @ExceptionHandler(FacturaNotFoundException.class)
+    public ErrorDTO handleFacturaNotFound(FacturaNotFoundException ex) {
         return new ErrorDTO(ex.getMessage(), LocalDate.now());
     }
 
