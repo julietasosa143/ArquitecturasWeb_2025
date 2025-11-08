@@ -5,20 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed9783b-e9e5-42d0-a17d-362a8a5aaeb0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/controller/MonopatinController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/feing/ViajeClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/service/exception/CuentaNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/service/exception/CuentaYaAnuladaException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/MicroservicioScooterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/MicroservicioScooterApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/service/MonopatinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java/org/example/microservicioscooter/service/MonopatinService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/DTO/ErrorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/dto/ErrorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/DTO/PausaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/dto/PausaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/DTO/ViajeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/dto/ViajeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/PausaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/PausaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/PausaExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/PausaExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/controller/ViajeExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/PausaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/PausaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/ViajeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-trip/src/main/java/org/example/microserviciotrip/services/ViajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-stop/src/main/java/org/example/microserviciostop/controller/ParadaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-stop/src/main/java/org/example/microserviciostop/controller/ParadaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-stop/src/main/java/org/example/microserviciostop/repository/ParadaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-stop/src/main/java/org/example/microserviciostop/repository/ParadaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/controller/CuentaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/controller/CuentaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Cuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Cuenta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/service/CuentaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/service/CuentaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/utils/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/java/org/example/microserviciouser/utils/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/csv_files/cuentas.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tpe/microservicio-user/src/main/resources/csv_files/cuentas.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -87,7 +87,7 @@
     "Spring Boot.MicroservicioUserApplication.executor": "Run",
     "git-widget-placeholder": "feature-cristian",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris_gabi/Descargas/micro_integrador3",
+    "last_opened_file_path": "/home/cris_gabi/Descargas/Recursos microservicios parte 1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
