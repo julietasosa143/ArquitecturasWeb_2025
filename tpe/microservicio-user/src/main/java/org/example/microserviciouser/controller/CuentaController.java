@@ -46,7 +46,7 @@ public class CuentaController {
         return ResponseEntity.ok(nuevo);
     }
 
-    @PutMapping("/{id}/anular")
+    @PutMapping("/anular/{id}")
     public ResponseEntity<String> anular(@PathVariable Long id) {
         try {
             cuentaService.anularCuenta(id);

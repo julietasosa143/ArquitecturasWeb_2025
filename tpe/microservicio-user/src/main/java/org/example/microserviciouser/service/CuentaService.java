@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 public class CuentaService {
 
+
     @Autowired
     private CuentaRepository cuentaRepository;
 
@@ -39,4 +40,6 @@ public class CuentaService {
         cuenta.setActiva(false);
 
     }
+
+
 }
