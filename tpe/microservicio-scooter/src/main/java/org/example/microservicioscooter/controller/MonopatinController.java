@@ -71,6 +71,6 @@ public class MonopatinController {
         }
     }
 
-    @GetMapping(" ")
+    //@GetMapping(" ")
     //hacer getAll
 }
