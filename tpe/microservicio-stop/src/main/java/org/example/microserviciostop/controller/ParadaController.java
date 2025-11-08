@@ -11,7 +11,7 @@ import org.example.microserviciostop.service.ParadaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/paradas")
+@RequestMapping("/api/paradas")
 public class ParadaController {
 
     private final ParadaService paradaService;
@@ -40,13 +40,17 @@ public class ParadaController {
     }
 
     @PostMapping("")
-    public ResponseEntity<ParadaDTO> save(@Valid @RequestBody ParadaDTO dto) {
+    public ResponseEntity<ParadaDTO> createParada(@Valid @RequestBody ParadaDTO dto) {
         ParadaDTO paradaNueva = paradaService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(paradaNueva);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
+        ParadaDTO parada = paradaService.findById(id);
+        if(parada == null){
+            throw new ParadaNotFoundException("No se encontro la parada con el id: " + id);
+        }
         paradaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

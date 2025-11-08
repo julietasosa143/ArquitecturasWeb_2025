@@ -1,14 +1,12 @@
 package org.example.microservicioscooter.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
 import org.example.microservicioscooter.entities.Monopatin;
-import org.example.microservicioscooter.repository.MonopatinRepository;
 import org.example.microservicioscooter.service.MonopatinService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/monopatines")
@@ -48,4 +46,31 @@ public class MonopatinController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/reporteMantenimiento/sinPausa/{id}")
+    public ResponseEntity<ReporteMantenimientoDTOResponse> obtenerReporteSinPausa(@PathVariable Long id) {
+        try {
+            ReporteMantenimientoDTOResponse reporte = monopatinService.getReporteMantenimientoSinPausa(id);
+            return ResponseEntity.ok().body(reporte);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/reporteMantenimiento/conPausa/{id}")
+    public ResponseEntity<ReporteMantenimientoDTOResponse> obtenerReporteConPausa(@PathVariable Long id) {
+
+        try {
+            ReporteMantenimientoDTOResponse reporte = monopatinService.getReporteMantenimientoConPausa(id);
+            return ResponseEntity.ok().body(reporte);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping(" ")
+    //hacer getAll
 }
