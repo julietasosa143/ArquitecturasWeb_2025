@@ -16,7 +16,7 @@ public class Cuenta {
     @Column
     private double balance;
     @Column
-    private String estado;
+    private boolean activa;
     @Column
     private String tipoCuenta;
     @Column
@@ -25,10 +25,10 @@ public class Cuenta {
     @ManyToMany(mappedBy= "cuentas")
     private List<Usuario> usuarios;
 
-    public Cuenta(long id, double balance,String estado, String tipoCuenta, LocalDate fechaAlta) {
+    public Cuenta(long id, double balance,boolean activa, String tipoCuenta, LocalDate fechaAlta) {
         this.id = id;
         this.balance = balance;
-        this.estado = estado;
+        this.activa = activa;
         this.fechaAlta = fechaAlta;
         this.tipoCuenta = tipoCuenta;
         this.usuarios = new ArrayList<>();

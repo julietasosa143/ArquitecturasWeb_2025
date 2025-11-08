@@ -79,6 +79,10 @@
             <version>1.14.1</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
