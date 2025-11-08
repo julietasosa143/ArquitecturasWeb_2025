@@ -1,4 +1,4 @@
-id,balance,estado,tipoCuenta,fechaAlta
+id,balance,activa,tipoCuenta,fechaAlta
 101,500.75,true,basica,2025-10-01
 102,12500.00,false,basica,2025-10-05
 103,150.20,true,basica,2025-10-08

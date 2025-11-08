@@ -89,7 +89,7 @@ public class DataLoader {
                 continue;
             }
             double balance = Double.parseDouble(row.get("balance"));
-            boolean activa = Boolean.parseBoolean(row.get("estado"));
+            boolean activa = Boolean.parseBoolean(row.get("activa"));
             String tipoCuenta = row.get("tipoCuenta");
             LocalDate fechaAlta = LocalDate.parse(row.get("fechaAlta"));
             Cuenta cuenta = new Cuenta(id, balance, activa, tipoCuenta,fechaAlta);

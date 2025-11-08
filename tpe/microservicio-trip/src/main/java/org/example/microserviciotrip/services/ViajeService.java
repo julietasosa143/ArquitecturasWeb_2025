@@ -84,8 +84,10 @@ public class ViajeService {
         );
     }
 
-    public List<Viaje> getViajesXMonopatin(long id, LocalDate ultimoService) {
+    public List<ViajeDTO> getViajesXMonopatin(long id, LocalDate ultimoService) {
         List<Viaje> viajes = viajeRepository.getViajesXMonopatin(id, ultimoService);
-        return viajes;
+        return viajes.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 }
