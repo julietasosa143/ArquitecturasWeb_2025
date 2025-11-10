@@ -51,7 +51,6 @@ public class Usuario {
         this.rol = rol;
         this.x = x;
         this.y = y;
-        this.rol = null;
         this.cuentas = new ArrayList<>();
     }
 
@@ -64,7 +63,7 @@ public class Usuario {
         this.rol = rol;
         this.x = x;
         this.y = y;
-        this.rol = null;
+
     }
 
 }

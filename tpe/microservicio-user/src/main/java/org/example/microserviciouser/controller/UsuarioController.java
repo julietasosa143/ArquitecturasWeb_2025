@@ -51,14 +51,17 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDTO>> getUsiariosRecurrente(
             @RequestParam int mes, @RequestParam int anio, @RequestParam String tipoUsuario
     ){
+        System.out.println(" Entró al Controller /usuariosRecurrentes con mes=" + mes + ", anio=" + anio + ", tipo=" + tipoUsuario);
         try{
             List<UsuarioDTO> recurrentes=usuarioService.getUsuariosRecurrente(mes,anio,tipoUsuario);
+            System.out.println(" Llamó al Service, tamaño lista: " + recurrentes.size());
             if(recurrentes.isEmpty()){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }else{
                 return  ResponseEntity.ok(recurrentes);
             }
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
