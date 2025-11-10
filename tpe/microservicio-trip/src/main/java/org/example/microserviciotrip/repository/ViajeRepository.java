@@ -23,4 +23,14 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
             "HAVING COUNT(v.id) > :minViajes")
     List<Long> getMonopatinesXViajeAnio(@Param("anio") int anio,
                                         @Param("minViajes") int minViajes);
+
+    @Query("SELECT v.idUsuario " +
+            "FROM Viaje v " +
+            "WHERE YEAR(v.fechaInicio) = :anio " +
+            "AND MONTH(v.fechaInicio) = :mes " +
+            "GROUP BY v.idUsuario " +
+            "order by COUNT(v.idUsuario) DESC")
+    List<Long> getUsuariosRecurrentes
+            ( int anio,
+              int mes);
 }

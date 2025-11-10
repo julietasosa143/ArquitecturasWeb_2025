@@ -82,4 +82,20 @@ public class ViajeController {
             return ResponseEntity.noContent().build();
         }
     }
+
+    @GetMapping("usuariosRecurrentes")
+    public  ResponseEntity<List<Long>>getUsuariosRecurrentes(
+            @RequestParam int mes, @RequestParam int anio
+    ){
+        try{
+            List<Long> idRecurrentes = viajeService.getUsuariosRecurrentes(mes,anio);
+            if(idRecurrentes.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }else{
+                return  ResponseEntity.ok(idRecurrentes);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }
