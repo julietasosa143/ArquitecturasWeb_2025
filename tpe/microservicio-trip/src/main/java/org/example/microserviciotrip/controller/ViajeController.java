@@ -69,4 +69,17 @@ public class ViajeController {
             return ResponseEntity.noContent().build();
         }
     }
+    @GetMapping("/porAnioViajes")
+    public ResponseEntity<List<Long>> getMonopatinesXViajeAnio(
+            @RequestParam int anio,
+            @RequestParam int cantidadMinViajes
+    ){
+        List<Long> ids = viajeService.getMonopatinesXViajeXAnio(anio,cantidadMinViajes);
+
+        if(!ids.isEmpty()) {
+            return ok(ids);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
+    }
 }

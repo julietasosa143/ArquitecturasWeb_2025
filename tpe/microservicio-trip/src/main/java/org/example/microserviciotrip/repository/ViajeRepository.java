@@ -15,4 +15,10 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
             +"AND v.fechaFin > :ultimoService")
     public List<Viaje> getViajesXMonopatin(long id, LocalDate ultimoService);
 
+    @Query("SELECT v.idMonopatin " +
+            "FROM Viaje v " +
+            " WHERE YEAR(v.fechaInicio) = :anio " +
+            "GROUP BY v.idMonopatin " +
+            "HAVING COUNT(v.id)> : minViajes ")
+    List<Long> getMonopatinesXViajeAnio(int anio, int minViajes);
 }
