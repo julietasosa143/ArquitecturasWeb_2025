@@ -92,8 +92,8 @@ public class ViajeService {
                 .collect(Collectors.toList());
     }
 
-    public List<Long> getMonopatinesXViajeXAnio(int anio, int cantidadMinViajes){
-        List<Long> ids = viajeRepository.getMonopatinesXViajeAnio(anio,cantidadMinViajes);
+    public List<Long> getMonopatinesXViajeXAnio(int anio, int minViajes){
+        List<Long> ids = viajeRepository.getMonopatinesXViajeAnio(anio,minViajes);
         return ids;
     }
 }

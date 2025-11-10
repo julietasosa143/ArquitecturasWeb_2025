@@ -74,12 +74,12 @@ public class MonopatinController {
         }
     }
 
-    @GetMapping("/cantidadViajes/anio/")
+    @GetMapping("/cantidadViajes/anio")
     public ResponseEntity<List<MonopatinDTO>> getMonopatinesConMasDeXViajesXAnio(
-            @RequestParam int cantidadMinViajes,
+            @RequestParam int minViajes,
             @RequestParam int anio){
         try{
-            List<MonopatinDTO> monopatines= monopatinService.getMonopatinesViajesAnio(anio,cantidadMinViajes);
+            List<MonopatinDTO> monopatines= monopatinService.getMonopatinesViajesAnio(anio,minViajes);
             return ResponseEntity.ok().body(monopatines);
         }catch ( Exception e){
             e.printStackTrace();
