@@ -25,7 +25,7 @@ public class ViajeController {
         this.viajeService = viajeService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<ViajeDTO>> getAll() {
         List<ViajeDTO> viajes = viajeService.findAll();
         return ok(viajes);
@@ -83,7 +83,7 @@ public class ViajeController {
         }
     }
 
-    @GetMapping("usuariosRecurrentes")
+    @GetMapping("/usuariosRecurrentes")
     public  ResponseEntity<List<Long>>getUsuariosRecurrentes(
             @RequestParam int mes, @RequestParam int anio
     ){
@@ -95,6 +95,7 @@ public class ViajeController {
                 return  ResponseEntity.ok(idRecurrentes);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
