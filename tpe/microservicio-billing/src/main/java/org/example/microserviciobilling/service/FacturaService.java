@@ -61,8 +61,8 @@ public class FacturaService {
                 dto.getFechaCreacion()
         );
     }
-    public Double getReporte(int inicio, int fin, int anio){
-        Double total = facturaRepository.getReporte(inicio, fin, anio);
+    public Double getReporte(int mesInicio, int mesFin, int anio){
+        Double total = facturaRepository.getReporte(mesInicio, mesFin, anio);
         return total;
 
     }
