@@ -1,7 +1,7 @@
 package org.example.microserviciobilling.controller;
 
 import jakarta.validation.Valid;
-import org.example.microserviciobilling.dto.FacturaDto;
+import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.service.FacturaService;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -22,16 +22,16 @@ public class FacturaController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<FacturaDto>> getAll(){
-        List<FacturaDto> facturas = facturaService.findAll();
+    public ResponseEntity<List<FacturaDTO>> getAll(){
+        List<FacturaDTO> facturas = facturaService.findAll();
         if (facturas.isEmpty()){
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(facturas);
     }
     @GetMapping ("/{id}")
-    public ResponseEntity<FacturaDto> getById (@PathVariable ("id") Long id) {
-    FacturaDto factura = facturaService.findById(id);
+    public ResponseEntity<FacturaDTO> getById (@PathVariable ("id") Long id) {
+    FacturaDTO factura = facturaService.findById(id);
     if (factura == null){
         throw new FacturaNotFoundException("No se encontro la factura con id:" + id);
     }
@@ -39,14 +39,14 @@ public class FacturaController {
     }
 
     @PostMapping("")
-    public ResponseEntity<FacturaDto> createFactura(@Valid @RequestBody FacturaDto dto) {
-        FacturaDto facturaNueva = facturaService.save(dto);
+    public ResponseEntity<FacturaDTO> createFactura(@Valid @RequestBody FacturaDTO dto) {
+        FacturaDTO facturaNueva = facturaService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(facturaNueva);
     }
 
     @DeleteMapping ("/{id}")
     public ResponseEntity<Void> deleteFactura(@PathVariable Long id) {
-        FacturaDto factura = facturaService.findById(id);
+        FacturaDTO factura = facturaService.findById(id);
         if (factura == null){
             throw new FacturaNotFoundException("No se encontro la factura con id:" + id);
         }
@@ -54,4 +54,21 @@ public class FacturaController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/reporteXmeses")
+    public ResponseEntity<Double> reporteXmeses(@RequestParam int mesInicio,
+                                                          @RequestParam int mesFin,
+                                                @RequestParam int anio){
+        try{
+            Double totalFacturado = facturaService.getReporte(mesInicio, mesFin, anio);
+            if (totalFacturado == null) {
+                // Devuelve 404 si no hay datos, o 204 (No Content)
+                return ResponseEntity.notFound().build();
+            }else {
+                return ResponseEntity.ok(totalFacturado);
+            }
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
 }

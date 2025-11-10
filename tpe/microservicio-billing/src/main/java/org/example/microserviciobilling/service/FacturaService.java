@@ -1,7 +1,7 @@
 package org.example.microserviciobilling.service;
 
 import jakarta.transaction.Transactional;
-import org.example.microserviciobilling.dto.FacturaDto;
+import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.entities.Factura;
 import org.example.microserviciobilling.repository.FacturaRepository;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
@@ -19,7 +19,7 @@ public class FacturaService {
         this.facturaRepository = facturaRepository;
     }
 
-    public List<FacturaDto> findAll() {
+    public List<FacturaDTO> findAll() {
         List<Factura> facturas = facturaRepository.findAll();
         if(facturas.isEmpty()) {
             throw new FacturaNotFoundException("No se encontraron facturas en la base de datos");
@@ -28,14 +28,14 @@ public class FacturaService {
                 .map(this::toDto)
                 .collect(Collectors.toList());
     }
-    public FacturaDto findById(Long id){
+    public FacturaDTO findById(Long id){
         Factura factura = facturaRepository.findById(id)
         .orElseThrow(()-> new FacturaNotFoundException("No se encontraron Facturas con el id: " + id));
 
         return toDto(factura);
     }
 
-    public FacturaDto save(FacturaDto f) {
+    public FacturaDTO save(FacturaDTO f) {
         Factura factura = toEntity(f);
         Factura saved = facturaRepository.save(factura);
         return toDto(saved);
@@ -47,18 +47,23 @@ public class FacturaService {
         }
         facturaRepository.deleteById(id);
     }
-    private FacturaDto toDto(Factura f) {
-        return new FacturaDto(
+    private FacturaDTO toDto(Factura f) {
+        return new FacturaDTO(
                 f.getId(),
                 f.getCobroTotal(),
                 f.getFechaCreacion()
         );
     }
-    private Factura toEntity(FacturaDto dto) {
+    private Factura toEntity(FacturaDTO dto) {
         return new Factura(
                 dto.getId(),
                 dto.getCobroTotal(),
                 dto.getFechaCreacion()
         );
+    }
+    public Double getReporte(int mesInicio, int mesFin, int anio){
+        Double total = facturaRepository.getReporte(mesInicio, mesFin, anio);
+        return total;
+
     }
 }
