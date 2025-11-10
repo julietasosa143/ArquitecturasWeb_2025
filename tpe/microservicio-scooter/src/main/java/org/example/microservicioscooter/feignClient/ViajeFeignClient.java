@@ -18,5 +18,12 @@ public interface ViajeFeignClient {
             @PathVariable("id") Long monopatinId,
             @RequestParam("ultimoService") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ultimoService
     );
+
+
+    @GetMapping("/porAnioViajes")
+    public List<Long> getMonopatinesXViajeAnio(
+            @RequestParam int anio,
+            @RequestParam int minViajes
+    );
 }
 

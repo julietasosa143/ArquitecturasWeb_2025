@@ -1,5 +1,6 @@
 package org.example.microservicioscooter.service;
 
+import org.example.microservicioscooter.dto.MonopatinDTO;
 import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
 import org.example.microservicioscooter.entities.Monopatin;
 import org.example.microservicioscooter.feignClient.ViajeFeignClient;
@@ -8,8 +9,10 @@ import org.example.microserviciotrip.entities.Pausa;
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,5 +96,22 @@ public class MonopatinService {
         return reporte;
 
 
+    }
+
+    public List<MonopatinDTO> getMonopatinesViajesAnio(
+            @RequestParam int cantidadMinViajes,
+            @RequestParam int anio
+    ){
+
+        List<Long> ids  = viajeFeignClient.getMonopatinesXViajeAnio(anio,cantidadMinViajes);
+        List<MonopatinDTO> monopatines = new ArrayList<>();
+
+        for(Long id: ids){
+            Monopatin monopatin = repository.findById(id).orElseThrow(() -> new RuntimeException("Monopatin no encontrado"));
+            MonopatinDTO dto = new MonopatinDTO( monopatin.getId(), monopatin.getKmRecorridos(), monopatin.getX(),  monopatin.getY(), monopatin.getEstado(), monopatin.getUltimoService());
+            monopatines.add(dto);
+        }
+
+        return monopatines;
     }
 }
