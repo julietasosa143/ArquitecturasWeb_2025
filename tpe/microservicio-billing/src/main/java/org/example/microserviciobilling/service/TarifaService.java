@@ -1,7 +1,7 @@
 package org.example.microserviciobilling.service;
 
 import jakarta.transaction.Transactional;
-import org.example.microserviciobilling.dto.TarifaDto;
+import org.example.microserviciobilling.dto.TarifaDTO;
 import org.example.microserviciobilling.entities.Tarifa;
 import org.example.microserviciobilling.repository.TarifaRepository;
 import org.example.microserviciobilling.service.exception.TarifaNotFoundException;
@@ -19,7 +19,7 @@ public class TarifaService {
     public TarifaService(TarifaRepository tarifaRepository) {
         this.tarifaRepository = tarifaRepository;
     }
-    public List<TarifaDto> findAll() {
+    public List<TarifaDTO> findAll() {
         List<Tarifa> tarifas= tarifaRepository.findAll();
         if(tarifas.isEmpty()){
             throw new TarifaNotFoundException("No se encontraron Tarifas");
@@ -29,13 +29,13 @@ public class TarifaService {
                 .collect(Collectors.toList());
     }
 
-    public TarifaDto findById(Long id) {
+    public TarifaDTO findById(Long id) {
         Tarifa tarifa = tarifaRepository.findById(id)
             .orElseThrow(()-> new TarifaNotFoundException("No se encontro tarifa con el id :" + id));
 
         return toDto(tarifa);
     }
-    public TarifaDto save(TarifaDto t) {
+    public TarifaDTO save(TarifaDTO t) {
         Tarifa tarifa = toEntity(t);
         Tarifa saved = tarifaRepository.save(tarifa);
         return toDto(saved);
@@ -48,8 +48,8 @@ public class TarifaService {
         tarifaRepository.deleteById(id);
     }
 
-    private TarifaDto toDto(Tarifa t) {
-        return new TarifaDto(
+    private TarifaDTO toDto(Tarifa t) {
+        return new TarifaDTO(
                 t.getId(),
                 t.getTMinuto(),
                 t.getTPausa(),
@@ -57,7 +57,7 @@ public class TarifaService {
         );
     }
 
-    public Tarifa toEntity(TarifaDto dto) {
+    public Tarifa toEntity(TarifaDTO dto) {
         return new Tarifa(
                 dto.getId(),
                 dto.getTMinuto(),

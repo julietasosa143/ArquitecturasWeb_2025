@@ -1,7 +1,7 @@
 package org.example.microserviciobilling.controller;
 
 import jakarta.validation.Valid;
-import org.example.microserviciobilling.dto.TarifaDto;
+import org.example.microserviciobilling.dto.TarifaDTO;
 import org.example.microserviciobilling.service.TarifaService;
 import org.example.microserviciobilling.service.exception.TarifaNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -19,8 +19,8 @@ public class TarifaController {
         this.tarifaService = tarifaService;
     }
     @GetMapping("/")
-    public ResponseEntity<List<TarifaDto>> getAll(){
-        List<TarifaDto> tarifas = tarifaService.findAll();
+    public ResponseEntity<List<TarifaDTO>> getAll(){
+        List<TarifaDTO> tarifas = tarifaService.findAll();
         if (tarifas.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -28,8 +28,8 @@ public class TarifaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TarifaDto> getById(@PathVariable Long id) {
-        TarifaDto tarifa = tarifaService.findById(id);
+    public ResponseEntity<TarifaDTO> getById(@PathVariable Long id) {
+        TarifaDTO tarifa = tarifaService.findById(id);
         if (tarifa == null){
             throw new TarifaNotFoundException("No se encontro la tarifa con id: " +id);
         }
@@ -37,14 +37,14 @@ public class TarifaController {
     }
 
     @PostMapping("")
-    public ResponseEntity<TarifaDto> createTarifa(@Valid @RequestBody TarifaDto dto){
-        TarifaDto tarifaNueva = tarifaService.save(dto);
+    public ResponseEntity<TarifaDTO> createTarifa(@Valid @RequestBody TarifaDTO dto){
+        TarifaDTO tarifaNueva = tarifaService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(tarifaNueva);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTarifa(@PathVariable Long id) {
-        TarifaDto tarifa = tarifaService.findById(id);
+        TarifaDTO tarifa = tarifaService.findById(id);
         if(tarifa == null) {
             throw new TarifaNotFoundException("No se encontro la tarifa con id: " +id);
         }

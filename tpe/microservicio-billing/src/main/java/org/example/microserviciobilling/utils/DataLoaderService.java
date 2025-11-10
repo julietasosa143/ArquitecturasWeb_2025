@@ -5,19 +5,16 @@ import jakarta.transaction.Transactional;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.example.microserviciobilling.dto.FacturaDto;
 import org.example.microserviciobilling.entities.Factura;
 import org.example.microserviciobilling.entities.Tarifa;
 import org.example.microserviciobilling.repository.FacturaRepository;
 import org.example.microserviciobilling.repository.TarifaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
