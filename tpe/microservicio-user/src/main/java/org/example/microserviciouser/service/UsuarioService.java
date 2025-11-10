@@ -36,16 +36,20 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO> getUsuariosRecurrente(int mes, int anio, String tipoUsuario){
+        System.out.println("👉 Entró al Service getUsuariosRecurrente()");
         List<UsuarioDTO> recurrentes= new ArrayList<>();
         List<Long> idRecurrentes= viajeFeignClient.getUsuariosRecurrentes(mes,anio);
+        System.out.println("Feign devolvió IDs: " + idRecurrentes);
         for(Long id:idRecurrentes){
+            System.out.println(" Buscando usuario ID: " + id);
             Usuario temporary = usuarioRepository.findById(id).orElse(null);
             if(temporary!=null){
-                if(temporary.getRol()==tipoUsuario){
+                if(temporary.getRol().contains(tipoUsuario)){
                     recurrentes.add(new UsuarioDTO(temporary.getId(), temporary.getNombre(), temporary.getApellido(),temporary.getRol()));
                 }
             }
         }
+        System.out.println("🔚 Service devuelve " + recurrentes.size() + " usuarios recurrentes");
         return recurrentes;
     }
 }
