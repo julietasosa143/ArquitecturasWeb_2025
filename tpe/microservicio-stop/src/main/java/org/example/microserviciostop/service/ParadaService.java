@@ -42,12 +42,6 @@ public class ParadaService {
 
     }
 
-    public Parada obtenerParadaMasCercana(double xUsuario, double yUsuario) {
-        return paradaRepository.findParadaMasCercana(xUsuario, yUsuario)
-                .orElseThrow(() -> new RuntimeException("No hay paradas disponibles"));
-    }
-
-
     public void deleteById(long id) {
         if(!paradaRepository.existsById(id)){
             throw new ParadaNotFoundException("no se puede eliminar el viaje con el id:" + id + " por que no existe");
