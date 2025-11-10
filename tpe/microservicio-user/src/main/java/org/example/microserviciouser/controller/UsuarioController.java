@@ -1,5 +1,6 @@
 package org.example.microserviciouser.controller;
 
+import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,22 @@ public class UsuarioController {
     public ResponseEntity<Usuario> save(@RequestBody Usuario user) {
         Usuario nuevo = usuarioService.save(user);
         return ResponseEntity.ok(nuevo);
+    }
+
+    @GetMapping("/usuariosRecurrentes")
+    public ResponseEntity<List<UsuarioDTO>> getUsiariosRecurrente(
+            @RequestParam int mes, @RequestParam int anio, @RequestParam String tipoUsuario
+    ){
+        try{
+            List<UsuarioDTO> recurrentes=usuarioService.getUsuariosRecurrente(mes,anio,tipoUsuario);
+            if(recurrentes.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }else{
+                return  ResponseEntity.ok(recurrentes);
+            }
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 
