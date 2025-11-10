@@ -99,8 +99,8 @@ public class MonopatinService {
     }
 
     public List<MonopatinDTO> getMonopatinesViajesAnio(
-            @RequestParam int minViajes,
-            @RequestParam int anio
+            @RequestParam int anio,
+            @RequestParam int minViajes
     ){
 
         List<Long> ids  = viajeFeignClient.getMonopatinesXViajeAnio(anio,minViajes);
