@@ -42,10 +42,7 @@ public class ParadaService {
 
     }
 
-    public Parada obtenerParadaMasCercana(double xUsuario, double yUsuario) {
-        return paradaRepository.findParadaMasCercana(xUsuario, yUsuario)
-                .orElseThrow(() -> new RuntimeException("No hay paradas disponibles"));
-    }
+
 
 
     public void deleteById(long id) {
