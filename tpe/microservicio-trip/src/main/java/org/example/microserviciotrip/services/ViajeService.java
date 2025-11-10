@@ -96,4 +96,9 @@ public class ViajeService {
         List<Long> ids = viajeRepository.getMonopatinesXViajeAnio(anio,minViajes);
         return ids;
     }
+
+    public List<Long> getUsuariosRecurrentes(int mes, int anio){
+        List<Long> recurrentes= viajeRepository.getUsuariosRecurrentes(mes,anio);
+        return recurrentes;
+    }
 }
