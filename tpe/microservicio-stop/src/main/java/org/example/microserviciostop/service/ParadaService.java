@@ -42,6 +42,9 @@ public class ParadaService {
 
     }
 
+
+
+
     public void deleteById(long id) {
         if(!paradaRepository.existsById(id)){
             throw new ParadaNotFoundException("no se puede eliminar el viaje con el id:" + id + " por que no existe");
