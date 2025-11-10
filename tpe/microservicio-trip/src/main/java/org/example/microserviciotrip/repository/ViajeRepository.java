@@ -29,8 +29,6 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
             "WHERE YEAR(v.fechaInicio) = :anio " +
             "AND MONTH(v.fechaInicio) = :mes " +
             "GROUP BY v.idUsuario " +
-            "order by COUNT(v.idUsuario) DESC")
-    List<Long> getUsuariosRecurrentes
-            ( int anio,
-              int mes);
+            "ORDER BY COUNT(v.idUsuario) DESC")
+    List<Long> getUsuariosRecurrentes( @Param("mes") int mes, @Param("anio") int anio);
 }

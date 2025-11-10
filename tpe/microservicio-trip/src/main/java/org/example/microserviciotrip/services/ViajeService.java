@@ -98,7 +98,9 @@ public class ViajeService {
     }
 
     public List<Long> getUsuariosRecurrentes(int mes, int anio){
+        System.out.println("Buscando usuarios recurrentes del mes " + mes + " del año " + anio);
         List<Long> recurrentes= viajeRepository.getUsuariosRecurrentes(mes,anio);
+        System.out.println("Resultado: " + recurrentes);
         return recurrentes;
     }
 }
