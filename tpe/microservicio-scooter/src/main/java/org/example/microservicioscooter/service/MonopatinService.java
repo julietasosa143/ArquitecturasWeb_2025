@@ -99,11 +99,11 @@ public class MonopatinService {
     }
 
     public List<MonopatinDTO> getMonopatinesViajesAnio(
-            @RequestParam int cantidadMinViajes,
+            @RequestParam int minViajes,
             @RequestParam int anio
     ){
 
-        List<Long> ids  = viajeFeignClient.getMonopatinesXViajeAnio(anio,cantidadMinViajes);
+        List<Long> ids  = viajeFeignClient.getMonopatinesXViajeAnio(anio,minViajes);
         List<MonopatinDTO> monopatines = new ArrayList<>();
 
         for(Long id: ids){

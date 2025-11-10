@@ -72,9 +72,9 @@ public class ViajeController {
     @GetMapping("/porAnioViajes")
     public ResponseEntity<List<Long>> getMonopatinesXViajeAnio(
             @RequestParam int anio,
-            @RequestParam int cantidadMinViajes
+            @RequestParam int minViajes
     ){
-        List<Long> ids = viajeService.getMonopatinesXViajeXAnio(anio,cantidadMinViajes);
+        List<Long> ids = viajeService.getMonopatinesXViajeXAnio(anio,minViajes);
 
         if(!ids.isEmpty()) {
             return ok(ids);

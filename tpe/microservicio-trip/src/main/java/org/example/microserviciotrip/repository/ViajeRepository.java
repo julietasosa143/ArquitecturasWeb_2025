@@ -3,6 +3,7 @@ package org.example.microserviciotrip.repository;
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -17,8 +18,9 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
 
     @Query("SELECT v.idMonopatin " +
             "FROM Viaje v " +
-            " WHERE YEAR(v.fechaInicio) = :anio " +
+            "WHERE YEAR(v.fechaInicio) = :anio " +
             "GROUP BY v.idMonopatin " +
-            "HAVING COUNT(v.id)> : minViajes ")
-    List<Long> getMonopatinesXViajeAnio(int anio, int minViajes);
+            "HAVING COUNT(v.id) > :minViajes")
+    List<Long> getMonopatinesXViajeAnio(@Param("anio") int anio,
+                                        @Param("minViajes") int minViajes);
 }
