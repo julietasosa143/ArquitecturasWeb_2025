@@ -3,6 +3,8 @@ package org.example.microserviciouser.service;
 
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
+import org.example.microserviciouser.feignClient.MonopatinFeignClient;
+import org.example.microserviciouser.feignClient.ParadaFeignClient;
 import org.example.microserviciouser.feignClient.ViajeFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,10 @@ public class UsuarioService {
     RestTemplate restTemplate;
     @Autowired
     private ViajeFeignClient viajeFeignClient;
+    @Autowired
+    private MonopatinFeignClient monopatinFeignClient;
+    @Autowired
+    private ParadaFeignClient paradaFeignClient;
 
     public List<Usuario> getAll(){
         return usuarioRepository.findAll();
