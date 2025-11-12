@@ -25,8 +25,6 @@ public class Usuario {
     @Column
     private String rol;
 
-
-
     //para ubicacion
     @Column
     private float x;
