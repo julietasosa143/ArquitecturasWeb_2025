@@ -1,5 +1,6 @@
 package org.example.microserviciouser.controller;
 
+import org.example.microserviciouser.dto.MonopatinResponseDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -75,14 +76,15 @@ public class UsuarioController {
         UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
         return ResponseEntity.ok(dto);
     }
-    @GetMapping("/buscarPorEmail")
-    public ResponseEntity<UsuarioDTO> getUsuarioByEmail(@RequestParam String email) {
-        Usuario usuario = usuarioService.findByEmail(email).orElse(null);
-        if (usuario == null) {
-            return ResponseEntity.notFound().build();
+    @GetMapping("/ubicacion")
+    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(){
+        try {
+            List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos();
+            return ResponseEntity.ok(monopatinesCercanos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
-        return ResponseEntity.ok(dto);
     }
 
 
