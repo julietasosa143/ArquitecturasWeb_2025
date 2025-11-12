@@ -20,8 +20,8 @@ public class Parada{
 
     //para localizacion
     @Column
-    private  int x;
+    private  float x;
     @Column
-    private int y;
+    private float y;
 
 }

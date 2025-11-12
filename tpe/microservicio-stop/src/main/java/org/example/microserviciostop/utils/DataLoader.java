@@ -46,8 +46,8 @@ public class DataLoader {
 
             String direccion = row.get("direccion");
             String nombre = row.get("nombre");
-            int x = Integer.parseInt(row.get("x"));
-            int y = Integer.parseInt(row.get("y"));
+            float x = Float.parseFloat(row.get("x"));
+            float y = Float.parseFloat(row.get("y"));
 
             Parada parada = new Parada();
             parada.setDireccion(direccion);

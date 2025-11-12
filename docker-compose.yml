@@ -40,6 +40,16 @@ services:
       MONGO_INITDB_DATABASE: db_scooter
     volumes:
       - mongo-data:/data/db
+  microservicio-scooter:
+    build: ./tpespecial/microservicio-scooter
+    container_name: microservicio-scooter
+    restart: always
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongouser:mongopassword@mongodb:27017/db_scooter?authSource=admin
 
 volumes:
   arqui-db-data:

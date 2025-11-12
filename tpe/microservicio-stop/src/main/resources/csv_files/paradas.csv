@@ -5,7 +5,7 @@ id,direccion,nombre,x,y
 4,Mitre 230,Parada Este,300,200
 5,Alem 760,Parada Oeste,50,220
 6,9 de Julio 999,Parada Parque,200,320
-7,Rodríguez 850, Tandil,Parada Tandil Centro,180,260
-8,Av. Colón 1420, Tandil,Parada Tandil Norte,210,290
-9,Av. España 650, Tandil,Parada Tandil Sur,170,230
-10,Cerro Leones 300, Tandil,Parada Tandil Este,190,310
+7,Rodríguez 850,Parada Tandil Centro,180,260
+8,Av. Colón 1420,Parada Tandil Norte,210,290
+9,Av. España 650,Parada Tandil Sur,170,230
+10,Cerro Leones 300,Parada Tandil Este,190,310
