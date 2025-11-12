@@ -1,7 +1,9 @@
 package org.example.microserviciostop.controller;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.example.microserviciostop.DTO.ParadaDTO;
+import org.example.microserviciostop.DTO.ParadaResponseDTO;
 import org.example.microserviciostop.service.exception.ParadaNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +47,7 @@ public class ParadaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(paradaNueva);
     }
 
+    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable long id) {
         ParadaDTO parada = paradaService.findById(id);
@@ -53,6 +56,18 @@ public class ParadaController {
         }
         paradaService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Transactional
+    @GetMapping ("/monopatinesCercanos")
+    public ResponseEntity<List<ParadaResponseDTO>> getParadasCercanas(@RequestParam float x, @RequestParam float y ) {
+        try {
+            List<ParadaResponseDTO> paradas = paradaService.getParadasCercanas(x, y);
+            return ResponseEntity.ok(paradas);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new  ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     

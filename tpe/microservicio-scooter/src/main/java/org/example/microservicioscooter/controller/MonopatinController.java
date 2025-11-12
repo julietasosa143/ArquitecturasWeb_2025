@@ -2,6 +2,7 @@ package org.example.microservicioscooter.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.microservicioscooter.dto.MonopatinDTO;
+import org.example.microservicioscooter.dto.MonopatinResponseDTO;
 import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
 import org.example.microservicioscooter.entities.Monopatin;
 import org.example.microservicioscooter.service.MonopatinService;
@@ -88,8 +89,34 @@ public class MonopatinController {
 
 
     }
-
-
-    //@GetMapping(" ")
-    //hacer getAll
+    @GetMapping("/{id}")
+    public ResponseEntity<MonopatinDTO> getById(@RequestParam long id ){
+        try{
+            MonopatinDTO monopatin = monopatinService.findById(id);
+            return ResponseEntity.ok().body(monopatin);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @GetMapping ("/")
+    public ResponseEntity<List<MonopatinDTO>> getMonopatines(){
+        try{
+            List<MonopatinDTO> monopatines= monopatinService.getAll();
+            return ResponseEntity.ok().body(monopatines);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @GetMapping("/monopatinesCercanos")
+    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(@RequestParam float x, @RequestParam float y){
+        try{
+            List<MonopatinResponseDTO> monopatinesCercanos = monopatinService.getMonopatinesCercanos(x, y);
+            return ResponseEntity.ok().body(monopatinesCercanos);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }

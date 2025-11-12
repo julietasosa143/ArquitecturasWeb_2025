@@ -71,10 +71,10 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/ubicacion")
-    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(){
+    @GetMapping("/monopatinesCercanos/{id}")
+    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(@PathVariable long id){
         try {
-            List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos();
+            List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos(id);
             return ResponseEntity.ok(monopatinesCercanos);
         } catch (Exception e) {
             e.printStackTrace();
