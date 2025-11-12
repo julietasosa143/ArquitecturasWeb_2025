@@ -1,8 +1,11 @@
 package org.example.microserviciouser.controller;
 
+import org.example.microserviciouser.dto.MonopatinResponseDTO;
+import org.example.microserviciouser.dto.ParadaResponseDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
+import org.example.microserviciouser.feignClient.ParadaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private ParadaFeignClient paradaFeignClient;
 
 
     @GetMapping ("/")
@@ -61,6 +66,17 @@ public class UsuarioController {
                 return  ResponseEntity.ok(recurrentes);
             }
         }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/ubicacion")
+    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(){
+        try {
+            List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos();
+            return ResponseEntity.ok(monopatinesCercanos);
+        } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
