@@ -31,4 +31,12 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
             "GROUP BY v.idUsuario " +
             "ORDER BY COUNT(v.idUsuario) DESC")
     List<Long> getUsuariosRecurrentes( @Param("mes") int mes, @Param("anio") int anio);
+
+    @Query("SELECT SUM(v.tiempo) AS tiempoTotal " +
+                    "FROM Viaje v " +
+            "WHERE v.idUsuario = :idUsuario AND " +
+            "YEAR(v.fechaInicio)= :anio AND " +
+            "MONTH(v.fechaInicio) = :mes " +
+                    "GROUP BY v.idUsuario")
+    Double getTiempoViaje(long idUsuario, int mes, int anio);
 }
