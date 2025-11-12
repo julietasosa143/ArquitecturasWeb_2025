@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -84,12 +85,17 @@ public class DataLoaderService {
                 System.out.println("Tarifa " + id + " ya existe, la salteo.");
                 continue;
             }
+            String fechaStr = row.get("fechaExpiracion");
+            LocalDate fechaExpiracion = null;
 
-            Double tMinuto = Double.parseDouble(row.get("tMinuto"));
-            Double tPausa = Double.parseDouble(row.get("tPausa"));
-            LocalDate fechaExpiracion = LocalDate.parse(row.get("fechaExpiracion"));
+            if (fechaStr != null && !fechaStr.equalsIgnoreCase("null") && !fechaStr.isEmpty()) {
+                fechaExpiracion = LocalDate.parse(fechaStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            }
 
-            Tarifa tarifa = new Tarifa(id, tMinuto, tPausa, fechaExpiracion);
+            Double precio = Double.parseDouble(row.get("precio"));
+            Double precioEspecial = Double.parseDouble(row.get("precioEspecial"));
+
+            Tarifa tarifa = new Tarifa(id,fechaExpiracion,precio,precioEspecial);
             tarifaRepository.save(tarifa);
         }
 

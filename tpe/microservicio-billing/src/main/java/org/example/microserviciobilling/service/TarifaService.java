@@ -65,18 +65,18 @@ public class TarifaService {
     private TarifaDTO toDto(Tarifa t) {
         return new TarifaDTO(
                 t.getId(),
-                t.getTMinuto(),
-                t.getTPausa(),
-                t.getFechaExpiracion()
+                t.getFechaExpiracion(),
+                t.getPrecio(),
+                t.getPrecioEspecial()
         );
     }
 
     public Tarifa toEntity(TarifaDTO dto) {
         return new Tarifa(
                 dto.getId(),
-                dto.getTMinuto(),
-                dto.getTPausa(),
-                dto.getFechaExpiracion()
+                dto.getFechaExpiracion(),
+                dto.getPrecio(),
+                dto.getPrecioEspecial()
         );
     }
 }
