@@ -3,7 +3,9 @@ package org.example.microserviciouser.service;
 
 import org.example.microserviciouser.dto.MonopatinResponseDTO;
 import org.example.microserviciouser.dto.ParadaResponseDTO;
+import org.example.microserviciouser.dto.ReporteDeUsoDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
+import org.example.microserviciouser.entities.Cuenta;
 import org.example.microserviciouser.entities.Usuario;
 import org.example.microserviciouser.feignClient.MonopatinFeignClient;
 import org.example.microserviciouser.feignClient.ParadaFeignClient;
@@ -80,4 +82,32 @@ public class UsuarioService {
         return usuarioRepository.findByEmailIgnoreCase(email);
     }
 
+
+    public ReporteDeUsoDTO getReporteDeUso(Long id, int mes, int anio){
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        double tiempoDeViaje= viajeFeignClient.getTiempoDeViaje(id, mes, anio);
+        ReporteDeUsoDTO reporte = new ReporteDeUsoDTO(id, usuario.getNombre(), mes, anio, tiempoDeViaje);
+        return reporte;
+    }
+
+    public List<ReporteDeUsoDTO> getReporteDeUsoConAsociados(long id, int mes, int anio){
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        List<Cuenta> cuentas = usuario.getCuentas();
+        List<Usuario> asociados = new ArrayList<>();
+        asociados.add(usuario);
+        for(Cuenta cuenta:cuentas){
+            List<Usuario> usuariosTemp = cuenta.getUsuarios();
+            for(Usuario usuarioTemp:usuariosTemp){
+                if(!asociados.contains(usuarioTemp)){
+                    asociados.add(usuarioTemp);
+                }
+            }
+
+        }
+        List<ReporteDeUsoDTO> reporte= new ArrayList<>();
+        for(Usuario a :asociados){
+            reporte.add(this.getReporteDeUso(a.getId(), mes, anio));
+        }
+        return reporte;
+    }
 }

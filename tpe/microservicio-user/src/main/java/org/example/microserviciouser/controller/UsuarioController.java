@@ -2,6 +2,7 @@ package org.example.microserviciouser.controller;
 
 import org.example.microserviciouser.dto.MonopatinResponseDTO;
 import org.example.microserviciouser.dto.ParadaResponseDTO;
+import org.example.microserviciouser.dto.ReporteDeUsoDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -90,6 +91,32 @@ public class UsuarioController {
         }
         UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/reporteUso/{id}")
+    public ResponseEntity<ReporteDeUsoDTO> getReporteDeUso(@PathVariable long id,
+                                                           @RequestParam int mes,
+                                                           @RequestParam int anio){
+        try{
+            ReporteDeUsoDTO reporte = usuarioService.getReporteDeUso(id, mes, anio);
+            return ResponseEntity.ok(reporte);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/reporteUsoConAsociados/{id}")
+    public ResponseEntity<List<ReporteDeUsoDTO>> getReporteDeUsoConAsociados(@PathVariable long id,
+                                                                             @RequestParam int mes,
+                                                                             @RequestParam int anio){
+        try{
+            List<ReporteDeUsoDTO> reporte = usuarioService.getReporteDeUsoConAsociados(id, mes, anio);
+            return ResponseEntity.ok(reporte);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

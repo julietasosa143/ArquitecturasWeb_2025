@@ -70,4 +70,17 @@ public class Usuario {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        Usuario otro = (Usuario) o;
+
+        return id == otro.id;
+    }
 }
