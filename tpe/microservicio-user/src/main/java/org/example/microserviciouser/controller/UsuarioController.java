@@ -2,6 +2,7 @@ package org.example.microserviciouser.controller;
 
 import org.example.microserviciouser.dto.MonopatinResponseDTO;
 import org.example.microserviciouser.dto.ParadaResponseDTO;
+import org.example.microserviciouser.dto.ReporteDeUsoDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -76,6 +77,32 @@ public class UsuarioController {
         try {
             List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos(id);
             return ResponseEntity.ok(monopatinesCercanos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/reporteUso/{id}")
+    public ResponseEntity<ReporteDeUsoDTO> getReporteDeUso(@PathVariable long id,
+                                                           @RequestParam int mes,
+                                                           @RequestParam int anio){
+        try{
+            ReporteDeUsoDTO reporte = usuarioService.getReporteDeUso(id, mes, anio);
+            return ResponseEntity.ok(reporte);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/reporteUsoConAsociados/{id}")
+    public ResponseEntity<List<ReporteDeUsoDTO>> getReporteDeUsoConAsociados(@PathVariable long id,
+                                                                             @RequestParam int mes,
+                                                                             @RequestParam int anio){
+        try{
+            List<ReporteDeUsoDTO> reporte = usuarioService.getReporteDeUsoConAsociados(id, mes, anio);
+            return ResponseEntity.ok(reporte);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
