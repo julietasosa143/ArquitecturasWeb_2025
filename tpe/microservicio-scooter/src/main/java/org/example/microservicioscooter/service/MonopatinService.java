@@ -1,6 +1,7 @@
 package org.example.microservicioscooter.service;
 
 import org.example.microservicioscooter.dto.MonopatinDTO;
+import org.example.microservicioscooter.dto.MonopatinResponseDTO;
 import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
 import org.example.microservicioscooter.entities.Monopatin;
 import org.example.microservicioscooter.feignClient.ViajeFeignClient;
@@ -8,6 +9,8 @@ import org.example.microservicioscooter.repository.MonopatinRepository;
 import org.example.microserviciotrip.entities.Pausa;
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,13 +26,45 @@ public class MonopatinService {
 
     private ViajeFeignClient viajeFeignClient;
 
-
     public MonopatinService(MonopatinRepository repository, ViajeFeignClient viajeFeignClient)
     {
         this.repository = repository;
         this.viajeFeignClient = viajeFeignClient;
     }
+    public MonopatinDTO findById(long id){
+        Monopatin monopatin = repository.findById(id).orElse(null);
+        return this.toDTO(monopatin);
+    }
+    public List<MonopatinDTO> getAll(){
+        List<Monopatin> monopatines = repository.findAll();
+        List<MonopatinDTO> monopatinDTOs = new ArrayList<>();
+        for(Monopatin monopatin : monopatines) {
+            monopatinDTOs.add(this.toDTO(monopatin));
+        }
+        return  monopatinDTOs;
+    }
+    private MonopatinDTO toDTO(Monopatin m){
+        return new  MonopatinDTO(
+                m.getId(), m.getKmRecorridos(),
+                m.getX(), m.getY(), m.getEstado(),
+                m.getUltimoService()
+        );
+    }
+    private MonopatinResponseDTO toResponseDTO(Monopatin m){
+        return new MonopatinResponseDTO(
+                m.getId(),m.getX(),m.getY()
+        );
+    }
 
+    public List<MonopatinResponseDTO> getMonopatinesCercanos(float x, float y){
+        List<Monopatin> monopatines = repository.getMonopatinesCercanos(x,y);
+        List<MonopatinResponseDTO> monopatinDTOs = new ArrayList<>();
+        for(Monopatin monopatin : monopatines) {
+            monopatinDTOs.add(this.toResponseDTO(monopatin));
+        }
+        return  monopatinDTOs;
+
+    }
     public Monopatin agregarMonopatin(Monopatin nuevo) {
         // Por defecto siempre disponible
         nuevo.setEstado("libre");
