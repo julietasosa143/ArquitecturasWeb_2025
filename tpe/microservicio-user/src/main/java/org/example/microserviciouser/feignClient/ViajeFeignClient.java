@@ -12,8 +12,8 @@ public interface ViajeFeignClient {
     @GetMapping("/usuariosRecurrentes")
     public List<Long> getUsuariosRecurrentes(@RequestParam int mes,@RequestParam int anio);
 
-    @GetMapping ("/tiempoDeViaje")
-    public Double getTiempoDeViaje(@RequestParam long idUsuario,
+    @GetMapping ("/tiempoViaje")
+    public Double getTiempoDeViaje(@RequestParam("idUsuario") long idUsuario,
                                    @RequestParam int mes,
                                    @RequestParam int anio);
 }

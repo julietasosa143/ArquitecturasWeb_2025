@@ -10,6 +10,7 @@ import org.example.microserviciouser.feignClient.ParadaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.example.microserviciouser.service.UsuarioService;
 
@@ -52,7 +53,7 @@ public class UsuarioController {
         Usuario nuevo = usuarioService.save(user);
         return ResponseEntity.ok(nuevo);
     }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/usuariosRecurrentes")
     public ResponseEntity<List<UsuarioDTO>> getUsiariosRecurrente(
             @RequestParam int mes, @RequestParam int anio, @RequestParam String tipoUsuario
@@ -72,7 +73,7 @@ public class UsuarioController {
         }
     }
 
-
+    @PreAuthorize("hasAnyAuthority('USER','ADMIN','MANTENIMIENTO')")
     @GetMapping("/monopatinesCercanos/{id}")
     public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(@PathVariable long id){
         try {
@@ -92,7 +93,7 @@ public class UsuarioController {
         UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
         return ResponseEntity.ok(dto);
     }
-
+    @PreAuthorize("hasAnyAuthority('USER','MANTENIMIENTO','ADMIN')")
     @GetMapping("/reporteUso/{id}")
     public ResponseEntity<ReporteDeUsoDTO> getReporteDeUso(@PathVariable long id,
                                                            @RequestParam int mes,
@@ -105,7 +106,7 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @PreAuthorize("hasAnyAuthority('USER','MANTENIMIENTO','ADMIN')")
     @GetMapping("/reporteUsoConAsociados/{id}")
     public ResponseEntity<List<ReporteDeUsoDTO>> getReporteDeUsoConAsociados(@PathVariable long id,
                                                                              @RequestParam int mes,

@@ -15,9 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.example.microserviciouser.repository.UsuarioRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UsuarioService {
@@ -92,22 +90,32 @@ public class UsuarioService {
 
     public List<ReporteDeUsoDTO> getReporteDeUsoConAsociados(long id, int mes, int anio){
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        List<Cuenta> cuentas = usuario.getCuentas();
-        List<Usuario> asociados = new ArrayList<>();
+        if (usuario == null) return new ArrayList<>();
+
+
+        Set<Usuario> asociados = new HashSet<>();
         asociados.add(usuario);
-        for(Cuenta cuenta:cuentas){
-            List<Usuario> usuariosTemp = cuenta.getUsuarios();
-            for(Usuario usuarioTemp:usuariosTemp){
-                if(!asociados.contains(usuarioTemp)){
-                    asociados.add(usuarioTemp);
+
+        for (Cuenta cuenta : usuario.getCuentas()) {
+            asociados.addAll(cuenta.getUsuarios());
+        }
+
+        List<ReporteDeUsoDTO> reporte = new ArrayList<>();
+        for (Usuario a : asociados) {
+            if (a != null) {
+                try {
+
+                    ReporteDeUsoDTO r = this.getReporteDeUso(a.getId(), mes, anio);
+                    if (r != null) {
+                        reporte.add(r);
+                    }
+                } catch (Exception e) {
+
+                    System.out.println("No se pudo obtener reporte para usuario ID: " + a.getId());
                 }
             }
+        }
 
-        }
-        List<ReporteDeUsoDTO> reporte= new ArrayList<>();
-        for(Usuario a :asociados){
-            reporte.add(this.getReporteDeUso(a.getId(), mes, anio));
-        }
         return reporte;
     }
 }
