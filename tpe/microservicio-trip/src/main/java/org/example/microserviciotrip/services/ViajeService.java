@@ -4,6 +4,7 @@ package org.example.microserviciotrip.services;
 import org.example.microserviciotrip.dto.ViajeDTO;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Service;
 import org.example.microserviciotrip.repository.ViajeRepository;
 import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
@@ -19,8 +20,11 @@ public class ViajeService {
 
 
     private final ViajeRepository viajeRepository;
-    public ViajeService(ViajeRepository viajeRepository) {
+    private final ResourcePatternResolver resourcePatternResolver;
+
+    public ViajeService(ViajeRepository viajeRepository, ResourcePatternResolver resourcePatternResolver) {
         this.viajeRepository = viajeRepository;
+        this.resourcePatternResolver = resourcePatternResolver;
     }
 
     public List<ViajeDTO> findAll() {
@@ -102,5 +106,9 @@ public class ViajeService {
         List<Long> recurrentes= viajeRepository.getUsuariosRecurrentes(mes,anio);
         System.out.println("Resultado: " + recurrentes);
         return recurrentes;
+    }
+
+    public Double getTiempoViaje(long idUsuario, int mes, int anio){
+        return viajeRepository.getTiempoViaje(idUsuario, mes, anio);
     }
 }

@@ -99,4 +99,18 @@ public class ViajeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/tiempoViaje")
+    public ResponseEntity<Double> getTiempoViaje(@RequestParam long idUsuario,
+                                 @RequestParam int mes,
+                                 @RequestParam int anio) {
+        try{
+            double tiempoTotal = viajeService.getTiempoViaje(idUsuario, mes, anio);
+            return ResponseEntity.status(HttpStatus.OK).body(tiempoTotal);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
 }
