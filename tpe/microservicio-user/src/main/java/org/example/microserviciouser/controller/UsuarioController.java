@@ -1,9 +1,11 @@
 package org.example.microserviciouser.controller;
 
 import org.example.microserviciouser.dto.MonopatinResponseDTO;
+import org.example.microserviciouser.dto.ParadaResponseDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import lombok.RequiredArgsConstructor;
+import org.example.microserviciouser.feignClient.ParadaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private ParadaFeignClient paradaFeignClient;
 
 
     @GetMapping ("/")
@@ -67,6 +71,17 @@ public class UsuarioController {
         }
     }
 
+
+    @GetMapping("/monopatinesCercanos/{id}")
+    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(@PathVariable long id){
+        try {
+            List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos(id);
+            return ResponseEntity.ok(monopatinesCercanos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     @GetMapping("/buscarPorEmail")
     public ResponseEntity<UsuarioDTO> getUsuarioByEmail(@RequestParam String email) {
         Usuario usuario = usuarioService.findByEmail(email).orElse(null);
@@ -75,16 +90,6 @@ public class UsuarioController {
         }
         UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
         return ResponseEntity.ok(dto);
-    }
-    @GetMapping("/ubicacion")
-    public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(){
-        try {
-            List<MonopatinResponseDTO> monopatinesCercanos = usuarioService.getMonopatinesCercanos();
-            return ResponseEntity.ok(monopatinesCercanos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
 
