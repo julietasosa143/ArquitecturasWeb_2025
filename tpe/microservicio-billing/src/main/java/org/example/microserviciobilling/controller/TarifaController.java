@@ -6,6 +6,7 @@ import org.example.microserviciobilling.service.TarifaService;
 import org.example.microserviciobilling.service.exception.TarifaNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +35,16 @@ public class TarifaController {
             throw new TarifaNotFoundException("No se encontro la tarifa con id: " +id);
         }
         return ResponseEntity.ok(tarifa);
+    }
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/ajustar")
+    public ResponseEntity<TarifaDTO> ajustarTarifa(@Valid @RequestBody TarifaDTO dto) {
+        try {
+            TarifaDTO tarifa = tarifaService.ajustar(dto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(tarifa);
+        }catch (TarifaNotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("")

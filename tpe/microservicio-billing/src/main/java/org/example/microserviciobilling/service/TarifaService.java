@@ -7,6 +7,8 @@ import org.example.microserviciobilling.repository.TarifaRepository;
 import org.example.microserviciobilling.service.exception.TarifaNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,12 +37,24 @@ public class TarifaService {
 
         return toDto(tarifa);
     }
+
     public TarifaDTO save(TarifaDTO t) {
         Tarifa tarifa = toEntity(t);
         Tarifa saved = tarifaRepository.save(tarifa);
         return toDto(saved);
     }
+    public TarifaDTO ajustar(TarifaDTO dto){
+        Tarifa tarifa = this.ultimaTarifa();
+        tarifa.setFechaExpiracion(LocalDate.now());
+        Tarifa saved = toEntity(dto);
+        Tarifa t = tarifaRepository.save(saved);
 
+        return toDto(t);
+    }
+    public Tarifa ultimaTarifa(){
+        Tarifa t = tarifaRepository.ultimaTarifa();
+        return t;
+    }
     public void deleteById(Long id) {
         if(!tarifaRepository.existsById(id)) {
             throw new TarifaNotFoundException("Tarifa con id: " + id +"no encontrada");
