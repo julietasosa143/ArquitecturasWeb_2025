@@ -1,6 +1,8 @@
 package org.example.microserviciouser.service;
 
 
+import org.example.microserviciouser.dto.MonopatinResponseDTO;
+import org.example.microserviciouser.dto.ParadaResponseDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Usuario;
 import org.example.microserviciouser.feignClient.MonopatinFeignClient;
@@ -43,24 +45,39 @@ public class UsuarioService {
     }
 
     public List<UsuarioDTO> getUsuariosRecurrente(int mes, int anio, String tipoUsuario){
-        System.out.println("👉 Entró al Service getUsuariosRecurrente()");
         List<UsuarioDTO> recurrentes= new ArrayList<>();
         List<Long> idRecurrentes= viajeFeignClient.getUsuariosRecurrentes(mes,anio);
-        System.out.println("Feign devolvió IDs: " + idRecurrentes);
         for(Long id:idRecurrentes){
-            System.out.println(" Buscando usuario ID: " + id);
             Usuario temporary = usuarioRepository.findById(id).orElse(null);
             if(temporary!=null){
                 if(temporary.getRol().contains(tipoUsuario)){
-                    recurrentes.add(new UsuarioDTO(temporary.getId(), temporary.getNombre(), temporary.getApellido(),temporary.getRol(),temporary.getPassword(),temporary.getEmail()));
+                    recurrentes.add(new UsuarioDTO(temporary.getId(), temporary.getNombre(), temporary.getApellido(),temporary.getRol(), temporary.getPassword(), temporary.getEmail()));
                 }
             }
         }
-        System.out.println("🔚 Service devuelve " + recurrentes.size() + " usuarios recurrentes");
         return recurrentes;
     }
 
+    public List<MonopatinResponseDTO> getMonopatinesCercanos(long id){
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        float x = usuario.getX();
+        float y = usuario.getY();
+        List<ParadaResponseDTO> paradas = paradaFeignClient.getParadasCercanas(x, y);
+        List<MonopatinResponseDTO> monopatines= new ArrayList<>();
+        for(ParadaResponseDTO parada:paradas){
+            List<MonopatinResponseDTO> monopatinesCerca=
+                    monopatinFeignClient.getMonopatinesCercanos
+                            (parada.getX(),  parada.getY());
+            for(MonopatinResponseDTO monopatin:monopatinesCerca){
+                monopatines.add(monopatin);
+            }
+
+        }
+
+        return monopatines;
+    }
     public Optional<Usuario> findByEmail(String email) {
         return usuarioRepository.findByEmailIgnoreCase(email);
     }
+
 }
