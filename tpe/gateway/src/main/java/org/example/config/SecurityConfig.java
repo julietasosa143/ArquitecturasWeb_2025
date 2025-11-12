@@ -45,8 +45,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests( authz -> authz
                         .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/viajes/**").permitAll()// para probar si andan los ruteos
+                        .requestMatchers(HttpMethod.GET, "/api/monopatines/cantidadViajes/anio").hasAuthority(AuthorityConstant.ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/api/facturas/reporteXmeses").hasAuthority(AuthorityConstant.ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/api/users/usuariosRecurrentes").hasAuthority(AuthorityConstant.ADMIN)
                         .requestMatchers("/api/monopatines/reporteMantenimiento/**").hasAuthority(AuthorityConstant.ADMIN)
+                        .requestMatchers(HttpMethod.PUT, "/api/cuentas/anular/**").hasAuthority(AuthorityConstant.ADMIN)
                         .anyRequest().authenticated()
                 )
                 .httpBasic( Customizer.withDefaults() )
