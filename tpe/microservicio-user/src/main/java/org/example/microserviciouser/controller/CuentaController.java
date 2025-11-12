@@ -45,7 +45,7 @@ public class CuentaController {
         Cuenta nuevo = cuentaService.save(user);
         return ResponseEntity.ok(nuevo);
     }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/anular/{id}")
     public ResponseEntity<String> anular(@PathVariable Long id) {
         try {

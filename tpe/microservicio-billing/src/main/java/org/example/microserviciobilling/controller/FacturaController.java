@@ -6,6 +6,7 @@ import org.example.microserviciobilling.service.FacturaService;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class FacturaController {
         facturaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteXmeses")
     public ResponseEntity<Double> reporteXmeses(@RequestParam int mesInicio,
                                                           @RequestParam int mesFin,

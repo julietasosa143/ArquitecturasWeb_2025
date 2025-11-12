@@ -17,6 +17,7 @@ import org.example.microserviciouser.repository.UsuarioRepository;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -54,53 +55,60 @@ public class DataLoader {
     @Transactional
     public void populateDB() throws Exception {
         //Usuarios
-        Reader userReader = new InputStreamReader
-                (new ClassPathResource("csv_files/usuarios.csv")
-                        .getInputStream()
-                );
-        Iterable<CSVRecord> userRecords = CSVFormat.DEFAULT
-                .withFirstRecordAsHeader().parse(userReader);
+        // --- Usuarios ---
+        List<Usuario> usuarios = new ArrayList<>();
+        Reader userReader = new InputStreamReader(
+                new ClassPathResource("csv_files/usuarios.csv").getInputStream()
+        );
+        Iterable<CSVRecord> userRecords = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(userReader);
         for (CSVRecord row : userRecords) {
             long id = Long.parseLong(row.get("id"));
-            if (usuarioRepository.existsById(id)) {
-                System.out.println("El usuario con el id " + id + " ya existe");
-                continue;
-            }
+            if (usuarioRepository.existsById(id)) continue;
+
             String nombre = row.get("nombre");
             String apellido = row.get("apellido");
             String email = row.get("email");
             long telefono = Long.parseLong(row.get("telefono"));
             String rol = row.get("rol");
-            int x = Integer.parseInt(row.get("x"));
-            int y = Integer.parseInt(row.get("y"));
-            String password = row.get("password");
-            String encodedPassword = passwordEncoder.encode(password);
-            Usuario usuario = new Usuario(id, nombre, apellido, email, telefono, rol, x, y,password);
-            usuario.setPassword(encodedPassword);
+            float x = Float.parseFloat(row.get("x"));
+            float y = Float.parseFloat(row.get("y"));
+            String password = passwordEncoder.encode(row.get("password"));
 
-            usuarioRepository.save(usuario);
+            Usuario usuario = new Usuario(id, nombre, apellido, email, telefono, rol, x, y, password);
+            usuarios.add(usuario);
         }
+        usuarioRepository.saveAll(usuarios);
 
-        //Cuentas
+        // --- Cuentas ---
+        List<Cuenta> cuentas = new ArrayList<>();
         Reader cuentaReader = new InputStreamReader(
-                new ClassPathResource("csv_files/cuentas.csv")
-                        .getInputStream()
+                new ClassPathResource("csv_files/cuentas.csv").getInputStream()
         );
-        Iterable<CSVRecord> cuentaRecords = CSVFormat.DEFAULT
-                .withFirstRecordAsHeader().parse(cuentaReader);
-
+        Iterable<CSVRecord> cuentaRecords = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(cuentaReader);
         for (CSVRecord row : cuentaRecords) {
             long id = Long.parseLong(row.get("id"));
-            if (cuentaRepository.existsById(id)) {
-                System.out.println("La cuenta con el id " + id + " ya existe");
-                continue;
-            }
+            if (cuentaRepository.existsById(id)) continue;
+
             double balance = Double.parseDouble(row.get("balance"));
             boolean activa = Boolean.parseBoolean(row.get("activa"));
             String tipoCuenta = row.get("tipoCuenta");
             LocalDate fechaAlta = LocalDate.parse(row.get("fechaAlta"));
-            Cuenta cuenta = new Cuenta(id, balance, activa, tipoCuenta,fechaAlta);
-            cuentaRepository.save(cuenta);
+
+            Cuenta cuenta = new Cuenta(id, balance, activa, tipoCuenta, fechaAlta);
+            cuentas.add(cuenta);
         }
+        cuentaRepository.saveAll(cuentas);
+
+
+        int i = 0;
+        for (Usuario u : usuarios) {
+            Cuenta c = cuentas.get(i % cuentas.size());
+            u.getCuentas().add(c);
+            c.getUsuarios().add(u);
+            i++;
+        }
+
+        usuarioRepository.saveAll(usuarios);
+        cuentaRepository.saveAll(cuentas);
     }
 }
