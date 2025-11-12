@@ -7,6 +7,7 @@ import org.example.microservicioscooter.entities.Monopatin;
 import org.example.microservicioscooter.service.MonopatinService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class MonopatinController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteMantenimiento/sinPausa/{id}")
     public ResponseEntity<ReporteMantenimientoDTOResponse> obtenerReporteSinPausa(@PathVariable Long id) {
         try {
@@ -60,7 +61,7 @@ public class MonopatinController {
             return ResponseEntity.badRequest().build();
         }
     }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteMantenimiento/conPausa/{id}")
     public ResponseEntity<ReporteMantenimientoDTOResponse> obtenerReporteConPausa(@PathVariable Long id) {
 

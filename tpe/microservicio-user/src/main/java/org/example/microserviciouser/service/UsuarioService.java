@@ -11,6 +11,7 @@ import org.example.microserviciouser.repository.UsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -45,11 +46,15 @@ public class UsuarioService {
             Usuario temporary = usuarioRepository.findById(id).orElse(null);
             if(temporary!=null){
                 if(temporary.getRol().contains(tipoUsuario)){
-                    recurrentes.add(new UsuarioDTO(temporary.getId(), temporary.getNombre(), temporary.getApellido(),temporary.getRol()));
+                    recurrentes.add(new UsuarioDTO(temporary.getId(), temporary.getNombre(), temporary.getApellido(),temporary.getRol(),temporary.getPassword(),temporary.getEmail()));
                 }
             }
         }
         System.out.println("🔚 Service devuelve " + recurrentes.size() + " usuarios recurrentes");
         return recurrentes;
+    }
+
+    public Optional<Usuario> findByEmail(String email) {
+        return usuarioRepository.findByEmailIgnoreCase(email);
     }
 }

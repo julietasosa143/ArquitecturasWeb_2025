@@ -1,5 +1,6 @@
 package org.example.microserviciouser.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,23 +27,25 @@ public class Usuario {
     private String rol;
 
 
-
     //para ubicacion
     @Column
     private float x;
     @Column
     private float y;
 
+    @JsonIgnore
+    @Column(nullable = false)
+    private String password;
 
     @ManyToMany
     @JoinTable(
-            name= "usuario_cuenta",
-            joinColumns = @JoinColumn(name="id_usuario"),
-            inverseJoinColumns = @JoinColumn(name="id_cuenta")
+            name = "usuario_cuenta",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_cuenta")
     )
     private List<Cuenta> cuentas;
 
-    public Usuario(long id, String nombre, String apellido, String email, long telefono,String rol, float x, float y) {
+    public Usuario(long id, String nombre, String apellido, String email, long telefono, String rol, float x, float y, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -52,9 +55,10 @@ public class Usuario {
         this.x = x;
         this.y = y;
         this.cuentas = new ArrayList<>();
+        this.password = password;
     }
 
-    public Usuario(long id, String nombre, String apellido, String email,long telefono, String rol, float x, float y, LocalDate fechaAlta){
+    public Usuario(long id, String nombre, String apellido, String email, long telefono, String rol, float x, float y, LocalDate fechaAlta) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
