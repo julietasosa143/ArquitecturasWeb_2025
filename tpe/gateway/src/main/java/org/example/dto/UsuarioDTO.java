@@ -1,6 +1,5 @@
-package org.example.microserviciouser.dto;
+package org.example.dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
@@ -9,20 +8,15 @@ public class UsuarioDTO {
     private String nombre;
     private String apellido;
     private String rol;
-    private String password;
     private String email;
-
-
-    //para ubicacion
-
-    public UsuarioDTO(long id, String nombre, String apellido, String rol,String password,String email) {
+    private String password;
+    public UsuarioDTO(long id, String nombre, String apellido, String rol,String email, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.password=password;
-        this.rol = rol;
         this.email=email;
+        this.rol = rol;
+        this.password = password;
 
     }
-
 }

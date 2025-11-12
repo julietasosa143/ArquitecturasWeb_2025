@@ -66,5 +66,15 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/buscarPorEmail")
+    public ResponseEntity<UsuarioDTO> getUsuarioByEmail(@RequestParam String email) {
+        Usuario usuario = usuarioService.findByEmail(email).orElse(null);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+        UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
+        return ResponseEntity.ok(dto);
+    }
+
 
 }

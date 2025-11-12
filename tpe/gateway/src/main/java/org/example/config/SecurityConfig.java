@@ -24,6 +24,7 @@ public class SecurityConfig {
 
     private final TokenProvider tokenProvider;
 
+
     public SecurityConfig( TokenProvider tokenProvider ) {
         this.tokenProvider = tokenProvider;
     }
@@ -45,9 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/authenticate").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/viajes/**").permitAll()// para probar si andan los ruteos
-                        .requestMatchers( "/api/carreras/**").hasAuthority( AuthorityConstant._ALUMNO )
-                        .requestMatchers("/api/estudiantes/**").hasAuthority( AuthorityConstant._ALUMNO )
-                        .requestMatchers( "/api/inscripciones/**").hasAuthority( AuthorityConstant._ADMIN )
+                        .requestMatchers("/api/monopatines/reporteMantenimiento/**").hasAuthority(AuthorityConstant.ADMIN)
                         .anyRequest().authenticated()
                 )
                 .httpBasic( Customizer.withDefaults() )

@@ -9,6 +9,7 @@ import org.example.microserviciouser.entities.Cuenta;
 import org.example.microserviciouser.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.example.microserviciouser.repository.CuentaRepository;
 import org.example.microserviciouser.repository.UsuarioRepository;
@@ -26,6 +27,8 @@ public class DataLoader {
 
     @Autowired
     private CuentaRepository cuentaRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() {
@@ -70,8 +73,11 @@ public class DataLoader {
             String rol = row.get("rol");
             int x = Integer.parseInt(row.get("x"));
             int y = Integer.parseInt(row.get("y"));
+            String password = row.get("password");
+            String encodedPassword = passwordEncoder.encode(password);
+            Usuario usuario = new Usuario(id, nombre, apellido, email, telefono, rol, x, y,password);
+            usuario.setPassword(encodedPassword);
 
-            Usuario usuario = new Usuario(id, nombre, apellido, email, telefono, rol, x, y);
             usuarioRepository.save(usuario);
         }
 
@@ -82,6 +88,7 @@ public class DataLoader {
         );
         Iterable<CSVRecord> cuentaRecords = CSVFormat.DEFAULT
                 .withFirstRecordAsHeader().parse(cuentaReader);
+
         for (CSVRecord row : cuentaRecords) {
             long id = Long.parseLong(row.get("id"));
             if (cuentaRepository.existsById(id)) {
