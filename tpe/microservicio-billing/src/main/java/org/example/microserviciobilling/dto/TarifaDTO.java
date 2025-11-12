@@ -7,15 +7,15 @@ import java.time.LocalDate;
 public class TarifaDTO {
 
     private Long id;
-    private double tMinuto;
-    private double tPausa;
     private LocalDate fechaExpiracion;
+    private double precio;
+    private double precioEspecial;
 
-    public TarifaDTO(Long id, double tMinuto, double tPausa, LocalDate fechaExpiracion) {
+    public TarifaDTO(Long id,  LocalDate fechaExpiracion, double precio, double precioEspecial) {
             this.id = id;
-            this.tMinuto = tMinuto;
-            this.tPausa = tPausa;
             this.fechaExpiracion = fechaExpiracion;
+            this.precio = precio;
+            this.precioEspecial = precioEspecial;
     }
 
 }

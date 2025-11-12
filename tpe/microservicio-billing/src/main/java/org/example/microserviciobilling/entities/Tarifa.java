@@ -14,17 +14,17 @@ public class Tarifa {
     @Id
     private Long id;
     @Column
-    private double tMinuto;
-    @Column
-    private double tPausa;
-    @Column
     private LocalDate fechaExpiracion;
+    @Column
+    private double precio;
+    @Column
+    private double precioEspecial;
 
-    public Tarifa(Long id, double tMinuto, double tPausa, LocalDate fechaExpiracion) {
+    public Tarifa(Long id, LocalDate fechaExpiracion, double precio, double precioEspecial) {
         this.id = id;
-        this.tMinuto = tMinuto;
-        this.tPausa = tPausa;
         this.fechaExpiracion = fechaExpiracion;
+        this.precio = precio;
+        this.precioEspecial = precioEspecial;
     }
 
 }
