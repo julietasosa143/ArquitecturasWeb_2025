@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "a6080a25-4f19-4d8f-a29c-7ec31b48ab33",
+		"name": "Trabajo Practico Especial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24039281"
+	},
+	"item": [
+		{
+			"name": "Entrega 1",
+			"item": [
+				{
+					"name": "Como administrador quiero poder generar un reporte de uso de monopatines por kilómetros para establecer si un monopatín requiere de mantenimiento. Este reporte debe poder configurarse para incluir (o no) los tiempos de pausa.",
+					"item": [
+						{
+							"name": "Con pausa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/api/monopatines/reporteMantenimiento/conPausa/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"monopatines",
+										"reporteMantenimiento",
+										"conPausa",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sin pausa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/api/monopatines/reporteMantenimiento/sinPausa/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"monopatines",
+										"reporteMantenimiento",
+										"sinPausa",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Como usuario quiero saber cuánto he usado los monopatines en un período, y opcionalmente si otros usuarios relacionados a mi cuenta los han usado.",
+					"item": [
+						{
+							"name": "Con asociados",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/users/reporteUsoConAsociados/1?mes=10&anio=2025",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"users",
+										"reporteUsoConAsociados",
+										"1"
+									],
+									"query": [
+										{
+											"key": "mes",
+											"value": "10"
+										},
+										{
+											"key": "anio",
+											"value": "2025"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sin asociados",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8001/api/users/reporteUso/1?mes=10&anio=2025",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"api",
+										"users",
+										"reporteUso",
+										"1"
+									],
+									"query": [
+										{
+											"key": "mes",
+											"value": "10"
+										},
+										{
+											"key": "anio",
+											"value": "2025"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Como administrador quiero poder anular cuentas de usuarios, para inhabilitar el uso momentáneo de la aplicación.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/cuentas/anular/103",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"cuentas",
+								"anular",
+								"103"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Como administrador quiero consultar los monopatines con más de X viajes en un cierto año.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/monopatines/cantidadViajes/anio?anio=2025&minViajes=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"monopatines",
+								"cantidadViajes",
+								"anio"
+							],
+							"query": [
+								{
+									"key": "anio",
+									"value": "2025"
+								},
+								{
+									"key": "minViajes",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Como administrador quiero consultar el total facturado en un rango de meses de cierto año.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8086/api/facturas/reporteXmeses?mesInicio=3&mesFin=5&anio=2024",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"api",
+								"facturas",
+								"reporteXmeses"
+							],
+							"query": [
+								{
+									"key": "mesInicio",
+									"value": "3"
+								},
+								{
+									"key": "mesFin",
+									"value": "5"
+								},
+								{
+									"key": "anio",
+									"value": "2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Como administrador quiero ver los usuarios que más utilizan los monopatines, filtrado por período y por tipo de usuario.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/users/usuariosRecurrentes?mes=10&anio=2025&tipoUsuario=admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"users",
+								"usuariosRecurrentes"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "10"
+								},
+								{
+									"key": "anio",
+									"value": "2025"
+								},
+								{
+									"key": "tipoUsuario",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Como administrador quiero hacer un ajuste de precios, y que a partir de cierta fecha el sistema habilite los nuevos precios.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"17\",\r\n    \"fechaExpiracion\":null,\r\n    \"precio\":13.90,\r\n    \"precioEspecial\":18.80\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/api/tarifas/ajustar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"api",
+								"tarifas",
+								"ajustar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Como usuario quiero buscar un listado de los monopatines cercanos a mi zona, para poder encontrar un monopatín cerca de mi ubicación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/users/monopatinesCercanos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"users",
+								"monopatinesCercanos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
