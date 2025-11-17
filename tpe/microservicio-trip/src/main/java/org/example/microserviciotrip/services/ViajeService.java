@@ -2,6 +2,8 @@ package org.example.microserviciotrip.services;
 
 
 import org.example.microserviciotrip.dto.ViajeDTO;
+import org.example.microserviciotrip.dto.ViajeDTOfin;
+import org.example.microserviciotrip.dto.ViajeDTOinicio;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -10,6 +12,7 @@ import org.example.microserviciotrip.repository.ViajeRepository;
 import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,10 +40,8 @@ public class ViajeService {
                 .collect(Collectors.toList());
     }
 
-    public ViajeDTO findById(int id) {
-        Viaje  viaje = viajeRepository.findById(id)
-                .orElseThrow(()-> new ViajeNotFoundException("no se encontro viaje con el id:" + id));
-
+    public ViajeDTO findById(long id) {
+        Viaje  viaje = viajeRepository.findById(id);
         return toDTO(viaje);
     }
     public ViajeDTO save(ViajeDTO v){
@@ -111,4 +112,27 @@ public class ViajeService {
     public Double getTiempoViaje(long idUsuario, int mes, int anio){
         return viajeRepository.getTiempoViaje(idUsuario, mes, anio);
     }
+
+    public ViajeDTO inicializarViaje(ViajeDTOinicio dto){
+        Viaje viaje = new Viaje();
+        viaje.setId((viajeRepository.getIdMayor())+1);
+        viaje.setIdParadaInicio(dto.getIdParadaInicio());
+        viaje.setIdParadaFin(dto.getIdParadaFin());
+        viaje.setIdMonopatin(dto.getIdMonopatin());
+        viaje.setFechaInicio(LocalDateTime.now());
+        viajeRepository.save(viaje);
+        return toDTO(viaje);
+
+    }
+
+    public ViajeDTO finalizarViaje(ViajeDTOfin dto){
+        Viaje viaje = viajeRepository.findById(dto.getIdViaje());
+
+
+
+    }
+
+
+
 }
+

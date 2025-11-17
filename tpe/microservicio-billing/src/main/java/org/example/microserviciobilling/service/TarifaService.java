@@ -5,6 +5,7 @@ import org.example.microserviciobilling.dto.TarifaDTO;
 import org.example.microserviciobilling.entities.Tarifa;
 import org.example.microserviciobilling.repository.TarifaRepository;
 import org.example.microserviciobilling.service.exception.TarifaNotFoundException;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -44,12 +45,19 @@ public class TarifaService {
         return toDto(saved);
     }
     public TarifaDTO ajustar(TarifaDTO dto){
-        Tarifa tarifa = this.ultimaTarifa();
-        tarifa.setFechaExpiracion(LocalDate.now());
+        if(dto.getFechaCreacion().isAfter(this.ultimaTarifa().getFechaExpiracion())){
+            dto.setFechaCreacion(ultimaTarifa().getFechaExpiracion());
+        }else if(!dto.getFechaCreacion().isEqual(this.ultimaTarifa().getFechaExpiracion())){
+            Tarifa tarifa = getMasCercana(dto.getFechaCreacion());
+            tarifaRepository.setExpiracion(this.ultimaTarifa().getId(),dto.getFechaCreacion());
+
+        }
         Tarifa saved = toEntity(dto);
         Tarifa t = tarifaRepository.save(saved);
-
         return toDto(t);
+    }
+    public Tarifa getMasCercana(LocalDate fecha){
+        return tarifaRepository.getMasCercana(fecha);
     }
     public Tarifa ultimaTarifa(){
         Tarifa t = tarifaRepository.ultimaTarifa();
@@ -65,6 +73,7 @@ public class TarifaService {
     private TarifaDTO toDto(Tarifa t) {
         return new TarifaDTO(
                 t.getId(),
+                t.getFechaCreacion(),
                 t.getFechaExpiracion(),
                 t.getPrecio(),
                 t.getPrecioEspecial()
@@ -74,6 +83,7 @@ public class TarifaService {
     public Tarifa toEntity(TarifaDTO dto) {
         return new Tarifa(
                 dto.getId(),
+                dto.getFechaCreacion(),
                 dto.getFechaExpiracion(),
                 dto.getPrecio(),
                 dto.getPrecioEspecial()

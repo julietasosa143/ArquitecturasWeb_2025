@@ -39,4 +39,12 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
             "MONTH(v.fechaInicio) = :mes " +
                     "GROUP BY v.idUsuario")
     Double getTiempoViaje(long idUsuario, int mes, int anio);
+
+    @Query("SELECT MAX(v.id) FROM Viaje v")
+    long getIdMayor();
+
+
+    @Query ("SELECT v FROM Viaje v " +
+            "WHERE v.id = :idViaje")
+    Viaje findById(long idViaje);
 }
