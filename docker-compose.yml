@@ -10,8 +10,7 @@ services:
       MYSQL_DATABASE: arquidb
     ports:
       - "3306:3306"
-    volumes:
-      - arqui-db-data:/var/lib/mysql
+
 
 
   phpmyadmin:
@@ -23,7 +22,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD:
     ports:
-      - "8080:80"
+      - "9000:80"
     depends_on:
       - db
   mongodb:
@@ -38,19 +37,5 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: mongopassword
     # Opcional: Puedes crear una base de datos inicial, si lo necesitas
       MONGO_INITDB_DATABASE: db_scooter
-    volumes:
-      - mongo-data:/data/db
-  microservicio-scooter:
-    build: ./tpespecial/microservicio-scooter
-    container_name: microservicio-scooter
-    restart: always
-    ports:
-      - "8083:8083"
-    depends_on:
-      - mongodb
-    environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://mongouser:mongopassword@mongodb:27017/db_scooter?authSource=admin
 
-volumes:
-  arqui-db-data:
-  mongo-data:
+
