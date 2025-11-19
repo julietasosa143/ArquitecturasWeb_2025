@@ -4,6 +4,7 @@ import org.example.microserviciotrip.entities.Pausa;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 @Data
@@ -13,22 +14,20 @@ public class ViajeDTO {
     private long idParadaInicio;
     private long idParadaFin;
     private List<Pausa> pausas;
-    private double kilometros;
     private double tiempo;
-    private double tarifa;
+    private double precio;
     private long idMonopatin;
     private long idUsuario;
-    private LocalDate fechaInicio;
-    private LocalDate fechaFin;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
 
-    public ViajeDTO(long id  ,long paradaInicio,long paradaFin, double kilometros, double tiempo, double tarifa, long monopatin, long usuario, LocalDate fechaInicio, LocalDate fechaFin) {
+    public ViajeDTO(long id  ,long paradaInicio,long paradaFin, double tiempo, double precio, long monopatin, long usuario, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         this.id = id;
         this.idParadaInicio = paradaInicio;
         this.idParadaFin = paradaFin;
         this.pausas = new ArrayList<Pausa>();
-        this.kilometros = kilometros;
         this.tiempo = tiempo;
-        this.tarifa = tarifa;
+        this.precio = precio;
         this.idMonopatin = monopatin;
         this.idUsuario = usuario;
         this.fechaInicio = fechaInicio;
@@ -36,7 +35,7 @@ public class ViajeDTO {
     }
 
 
-    public  ViajeDTO( long id ,long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDate fechaInicio){
+    public  ViajeDTO( long id ,long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDateTime fechaInicio){
         this.id = id;
         this.idParadaInicio = pInicio;
         this.idParadaFin = pFin;
