@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/tpe/microservicio-user/pom.xml" />
         <option value="$USER_HOME$/Descargas/micro_integrador3/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/tpe/getway/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -28,7 +29,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-24" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="openjdk-24" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

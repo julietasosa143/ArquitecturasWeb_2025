@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/tpe/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tpe/microservicio-admin/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tpe/microservicio-billing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tpe/microservicio-iaAgent/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tpe/microservicio-maintenance/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tpe/microservicio-scooter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tpe/microservicio-stop/src/main/java" charset="UTF-8" />
