@@ -24,8 +24,6 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    RestTemplate restTemplate;
-    @Autowired
     private ViajeFeignClient viajeFeignClient;
     @Autowired
     private MonopatinFeignClient monopatinFeignClient;

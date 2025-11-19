@@ -17,11 +17,14 @@ public class Factura {
     @Column
     private double cobroTotal;
     @Column
+    private long idViaje;
+    @Column
     private LocalDate fechaCreacion;
 
-    public Factura(Long id, double cobroTotal, LocalDate fechaCreacion) {
+    public Factura(Long id, double cobroTotal,long idViaje, LocalDate fechaCreacion) {
         this.id = id;
         this.cobroTotal = cobroTotal;
+        this.idViaje = idViaje;
         this.fechaCreacion = fechaCreacion;
     }
 }

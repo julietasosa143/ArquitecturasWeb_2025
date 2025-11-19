@@ -3,12 +3,14 @@ package org.example.microserviciobilling.controller;
 import jakarta.validation.Valid;
 import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.service.FacturaService;
+import org.example.microserviciobilling.service.TarifaService;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -17,9 +19,11 @@ public class FacturaController {
 
 
     private final FacturaService facturaService;
+    private final TarifaService tarifaService;
 
-    public FacturaController(FacturaService facturaService) {
+    public FacturaController(FacturaService facturaService, TarifaService tarifaService) {
         this.facturaService = facturaService;
+        this.tarifaService = tarifaService;
     }
 
     @GetMapping("/")
@@ -70,6 +74,21 @@ public class FacturaController {
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+
+    }
+    @GetMapping("/getPrecioViaje")
+    public Double getPrecioViaje(@RequestParam long idViaje,
+                                 @RequestParam double tiempoTotal,
+                                 @RequestParam double tiempoPausas,
+                                 @RequestParam LocalDateTime fechafin){
+        try{
+            Double precio = facturaService.calcularPrecio(tiempoTotal, tiempoPausas, fechafin.toLocalDate());
+            facturaService.crear(idViaje, precio);
+            return precio;
+        }catch(Exception e){
+            return 0.0;
+        }
+
 
     }
 }

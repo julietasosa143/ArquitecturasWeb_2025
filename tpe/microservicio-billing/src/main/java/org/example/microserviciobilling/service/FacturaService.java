@@ -4,9 +4,14 @@ import jakarta.transaction.Transactional;
 import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.entities.Factura;
 import org.example.microserviciobilling.repository.FacturaRepository;
+import org.example.microserviciobilling.repository.TarifaRepository;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +19,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class FacturaService {
     private final FacturaRepository facturaRepository;
+    private final TarifaRepository  tarifaRepository;
 
-    public FacturaService  (FacturaRepository facturaRepository) {
+    public FacturaService  (FacturaRepository facturaRepository,  TarifaRepository tarifaRepository) {
         this.facturaRepository = facturaRepository;
+        this.tarifaRepository = tarifaRepository;
     }
 
     public List<FacturaDTO> findAll() {
@@ -51,6 +58,7 @@ public class FacturaService {
         return new FacturaDTO(
                 f.getId(),
                 f.getCobroTotal(),
+                f.getIdViaje(),
                 f.getFechaCreacion()
         );
     }
@@ -58,12 +66,40 @@ public class FacturaService {
         return new Factura(
                 dto.getId(),
                 dto.getCobroTotal(),
+                dto.getIdViaje(),
                 dto.getFechaCreacion()
         );
     }
     public Double getReporte(int mesInicio, int mesFin, int anio){
         Double total = facturaRepository.getReporte(mesInicio, mesFin, anio);
         return total;
-
     }
+
+    public Double calcularPrecio(double tiempoTotal, double tiempoPausas, LocalDate fechaFin){
+        if(tiempoPausas <=15){
+            return tiempoTotal * tarifaRepository.getTarifaNormal(fechaFin);
+        }
+        else if(tiempoPausas>15){
+            return tiempoTotal*tarifaRepository.getTarifaEspecial(fechaFin);
+        }else{
+            return 0.0;
+        }
+    }
+
+    public Factura crear(long idViaje, Double precio){
+        Factura factura = new Factura();
+        factura.setIdViaje(idViaje);
+        factura.setCobroTotal(precio);
+        Pageable pageable = PageRequest.of(0, 1, Sort.by("id").descending());
+        Factura ultima = facturaRepository.findUltimaFactura(pageable)
+                .getContent()
+                .stream()
+                .findFirst()
+                .orElse(null);
+        factura.setId(ultima.getId()+1);
+        factura.setFechaCreacion(LocalDate.now());
+        facturaRepository.save(factura);
+        return factura;
+    }
+
 }
