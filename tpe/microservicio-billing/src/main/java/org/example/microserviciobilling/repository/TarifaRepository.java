@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +26,13 @@ public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
             "WHERE t.fechaExpiracion > :fecha "+
             "ORDER BY t.fechaExpiracion ASC")
     Tarifa getMasCercana(@Param("fecha") LocalDate fecha);
+
+    @Query("SELECT t.precio FROM Tarifa t " +
+            "WHERE :fechaFin BETWEEN t.fechaCreacion AND t.fechaExpiracion")
+    double getTarifaNormal(@Param ("fechaFin")  LocalDate fechaFin);
+    @Query ("SELECT t.precioEspecial FROM Tarifa t "+
+            "WHERE :fechaFin BETWEEN t.fechaCreacion AND t.fechaExpiracion")
+    double getTarifaEspecial(@Param ("fechaFin")  LocalDate fechaFin);
 
 
 }

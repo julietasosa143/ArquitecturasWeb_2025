@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
+public interface ViajeRepository extends JpaRepository<Viaje,Long> {
     @Query("SELECT v FROM Viaje v "
             +"WHERE v.idMonopatin = :id "
             +"AND v.fechaFin > :ultimoService")
@@ -44,7 +44,4 @@ public interface ViajeRepository extends JpaRepository<Viaje,Integer> {
     long getIdMayor();
 
 
-    @Query ("SELECT v FROM Viaje v " +
-            "WHERE v.id = :idViaje")
-    Viaje findById(long idViaje);
 }
