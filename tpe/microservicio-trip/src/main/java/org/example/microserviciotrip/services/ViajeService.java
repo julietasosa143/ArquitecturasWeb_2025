@@ -6,11 +6,13 @@ import org.example.microserviciotrip.dto.ViajeDTOfin;
 import org.example.microserviciotrip.dto.ViajeDTOinicio;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
-import org.springframework.core.io.support.ResourcePatternResolver;
+import org.example.microserviciotrip.feignClient.FacturaFeignClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.example.microserviciotrip.repository.ViajeRepository;
 import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,17 +20,16 @@ import java.util.stream.Collectors;
 
 
 @Service
-@Transactional
 public class ViajeService {
-
-
+    @Autowired
     private final ViajeRepository viajeRepository;
-    private final ResourcePatternResolver resourcePatternResolver;
+    @Autowired
+    private FacturaFeignClient facturaFeignClient;
 
-    public ViajeService(ViajeRepository viajeRepository, ResourcePatternResolver resourcePatternResolver) {
+    public ViajeService(ViajeRepository viajeRepository) {
         this.viajeRepository = viajeRepository;
-        this.resourcePatternResolver = resourcePatternResolver;
     }
+
 
     public List<ViajeDTO> findAll() {
         List<Viaje> viajes= viajeRepository.findAll();
@@ -41,7 +42,8 @@ public class ViajeService {
     }
 
     public ViajeDTO findById(long id) {
-        Viaje  viaje = viajeRepository.findById(id);
+        Viaje  viaje = viajeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Viaje no encontrado"));
         return toDTO(viaje);
     }
     public ViajeDTO save(ViajeDTO v){
@@ -51,7 +53,7 @@ public class ViajeService {
 
     }
 
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         if(!viajeRepository.existsById(id)){
             throw new ViajeNotFoundException("no se puede elimianr el viaje con el id:" + id + " por que no existe");
 
@@ -63,9 +65,8 @@ public class ViajeService {
                 v.getId(),
                 v.getIdParadaInicio(),
                 v.getIdParadaFin(),
-                v.getKilometros(),
                 v.getTiempo(),
-                v.getTarifa(),
+                v.getPrecio(),
                 v.getIdMonopatin(),
                 v.getIdUsuario(),
                 v.getFechaInicio(),
@@ -78,9 +79,8 @@ public class ViajeService {
                 dto.getId(),
                 dto.getIdParadaInicio(),
                 dto.getIdParadaFin(),
-                dto.getKilometros(),
                 dto.getTiempo(),
-                dto.getTarifa(),
+                dto.getPrecio(),
                 dto.getIdMonopatin(),
                 dto.getIdUsuario(),
                 dto.getFechaInicio(),
@@ -126,10 +126,18 @@ public class ViajeService {
     }
 
     public ViajeDTO finalizarViaje(ViajeDTOfin dto){
-        Viaje viaje = viajeRepository.findById(dto.getIdViaje());
+        Viaje viaje = viajeRepository.findById(dto.getIdViaje())
+                .orElseThrow(() -> new RuntimeException("Viaje no encontrado"));
+        viaje.setFechaFin(dto.getFechaFin());
+        viaje.setTiempo(Duration.between(viaje.getFechaInicio(), dto.getFechaFin()).toMinutes());
+        viaje.setPrecio(facturaFeignClient.getPrecioViaje(viaje.getId(),viaje.getTiempo(), viaje.getTiempoPausas(), viaje.getFechaFin()));
+        viajeRepository.save(viaje);
+        ViajeDTO response = new ViajeDTO(viaje.getId(),
+                viaje.getIdParadaInicio(), viaje.getIdParadaFin(),
+                viaje.getTiempo(),viaje.getPrecio(), viaje.getIdMonopatin(),
 
-
-
+                viaje.getIdUsuario(), viaje.getFechaInicio(), viaje.getFechaFin());
+        return response;
     }
 
 
