@@ -70,13 +70,14 @@ public class DataLoaderService {
             int paradaInicio = Integer.parseInt(row.get("idParadaInicio"));
             int paradaFin = Integer.parseInt(row.get("idParadaFin"));
             float tiempo = Float.parseFloat(row.get("tiempo"));
+            double kilometros = Double.parseDouble(row.get("kilometros"));
             float precio = Float.parseFloat(row.get("precio"));
             int idMonopatin = Integer.parseInt(row.get("idMonopatin"));
             int idUsuario = Integer.parseInt(row.get("idUsuario"));
             LocalDateTime fechaInicio = LocalDateTime.parse(row.get("fechaInicio"));
             LocalDateTime fechaFin = LocalDateTime.parse(row.get("fechaFin"));
 
-            Viaje viaje = new Viaje(id, paradaInicio, paradaFin, tiempo, precio, idMonopatin, idUsuario, fechaInicio, fechaFin);
+            Viaje viaje = new Viaje(id, paradaInicio, paradaFin, tiempo,kilometros, precio, idMonopatin, idUsuario, fechaInicio, fechaFin);
             viajeRepository.save(viaje);
         }
 
