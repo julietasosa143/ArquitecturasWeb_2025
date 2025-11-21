@@ -129,7 +129,9 @@ public class ViajeService {
         Viaje viaje = viajeRepository.findById(dto.getIdViaje())
                 .orElseThrow(() -> new RuntimeException("Viaje no encontrado"));
         viaje.setFechaFin(dto.getFechaFin());
-        viaje.setTiempo(Duration.between(viaje.getFechaInicio(), dto.getFechaFin()).toMinutes());
+        System.out.println("FechaInicio = " + viaje.getFechaInicio());
+        System.out.println("FechaFin = " + dto.getFechaFin());
+        viaje.setTiempo((Duration.between(viaje.getFechaInicio(), dto.getFechaFin())).toMinutes());
         viaje.setPrecio(facturaFeignClient.getPrecioViaje(viaje.getId(),viaje.getTiempo(), viaje.getTiempoPausas(), viaje.getFechaFin()));
         viajeRepository.save(viaje);
         ViajeDTO response = new ViajeDTO(viaje.getId(),

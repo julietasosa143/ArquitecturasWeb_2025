@@ -80,9 +80,9 @@ public class FacturaController {
     public Double getPrecioViaje(@RequestParam long idViaje,
                                  @RequestParam double tiempoTotal,
                                  @RequestParam double tiempoPausas,
-                                 @RequestParam LocalDateTime fechafin){
+                                 @RequestParam LocalDateTime fechaFin){
         try{
-            Double precio = facturaService.calcularPrecio(tiempoTotal, tiempoPausas, fechafin.toLocalDate());
+            Double precio = facturaService.calcularPrecio(tiempoTotal, tiempoPausas, fechaFin.toLocalDate());
             facturaService.crear(idViaje, precio);
             return precio;
         }catch(Exception e){
