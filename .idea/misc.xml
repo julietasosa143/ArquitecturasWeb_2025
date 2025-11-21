@@ -19,6 +19,7 @@
         <option value="$USER_HOME$/Descargas/micro_integrador3/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/tpe/getway/pom.xml" />
         <option value="$PROJECT_DIR$/tpe/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/tpe/microservicio-iaAgent/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
