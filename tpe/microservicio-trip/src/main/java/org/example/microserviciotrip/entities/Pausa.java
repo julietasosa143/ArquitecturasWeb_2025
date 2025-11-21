@@ -20,12 +20,12 @@ public class Pausa {
     @Column
     private LocalDateTime fechaFin;
     @Column
-    private float total;
+    private double total;
     @ManyToOne
     @JoinColumn(name = "viaje_id")
     private Viaje viaje;
 
-    public  Pausa(Integer id, LocalDateTime fechaInicio, LocalDateTime fechaFin, float total) {
+    public  Pausa(Integer id, LocalDateTime fechaInicio, LocalDateTime fechaFin, double total) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;

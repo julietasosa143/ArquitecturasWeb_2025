@@ -1,5 +1,8 @@
 package org.example.microserviciouser.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.example.microserviciouser.entities.Cuenta;
 import lombok.RequiredArgsConstructor;
 import org.example.microserviciouser.service.exception.CuentaNotFoundException;
@@ -46,6 +49,14 @@ public class CuentaController {
         Cuenta nuevo = cuentaService.save(user);
         return ResponseEntity.ok(nuevo);
     }
+    @Operation(
+            summary = "Anular cuenta",
+            description = "Inhabilita totalmente una cuenta de usuario para el uso de la aplicación."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Cuenta anulada correctamente"),
+            @ApiResponse(responseCode = "404", description = "Cuenta no encontrada")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/anular/{id}")
     public ResponseEntity<String> anular(@PathVariable Long id) {

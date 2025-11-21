@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,28 +27,25 @@ public class Viaje {
     @OneToMany( mappedBy = "viaje",cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Pausa> pausas;
     @Column
-    private double kilometros;
-    @Column
     private double tiempo;
     @Column
-    private double tarifa;
+    private double precio;
     @Column
     private long idMonopatin;
     @Column
     private long idUsuario;
     @Column
-    private LocalDate fechaInicio;
+    private LocalDateTime fechaInicio;
     @Column
-    private LocalDate fechaFin;
+    private LocalDateTime fechaFin;
 
-    public Viaje(long id  ,long paradaInicio,long paradaFin, double kilometros, double tiempo, double tarifa, long monopatin, long usuario,  LocalDate fechaInicio, LocalDate fechaFin) {
+    public Viaje(long id  ,long paradaInicio,long paradaFin, double tiempo, double precio, long monopatin, long usuario,  LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         this.id = id;
         this.idParadaInicio = paradaInicio;
         this.idParadaFin = paradaFin;
         this.pausas = new ArrayList<Pausa>();
-        this.kilometros = kilometros;
         this.tiempo = tiempo;
-        this.tarifa = tarifa;
+        this.precio = precio;
         this.idMonopatin = monopatin;
         this.idUsuario = usuario;
         this.fechaInicio = fechaInicio;
@@ -55,7 +53,7 @@ public class Viaje {
     }
 
 
-    public  Viaje(long id , long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDate fechaInicio){
+    public  Viaje(long id , long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDateTime fechaInicio){
         this.id = id;
         this.idParadaInicio = pInicio;
         this.idParadaFin = pFin;
@@ -64,6 +62,14 @@ public class Viaje {
         this.idUsuario = usuario;
         this.pausas= new ArrayList<Pausa>();
         this.fechaInicio = fechaInicio;
+    }
+
+    public double getTiempoPausas(){
+        double tiempo=0;
+        for(Pausa p: pausas){
+            tiempo+=p.getTotal();
+        }
+        return tiempo;
     }
 
 

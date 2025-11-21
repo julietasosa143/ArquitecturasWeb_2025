@@ -1,14 +1,19 @@
 package org.example.microserviciobilling.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.service.FacturaService;
+import org.example.microserviciobilling.service.TarifaService;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -54,6 +59,14 @@ public class FacturaController {
         facturaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    @Operation(
+            summary = "Obtener total facturado en un rango de meses",
+            description = "Devuelve el total facturado entre los meses indicados para un año específico."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Reporte generado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Parámetros inválidos")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteXmeses")
     public ResponseEntity<Double> reporteXmeses(@RequestParam int mesInicio,
@@ -70,6 +83,21 @@ public class FacturaController {
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+
+    }
+    @GetMapping("/getPrecioViaje")
+    public Double getPrecioViaje(@RequestParam long idViaje,
+                                 @RequestParam double tiempoTotal,
+                                 @RequestParam double tiempoPausas,
+                                 @RequestParam LocalDateTime fechaFin){
+        try{
+            Double precio = facturaService.calcularPrecio(tiempoTotal, tiempoPausas, fechaFin.toLocalDate());
+            facturaService.crear(idViaje, precio);
+            return precio;
+        }catch(Exception e){
+            return 0.0;
+        }
+
 
     }
 }

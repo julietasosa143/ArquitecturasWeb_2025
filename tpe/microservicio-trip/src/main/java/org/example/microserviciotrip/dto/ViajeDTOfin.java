@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ViajeDTOfin {
     private long idViaje;
-    private double tiempo;
     private LocalDateTime fechaFin;
 
 
