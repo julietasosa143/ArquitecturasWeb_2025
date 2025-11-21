@@ -22,11 +22,9 @@ public class FacturaController {
 
 
     private final FacturaService facturaService;
-    private final TarifaService tarifaService;
 
-    public FacturaController(FacturaService facturaService, TarifaService tarifaService) {
+    public FacturaController(FacturaService facturaService) {
         this.facturaService = facturaService;
-        this.tarifaService = tarifaService;
     }
 
     @GetMapping("/")
