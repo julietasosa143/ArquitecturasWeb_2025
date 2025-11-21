@@ -1,4 +1,7 @@
 package org.example.microservicioscooter.controller;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import lombok.RequiredArgsConstructor;
 import org.example.microservicioscooter.dto.MonopatinDTO;
@@ -51,6 +54,14 @@ public class MonopatinController {
             return ResponseEntity.notFound().build();
         }
     }
+    @Operation(
+            summary = "Generar reporte de mantenimiento sin pausa",
+            description = "Devuelve un reporte de uso del monopatín sin contar los tiempos de pausa."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Reporte generado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Monopatín no encontrado")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteMantenimiento/sinPausa/{id}")
     public ResponseEntity<ReporteMantenimientoDTOResponse> obtenerReporteSinPausa(@PathVariable Long id) {
@@ -62,6 +73,14 @@ public class MonopatinController {
             return ResponseEntity.badRequest().build();
         }
     }
+    @Operation(
+            summary = "Generar reporte de mantenimiento con pausa",
+            description = "Devuelve un reporte de uso del monopatín considerando los tiempos de pausa."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Reporte generado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Monopatín no encontrado")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteMantenimiento/conPausa/{id}")
     public ResponseEntity<ReporteMantenimientoDTOResponse> obtenerReporteConPausa(@PathVariable Long id) {
@@ -75,7 +94,14 @@ public class MonopatinController {
             return ResponseEntity.badRequest().build();
         }
     }
-
+    @Operation(
+            summary = "Consultar monopatines con más de X viajes por año",
+            description = "Devuelve un listado de monopatines que superan una cantidad mínima de viajes en un año dado."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Listado generado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Parámetros inválidos")
+    })
     @GetMapping("/cantidadViajes/anio")
     public ResponseEntity<List<MonopatinDTO>> getMonopatinesConMasDeXViajesXAnio(
             @RequestParam int anio,
@@ -110,6 +136,15 @@ public class MonopatinController {
             return ResponseEntity.badRequest().build();
         }
     }
+@Operation(
+        summary = "Obtener monopatines cercanos",
+        description = "Devuelve un listado de monopatines cercanos segun la ubicacion (coordenadas X e Y) enviada por parametro."
+)
+@ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Listados obtenido correctamente"),
+        @ApiResponse(responseCode = "400", description = "Parámetros inválidos o error en la solicitud"),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+})
     @GetMapping("/monopatinesCercanos")
     public ResponseEntity<List<MonopatinResponseDTO>> getMonopatinesCercanos(@RequestParam float x, @RequestParam float y){
         try{

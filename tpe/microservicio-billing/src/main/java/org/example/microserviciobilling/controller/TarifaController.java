@@ -1,5 +1,8 @@
 package org.example.microserviciobilling.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.example.microserviciobilling.dto.TarifaDTO;
 import org.example.microserviciobilling.service.TarifaService;
@@ -36,6 +39,14 @@ public class TarifaController {
         }
         return ResponseEntity.ok(tarifa);
     }
+    @Operation(
+            summary = "Ajustar tarifas",
+            description = "Crea o actualiza una tarifa. Los nuevos precios entran en vigencia a partir de la nueva tarifa."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Tarifa ajustada correctamente"),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/ajustar")
     public ResponseEntity<TarifaDTO> ajustarTarifa(@Valid @RequestBody TarifaDTO dto) {
