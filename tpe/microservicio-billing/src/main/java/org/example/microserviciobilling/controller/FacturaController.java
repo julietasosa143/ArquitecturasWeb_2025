@@ -1,5 +1,8 @@
 package org.example.microserviciobilling.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.service.FacturaService;
@@ -58,6 +61,14 @@ public class FacturaController {
         facturaService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    @Operation(
+            summary = "Obtener total facturado en un rango de meses",
+            description = "Devuelve el total facturado entre los meses indicados para un año específico."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Reporte generado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Parámetros inválidos")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/reporteXmeses")
     public ResponseEntity<Double> reporteXmeses(@RequestParam int mesInicio,

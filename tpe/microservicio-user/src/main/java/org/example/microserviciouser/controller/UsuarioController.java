@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.example.microserviciouser.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import java.util.List;
 
@@ -53,6 +56,16 @@ public class UsuarioController {
         Usuario nuevo = usuarioService.save(user);
         return ResponseEntity.ok(nuevo);
     }
+
+    @Operation(
+            summary = "Usuarios que más utilizan monopatines",
+            description = "Devuelve un listado filtrado por mes, año y tipo de usuario."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Listado obtenido correctamente"),
+            @ApiResponse(responseCode = "404", description = "No se encontraron usuarios recurrentes"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/usuariosRecurrentes")
     public ResponseEntity<List<UsuarioDTO>> getUsiariosRecurrente(
@@ -93,6 +106,14 @@ public class UsuarioController {
         UsuarioDTO dto = new UsuarioDTO(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getRol(), usuario.getPassword(),usuario.getEmail());
         return ResponseEntity.ok(dto);
     }
+    @Operation(
+            summary = "Reporte de uso del usuario",
+            description = "Devuelve cuánto usó el usuario los monopatines en un período determinado."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Reporte generado correctamente"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     @PreAuthorize("hasAnyAuthority('USER','MANTENIMIENTO','ADMIN')")
     @GetMapping("/reporteUso/{id}")
     public ResponseEntity<ReporteDeUsoDTO> getReporteDeUso(@PathVariable long id,
@@ -106,6 +127,14 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @Operation(
+            summary = "Reporte de uso del usuario y sus asociados",
+            description = "Incluye los usos del usuario principal y de otros usuarios asociados."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Reporte generado correctamente"),
+            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     @PreAuthorize("hasAnyAuthority('USER','MANTENIMIENTO','ADMIN')")
     @GetMapping("/reporteUsoConAsociados/{id}")
     public ResponseEntity<List<ReporteDeUsoDTO>> getReporteDeUsoConAsociados(@PathVariable long id,
