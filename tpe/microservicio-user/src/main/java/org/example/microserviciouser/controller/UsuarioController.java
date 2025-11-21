@@ -17,7 +17,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -149,5 +151,9 @@ public class UsuarioController {
         }
     }
 
-
+    @GetMapping("/esPremium/{email}")
+    public ResponseEntity<Map<String, Boolean>> esPremium(@PathVariable String email) {
+        boolean premium = usuarioService.esPremium(email);
+        return ResponseEntity.ok(Map.of("premium", premium));
+    }
 }

@@ -96,4 +96,8 @@ public class TokenProvider {
             throw new ExpiredJwtException(null, null, null);
         }
     }
+    public String getUsernameFromToken(String token) {
+        Claims claims = jwtParser.parseSignedClaims(token).getPayload();
+        return claims.getSubject();
+    }
 }

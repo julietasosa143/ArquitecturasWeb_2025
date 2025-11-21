@@ -116,4 +116,12 @@ public class UsuarioService {
 
         return reporte;
     }
+    public boolean esPremium(String email) {
+        Usuario usuario = this.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        return usuario.getCuentas()
+                .stream()
+                .anyMatch(c -> "premium".equalsIgnoreCase(c.getTipoCuenta()));
+    }
 }
