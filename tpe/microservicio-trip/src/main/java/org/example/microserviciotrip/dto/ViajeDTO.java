@@ -15,18 +15,20 @@ public class ViajeDTO {
     private long idParadaFin;
     private List<Pausa> pausas;
     private double tiempo;
+    private double kilometros;
     private double precio;
     private long idMonopatin;
     private long idUsuario;
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
 
-    public ViajeDTO(long id  ,long paradaInicio,long paradaFin, double tiempo, double precio, long monopatin, long usuario, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+    public ViajeDTO(long id  ,long paradaInicio,long paradaFin, double tiempo,double kilometros, double precio, long monopatin, long usuario, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         this.id = id;
         this.idParadaInicio = paradaInicio;
         this.idParadaFin = paradaFin;
         this.pausas = new ArrayList<Pausa>();
         this.tiempo = tiempo;
+        this.kilometros = kilometros;
         this.precio = precio;
         this.idMonopatin = monopatin;
         this.idUsuario = usuario;
@@ -35,11 +37,12 @@ public class ViajeDTO {
     }
 
 
-    public  ViajeDTO( long id ,long pInicio, long pFin, double tiempo, long monopatin, long usuario, LocalDateTime fechaInicio){
+    public  ViajeDTO( long id ,long pInicio, long pFin, double tiempo, double kilometros, long monopatin, long usuario, LocalDateTime fechaInicio){
         this.id = id;
         this.idParadaInicio = pInicio;
         this.idParadaFin = pFin;
         this.tiempo = tiempo;
+        this.kilometros = kilometros;
         this.idMonopatin = monopatin;
         this.idUsuario = usuario;
         this.pausas= new ArrayList<Pausa>();

@@ -1,12 +1,14 @@
 package org.example.microserviciotrip.services;
 
 
+import org.example.microserviciotrip.dto.ParadaDTO;
 import org.example.microserviciotrip.dto.ViajeDTO;
 import org.example.microserviciotrip.dto.ViajeDTOfin;
 import org.example.microserviciotrip.dto.ViajeDTOinicio;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
 import org.example.microserviciotrip.feignClient.FacturaFeignClient;
+import org.example.microserviciotrip.feignClient.ParadaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.example.microserviciotrip.repository.ViajeRepository;
@@ -25,6 +27,8 @@ public class ViajeService {
     private final ViajeRepository viajeRepository;
     @Autowired
     private FacturaFeignClient facturaFeignClient;
+    @Autowired
+    private ParadaFeignClient paradaFeignClient;
 
     public ViajeService(ViajeRepository viajeRepository) {
         this.viajeRepository = viajeRepository;
@@ -66,6 +70,7 @@ public class ViajeService {
                 v.getIdParadaInicio(),
                 v.getIdParadaFin(),
                 v.getTiempo(),
+                v.getKilometros(),
                 v.getPrecio(),
                 v.getIdMonopatin(),
                 v.getIdUsuario(),
@@ -80,6 +85,7 @@ public class ViajeService {
                 dto.getIdParadaInicio(),
                 dto.getIdParadaFin(),
                 dto.getTiempo(),
+                dto.getKilometros(),
                 dto.getPrecio(),
                 dto.getIdMonopatin(),
                 dto.getIdUsuario(),
@@ -133,10 +139,15 @@ public class ViajeService {
         System.out.println("FechaFin = " + dto.getFechaFin());
         viaje.setTiempo((Duration.between(viaje.getFechaInicio(), dto.getFechaFin())).toMinutes());
         viaje.setPrecio(facturaFeignClient.getPrecioViaje(viaje.getId(),viaje.getTiempo(), viaje.getTiempoPausas(), viaje.getFechaFin()));
+        ParadaDTO paradaInicio = paradaFeignClient.getById(viaje.getIdParadaInicio());
+        ParadaDTO paradaFin = paradaFeignClient.getById(viaje.getIdParadaFin());
+        double dx = paradaFin.getX() - paradaInicio.getX();
+        double dy = paradaFin.getY() - paradaFin.getY();
+        viaje.setKilometros(Math.sqrt(dx * dx + dy * dy));
         viajeRepository.save(viaje);
         ViajeDTO response = new ViajeDTO(viaje.getId(),
                 viaje.getIdParadaInicio(), viaje.getIdParadaFin(),
-                viaje.getTiempo(),viaje.getPrecio(), viaje.getIdMonopatin(),
+                viaje.getTiempo(),viaje.getKilometros(),viaje.getPrecio(), viaje.getIdMonopatin(),
 
                 viaje.getIdUsuario(), viaje.getFechaInicio(), viaje.getFechaFin());
         return response;
