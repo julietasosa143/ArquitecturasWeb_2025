@@ -7,6 +7,7 @@ import org.example.microserviciouser.dto.ReporteDeUsoDTO;
 import org.example.microserviciouser.dto.UsuarioDTO;
 import org.example.microserviciouser.entities.Cuenta;
 import org.example.microserviciouser.entities.Usuario;
+import org.example.microserviciouser.feignClient.MockFeignClient;
 import org.example.microserviciouser.feignClient.MonopatinFeignClient;
 import org.example.microserviciouser.feignClient.ParadaFeignClient;
 import org.example.microserviciouser.feignClient.ViajeFeignClient;
@@ -29,6 +30,8 @@ public class UsuarioService {
     private MonopatinFeignClient monopatinFeignClient;
     @Autowired
     private ParadaFeignClient paradaFeignClient;
+    @Autowired
+    private MockFeignClient mockFeignClient;
 
     public List<Usuario> getAll(){
         return usuarioRepository.findAll();
@@ -60,6 +63,8 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
         float x = usuario.getX();
         float y = usuario.getY();
+        Map<String, Object> mockResponse = mockFeignClient.connectToMaps(x, y);
+        System.out.println("Mock Maps: " + mockResponse.get("message"));
         List<ParadaResponseDTO> paradas = paradaFeignClient.getParadasCercanas(x, y);
         List<MonopatinResponseDTO> monopatines= new ArrayList<>();
         for(ParadaResponseDTO parada:paradas){
