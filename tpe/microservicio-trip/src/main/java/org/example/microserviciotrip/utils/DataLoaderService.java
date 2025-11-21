@@ -60,7 +60,7 @@ public class DataLoaderService {
                 .parse(viajesReader);
 
         for (CSVRecord row : viajesRecords) {
-            int id = Integer.parseInt(row.get("id"));
+            long id = Long.parseLong(row.get("id"));
 
             if (viajeRepository.existsById(id)) {
                 System.out.println("Viaje " + id + " ya existe, lo salteo.");
@@ -69,15 +69,14 @@ public class DataLoaderService {
 
             int paradaInicio = Integer.parseInt(row.get("idParadaInicio"));
             int paradaFin = Integer.parseInt(row.get("idParadaFin"));
-            float kilometros = Float.parseFloat(row.get("kilometros"));
             float tiempo = Float.parseFloat(row.get("tiempo"));
-            float tarifa = Float.parseFloat(row.get("tarifa"));
+            float precio = Float.parseFloat(row.get("precio"));
             int idMonopatin = Integer.parseInt(row.get("idMonopatin"));
             int idUsuario = Integer.parseInt(row.get("idUsuario"));
-            LocalDate fechaInicio = LocalDate.parse(row.get("fechaInicio"));
-            LocalDate fechaFin = LocalDate.parse(row.get("fechaFin"));
+            LocalDateTime fechaInicio = LocalDateTime.parse(row.get("fechaInicio"));
+            LocalDateTime fechaFin = LocalDateTime.parse(row.get("fechaFin"));
 
-            Viaje viaje = new Viaje(id, paradaInicio, paradaFin, kilometros, tiempo, tarifa, idMonopatin, idUsuario, fechaInicio, fechaFin);
+            Viaje viaje = new Viaje(id, paradaInicio, paradaFin, tiempo, precio, idMonopatin, idUsuario, fechaInicio, fechaFin);
             viajeRepository.save(viaje);
         }
 
@@ -100,9 +99,9 @@ public class DataLoaderService {
             LocalDateTime fechaInicio = LocalDateTime.parse(row.get("fechaInicio"));
             LocalDateTime fechaFin = LocalDateTime.parse(row.get("fechaFin"));
             float total = Float.parseFloat(row.get("total"));
-            int viajeId = Integer.parseInt(row.get("viaje_id"));
+            long viajeId = Long.parseLong(row.get("viaje_id"));
 
-            Viaje viaje = viajeRepository.findById(viajeId).orElse(null);
+            Viaje viaje = viajeRepository.findById(viajeId).orElseThrow(() -> new RuntimeException("Viaje no encontrado"));
             if (viaje == null) {
                 System.out.println("Viaje " + viajeId + " no existe, salto la pausa " + id);
                 continue;

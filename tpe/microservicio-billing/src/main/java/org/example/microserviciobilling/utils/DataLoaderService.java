@@ -65,9 +65,10 @@ public class DataLoaderService {
                 System.out.println("Factura " + id + " ya existe, lo salteo.");
                 continue;
             }
+            long idViaje = Long.parseLong(row.get("idViaje"));
             double cobroTotal = Double.parseDouble(row.get("cobroTotal"));
             LocalDate fechaCreacion = LocalDate.parse(row.get("fechaCreacion"));
-            Factura factura = new Factura(id, cobroTotal, fechaCreacion);
+            Factura factura = new Factura(id, cobroTotal,idViaje,fechaCreacion);
             facturaRepository.save(factura);
         }
         // --- Tarifas ---
@@ -85,17 +86,13 @@ public class DataLoaderService {
                 System.out.println("Tarifa " + id + " ya existe, la salteo.");
                 continue;
             }
-            String fechaStr = row.get("fechaExpiracion");
-            LocalDate fechaExpiracion = null;
-
-            if (fechaStr != null && !fechaStr.equalsIgnoreCase("null") && !fechaStr.isEmpty()) {
-                fechaExpiracion = LocalDate.parse(fechaStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            }
+            LocalDate fechaCreacion = LocalDate.parse(row.get("fechaCreacion"));
+            LocalDate fechaExpiracion = LocalDate.parse(row.get("fechaExpiracion"));
 
             Double precio = Double.parseDouble(row.get("precio"));
             Double precioEspecial = Double.parseDouble(row.get("precioEspecial"));
 
-            Tarifa tarifa = new Tarifa(id,fechaExpiracion,precio,precioEspecial);
+            Tarifa tarifa = new Tarifa(id,fechaCreacion,fechaExpiracion,precio,precioEspecial);
             tarifaRepository.save(tarifa);
         }
 
