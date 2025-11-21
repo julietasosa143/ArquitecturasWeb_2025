@@ -2,7 +2,7 @@ id,nombre,apellido,email,telefono,rol,x,y,password
 1,Matias,Gomez,matias.gomez@mail.com,1123456789,ADMIN,10,25,admin123
 2,Sofia,Perez,sofia.perez@mail.com,1198765432,MANTENIMIENTO,50,75,mante123
 3,Juan,Alvarez,juan.alvarez@mail.com,1155551234,ADMIN,120,30,admin123
-4,Camila,Torres,camila.torres@mailc.com,1144445678,USER,80,90,user123
+4,Camila,Torres,camila.torres@mail.com,1144445678,USER,80,90,user123
 5,Pedro,Nuñez,pedro.nunez@mail.com,1133339876,USER,200,10,user123
 6,Laura,Diaz,laura.diaz@mail.com,1122221111,USER,15,45,user123
 7,Diego,Castro,diego.castro@mail.com,1111110000,USER,60,60,user123

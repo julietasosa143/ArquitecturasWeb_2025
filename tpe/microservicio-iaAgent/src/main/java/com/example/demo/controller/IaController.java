@@ -13,7 +13,7 @@ public class IaController {
 
     @PostMapping("/chat")
     public ResponseEntity<?> chat(
-            @RequestBody ChatRequest request,
+            @RequestBody String request,
             @RequestHeader("Authorization")String token
     ){
         return ResponseEntity.ok(iaService.processChat(request,token));
