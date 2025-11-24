@@ -23,7 +23,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
 
     @Autowired
@@ -151,9 +151,11 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/esPremium/{email}")
-    public ResponseEntity<Map<String, Boolean>> esPremium(@PathVariable String email) {
+    @GetMapping("/esPremium")
+    public ResponseEntity<Map<String, Boolean>> esPremium(@RequestParam String email) {
+        System.out.println("° LLEGÓ PETICIÓN a /esPremium con email: " + email);
         boolean premium = usuarioService.esPremium(email);
+        System.out.println("° Resultado de esPremium: " + premium);
         return ResponseEntity.ok(Map.of("premium", premium));
     }
 }

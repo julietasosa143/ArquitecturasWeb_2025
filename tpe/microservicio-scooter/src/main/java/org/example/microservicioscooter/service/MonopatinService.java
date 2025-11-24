@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -94,10 +95,15 @@ public class MonopatinService {
     }
 
     public ReporteMantenimientoDTOResponse getReporteMantenimientoSinPausa(long id){
-        System.out.println("Monopatín encontrado: " + repository.findById(1L).get());
-        LocalDate fecha = repository.findById(1L).get().getUltimoService();
+
+        Monopatin mono = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Monopatín no encontrado"));
+        System.out.println("Monopatín encontrado: " + mono);
+        LocalDate fecha = mono.getUltimoService();
         System.out.println("Fecha de último service: " + fecha);
         List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id,fecha);
+        if (viajes == null) viajes = new ArrayList<>();
+
         double kmRecorridos =0;
         double tiempoTotal = 0;
         for(Viaje v: viajes){
@@ -109,10 +115,15 @@ public class MonopatinService {
 
     }
     public ReporteMantenimientoDTOResponse getReporteMantenimientoConPausa(long id){
-        System.out.println("Monopatín encontrado: " + repository.findById(1L).get());
-        LocalDate fecha = repository.findById(1L).get().getUltimoService();
+        Monopatin mono = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Monopatín no encontrado"));
+
+        System.out.println("Monopatín encontrado: " + mono);
+        LocalDate fecha = mono.getUltimoService();
         System.out.println("Fecha de último service: " + fecha);
         List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id, fecha);
+        if (viajes == null) viajes = new ArrayList<>();
+
 
         double kmRecorridos =0;
         double tiempoTotal = 0;
@@ -122,8 +133,11 @@ public class MonopatinService {
             kmRecorridos+= v.getKilometros();
             tiempoTotal+= v.getTiempo();
             List<Pausa> pausas= v.getPausas();
-            for(Pausa p: pausas){
-                tiempoPausas+= p.getTotal();
+
+            if (pausas != null) {
+                for (Pausa p : pausas) {
+                    tiempoPausas += p.getTotal();
+                }
             }
             tiempoFinal = tiempoTotal-tiempoPausas;
         }

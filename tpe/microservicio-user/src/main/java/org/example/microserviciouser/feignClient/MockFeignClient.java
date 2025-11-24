@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(name="microservicio-mock-services", url = "http://localhost:8005/mock/maps")
+@FeignClient(name="microservicio-mock-services", url = "http://localhost:8089/mock/maps")
 public interface MockFeignClient {
-    @GetMapping("/connect")
+    @GetMapping("/buscar")
     public Map<String, Object> connectToMaps(@RequestParam float x, @RequestParam float y);
 }

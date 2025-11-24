@@ -56,7 +56,7 @@ public class TarifaController {
         }catch (TarifaNotFoundException e){
             return ResponseEntity.notFound().build();
         }
-    }//cambiar fecha de expiracion por inicio y expiracion
+    }
 
     @PostMapping("")
     public ResponseEntity<TarifaDTO> createTarifa(@Valid @RequestBody TarifaDTO dto){

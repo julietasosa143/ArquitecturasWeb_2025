@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(name = "user-service", url = "http://localhost:8001/api/users")
+@FeignClient(name = "user-service", url = "http://localhost:8001/api/usuarios")
 public interface UsuarioFeignClient {
 
     @GetMapping("/buscarPorEmail")

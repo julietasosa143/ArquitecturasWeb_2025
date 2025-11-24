@@ -45,6 +45,8 @@ public class TarifaService {
         return toDto(saved);
     }
     public TarifaDTO ajustar(TarifaDTO dto){
+        Long nuevoId = obtenerSiguienteId();
+        dto.setId(nuevoId);
         if(dto.getFechaCreacion().isAfter(this.ultimaTarifa().getFechaExpiracion())){
             dto.setFechaCreacion(ultimaTarifa().getFechaExpiracion());
         }else if(!dto.getFechaCreacion().isEqual(this.ultimaTarifa().getFechaExpiracion())){
@@ -57,10 +59,10 @@ public class TarifaService {
         return toDto(t);
     }
     public Tarifa getMasCercana(LocalDate fecha){
-        return tarifaRepository.getMasCercana(fecha);
+        return tarifaRepository.getMasCercana(fecha).get(0);
     }
     public Tarifa ultimaTarifa(){
-        Tarifa t = tarifaRepository.ultimaTarifa();
+        Tarifa t = tarifaRepository.ultimaTarifa().get(0);
         return t;
     }
     public void deleteById(Long id) {
@@ -70,6 +72,13 @@ public class TarifaService {
         tarifaRepository.deleteById(id);
     }
 
+    public Long obtenerSiguienteId() {
+        Long maxId = tarifaRepository.findMaxId();
+        if (maxId == null) {
+            return 1L; // Si no hay nada en la tabla, empezamos desde 1
+        }
+        return maxId + 1;
+    }
     private TarifaDTO toDto(Tarifa t) {
         return new TarifaDTO(
                 t.getId(),
