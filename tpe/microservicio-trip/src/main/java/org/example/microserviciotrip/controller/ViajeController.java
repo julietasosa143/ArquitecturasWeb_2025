@@ -13,6 +13,7 @@ import org.example.microserviciotrip.services.ViajeService;
 import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

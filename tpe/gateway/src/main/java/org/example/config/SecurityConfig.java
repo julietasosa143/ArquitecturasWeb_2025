@@ -49,6 +49,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/facturas/reporteXmeses").hasAuthority(AuthorityConstant.ADMIN)
                         .requestMatchers(HttpMethod.GET, "/api/users/usuariosRecurrentes").hasAuthority(AuthorityConstant.ADMIN)
                         .requestMatchers(HttpMethod.POST, "/api/tarifas/ajustar").hasAuthority(AuthorityConstant.ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/api/usuarios/esPremium").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/users/reporteUso/**").hasAnyAuthority("USER","MANTENIMIENTO","ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/users/reporteUsoConAsociados/**").hasAnyAuthority("USER","MANTENIMIENTO","ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/users/monopatinesCercanos/**").hasAnyAuthority("USER","ADMIN","MANTENIMIENTO")

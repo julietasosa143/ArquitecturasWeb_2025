@@ -97,7 +97,11 @@ public class ViajeService {
 
 
     public List<ViajeDTO> getViajesXMonopatin(long id, LocalDate ultimoService) {
-        List<Viaje> viajes = viajeRepository.getViajesXMonopatin(id, ultimoService);
+
+        LocalDateTime ultimoServiceDT = ultimoService.atStartOfDay();
+
+        List<Viaje> viajes = viajeRepository.getViajesXMonopatin(id, ultimoServiceDT);
+
         return viajes.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());

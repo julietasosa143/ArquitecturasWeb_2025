@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -14,7 +15,7 @@ public interface ViajeRepository extends JpaRepository<Viaje,Long> {
     @Query("SELECT v FROM Viaje v "
             +"WHERE v.idMonopatin = :id "
             +"AND v.fechaFin > :ultimoService")
-    public List<Viaje> getViajesXMonopatin(long id, LocalDate ultimoService);
+    public List<Viaje> getViajesXMonopatin(long id, LocalDateTime ultimoService);
 
     @Query("SELECT v.idMonopatin " +
             "FROM Viaje v " +

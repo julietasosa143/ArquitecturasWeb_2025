@@ -47,7 +47,8 @@ public class UsuarioService {
 
     public List<UsuarioDTO> getUsuariosRecurrente(int mes, int anio, String tipoUsuario){
         List<UsuarioDTO> recurrentes= new ArrayList<>();
-        List<Long> idRecurrentes= viajeFeignClient.getUsuariosRecurrentes(mes,anio);
+        List<Long> idRecurrentes=  Optional.ofNullable(viajeFeignClient.getUsuariosRecurrentes(mes, anio))
+                .orElse(Collections.emptyList());
         for(Long id:idRecurrentes){
             Usuario temporary = usuarioRepository.findById(id).orElse(null);
             if(temporary!=null){
@@ -66,6 +67,7 @@ public class UsuarioService {
         Map<String, Object> mockResponse = mockFeignClient.connectToMaps(x, y);
         System.out.println("Mock Maps: " + mockResponse.get("message"));
         List<ParadaResponseDTO> paradas = paradaFeignClient.getParadasCercanas(x, y);
+        System.out.println("Paradas: " + paradas);
         List<MonopatinResponseDTO> monopatines= new ArrayList<>();
         for(ParadaResponseDTO parada:paradas){
             List<MonopatinResponseDTO> monopatinesCerca=

@@ -44,16 +44,27 @@ spring:
                         predicates:
                           - Path=/api/facturas/**
 
+                      - id: tarifa-service
+                        uri: http://localhost:8086
+                        predicates:
+                          - Path=/api/tarifas/**
+
 
                       - id: stop-service
                         uri: http://localhost:8084
                         predicates:
                           - Path=/api/paradas/**
 
-                      - id: iachat-service
+                      - id: api-service
                         uri: http://localhost:8095
                         predicates:
-                          - Path=/api/iachat/**
+                          - path=/api/ia/**
+
+                      - id: account-service
+                        uri: http://localhost:8001
+                        predicates:
+                          - Path=/api/cuentas/**
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG

@@ -1,11 +1,11 @@
 id,direccion,nombre,x,y
 1,Avenida Rivadavia 1234,Parada Central,120,250
-2,Calle San Martín 560,Parada Norte,130,400
+2,Calle San Martín 560,Parada Norte,50,78
 3,Belgrano 890,Parada Sur,110,100
-4,Mitre 230,Parada Este,300,200
-5,Alem 760,Parada Oeste,50,220
+4,Mitre 230,Parada Este,130,400
+5,Alem 760,Parada Oeste,45,62
 6,9 de Julio 999,Parada Parque,200,320
-7,Rodríguez 850,Parada Tandil Centro,180,260
-8,Av. Colón 1420,Parada Tandil Norte,210,290
-9,Av. España 650,Parada Tandil Sur,170,230
+7,Rodríguez 850,Parada Tandil Centro,50,220
+8,Av. Colón 1420,Parada Tandil Norte,70,40
+9,Av. España 650,Parada Tandil Sur,300,200
 10,Cerro Leones 300,Parada Tandil Este,190,310

@@ -33,6 +33,7 @@ public class GroqClient {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
         this.model = model;
+        System.out.println("Groq API Key = " + apiKey);
         if (apiKey == null || apiKey.isBlank()) {
             throw new IllegalStateException("GROQ API key no inyectada. Revisá GROQ_API_KEY o -Dgroq.api-key.");
         }

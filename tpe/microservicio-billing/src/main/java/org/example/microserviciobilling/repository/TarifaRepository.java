@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
     @Query("SELECT t FROM Tarifa t "+
             "ORDER BY t.fechaExpiracion DESC")
-    public Tarifa ultimaTarifa();
+    List<Tarifa> ultimaTarifa();
 
     @Modifying
     @Transactional
@@ -25,7 +26,7 @@ public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
     @Query("SELECT t FROM Tarifa t " +
             "WHERE t.fechaExpiracion > :fecha "+
             "ORDER BY t.fechaExpiracion ASC")
-    Tarifa getMasCercana(@Param("fecha") LocalDate fecha);
+    List<Tarifa> getMasCercana(@Param("fecha") LocalDate fecha);
 
     @Query("SELECT t.precio FROM Tarifa t " +
             "WHERE :fechaFin BETWEEN t.fechaCreacion AND t.fechaExpiracion")
@@ -34,5 +35,8 @@ public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
             "WHERE :fechaFin BETWEEN t.fechaCreacion AND t.fechaExpiracion")
     double getTarifaEspecial(@Param ("fechaFin")  LocalDate fechaFin);
 
+
+    @Query("SELECT MAX(t.id) FROM Tarifa t")
+    Long findMaxId();
 
 }
