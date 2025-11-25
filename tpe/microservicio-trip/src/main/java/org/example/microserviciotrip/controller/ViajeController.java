@@ -4,6 +4,7 @@ import org.example.microserviciotrip.dto.ViajeDTO;
 import jakarta.validation.Valid;
 import org.example.microserviciotrip.dto.ViajeDTOfin;
 import org.example.microserviciotrip.dto.ViajeDTOinicio;
+import org.example.microserviciotrip.dto.ViajeDTOsinpausas;
 import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -61,11 +62,11 @@ public class ViajeController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/porMonopatin/{id}")
-    public ResponseEntity<List<ViajeDTO>> getAllPorMonopatin(
+    public ResponseEntity<List<ViajeDTOsinpausas>> getAllPorMonopatin(
             @PathVariable long id,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ultimoService)
     {
-        List<ViajeDTO> viajes = viajeService.getViajesXMonopatin(id, ultimoService);
+        List<ViajeDTOsinpausas> viajes = viajeService.getViajesXMonopatin(id, ultimoService);
 
         if(!viajes.isEmpty()) {
             return ok(viajes);
@@ -86,7 +87,15 @@ public class ViajeController {
             return ResponseEntity.noContent().build();
         }
     }
-
+    @GetMapping("/getTiempoPausas/{id}")
+    public Double getTiempoPausas(@PathVariable long id){
+        try{
+            return viajeService.getTiempoPausas(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0.0;
+        }
+    }
     @GetMapping("/usuariosRecurrentes")
     public  ResponseEntity<List<Long>>getUsuariosRecurrentes(
             @RequestParam int mes, @RequestParam int anio

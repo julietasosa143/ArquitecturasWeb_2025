@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "2be0bd49-a7f0-4c18-a1b9-2a8c40edcc2f",
+		"name": "TPE_Entrega2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24039281"
+	},
+	"item": [
+		{
+			"name": "Como administrador quiero poder generar un reporte de uso de monopatines por kilómetros para establecer si un monopatín requiere de mantenimiento. Este reporte debe poder configurarse para incluir (o no) los tiempos de pausa.",
+			"item": [
+				{
+					"name": "Con pausa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Quiero ver un reporte de uso de monopatines para mantenimiento, incluyendo los tiempos de pausas, para el monopatin 3\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/ia/prompt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"ia",
+								"prompt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sinPausa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Quiero un reporte de uso para mantenimiento de monopatines que no incluya los tiempos de pausa, para el monopatin 3\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/ia/prompt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"ia",
+								"prompt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Como usuario quiero saber cuánto he usado los monopatines en un período, y opcionalmente si otros usuarios relacionados a mi cuenta los han usado.",
+			"item": [
+				{
+					"name": "Con asociados",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlcmlhLnJvamFzQG1haWwuY29tIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTc2NDEwNDYzNSwiaWF0IjoxNzY0MDE4MjM1fQ.I-hsWjAhrykeMHUz2iaLkXA9vGGL-dMchJOoqbdfS6KkckpNUI-UoaKQYME8nTeJPxpBmKRW9j5TwH_MSb8IQg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Quiero un reporte de uso de monopatines para el usuario 2 en octubre del 2025, incluyendo sus usuarios asociados\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/ia/prompt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"ia",
+								"prompt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sin asociados",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlcmlhLnJvamFzQG1haWwuY29tIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTc2NDEwNDYzNSwiaWF0IjoxNzY0MDE4MjM1fQ.I-hsWjAhrykeMHUz2iaLkXA9vGGL-dMchJOoqbdfS6KkckpNUI-UoaKQYME8nTeJPxpBmKRW9j5TwH_MSb8IQg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Quiero un reporte de uso de monopatines para el usuario 2 en octubre del 2025\r\n\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8090/api/ia/prompt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"ia",
+								"prompt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticacion_user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"valeria.rojas@mail.com\",\r\n    \"password\" : \"user123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticacion_admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"pedro.nunez@mail.com\",\r\n    \"password\" : \"user123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Como administrador quiero poder anular una cuenta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Quiero anular la cuenta 109\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/ia/prompt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"ia",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Como administrador quiero consultar los monopatines con más de X viajes en un cierto año",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Quiero ver los monopatines con mas de 2 viajes en el año 2025\r\n",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/ia/prompt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"ia",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Como administrador quiero consultar el total facturado en un rango de meses de cierto año.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Quiero ver el total facturado entre febrero y agosto de 2024\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/ia/prompt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"ia",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Como administrador quiero ver los usuarios que más utilizan los monopatines, filtrado por período y por tipo de usuario.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Quiero ver los usuarios que mas utilizaron los monopatines en octubre de 2025 por tipo de usuario ADMIN\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/ia/prompt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"ia",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Como administrador quiero hacer un ajuste de precios, y que a partir de cierta fecha el sistema habilite los nuevos precios.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZWRyby5udW5lekBtYWlsLmNvbSIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNzY0MTAyMDg1LCJpYXQiOjE3NjQwMTU2ODV9.o26iuc0YQjKWVz9In1C5-oKqCSD-g1NjVFPDke_KHiTytcUGZJPUguC2Esc0-ke-nVomxKnZghhfPwyL77UHRg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Quiero ajustar la tarifa desde enero hasta marzo, con precio 130 y precio especial 160\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/ia/prompt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"ia",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Como usuario quiero buscar un listado de los monopatines cercanos a mi zona, para poder encontrar un monopatín cerca de mi ubicación",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWxlcmlhLnJvamFzQG1haWwuY29tIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTc2NDEwNDYzNSwiaWF0IjoxNzY0MDE4MjM1fQ.I-hsWjAhrykeMHUz2iaLkXA9vGGL-dMchJOoqbdfS6KkckpNUI-UoaKQYME8nTeJPxpBmKRW9j5TwH_MSb8IQg",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Quiero buscar los monpatines cercanos a mi zona, mi id es 8\r\n\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/ia/prompt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"ia",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token1711",
+			"value": " \"id_token\": \""
+		}
+	]
+}

@@ -1,6 +1,6 @@
 package org.example.microservicioscooter.feignClient;
 
-import org.example.microserviciotrip.entities.Viaje;
+import org.example.microservicioscooter.dto.ViajeDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,13 @@ import java.util.List;
 public interface ViajeFeignClient {
 
     @GetMapping("/porMonopatin/{id}")
-    public List<Viaje> getViajesXMonopatin(
+    public List<ViajeDTO> getViajesXMonopatin(
             @PathVariable("id") Long monopatinId,
             @RequestParam("ultimoService") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ultimoService
     );
 
+    @GetMapping("/getTiempoPausas/{id}")
+    public Double getTiempoPausas(@PathVariable long id);
 
     @GetMapping("/porAnioViajes")
     public List<Long> getMonopatinesXViajeAnio(

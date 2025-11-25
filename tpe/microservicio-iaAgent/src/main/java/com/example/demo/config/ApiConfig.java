@@ -13,7 +13,7 @@ public class ApiConfig {
         RestTemplate rest = new RestTemplate();
 
         rest.getInterceptors().add((request, body, execution) -> {
-            String token = tokenProvider.getCurrentToken();  // ← token desde SecurityContext
+            String token = tokenProvider.getCurrentToken();
             if (token != null) {
                 request.getHeaders().set("Authorization", "Bearer " + token);
             }

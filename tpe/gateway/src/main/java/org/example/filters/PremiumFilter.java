@@ -29,7 +29,6 @@ public class PremiumFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // solo validar para /api/iachat/**
         if (path.startsWith("/api/iachat")) {
 
             String authHeader = request.getHeader("Authorization");

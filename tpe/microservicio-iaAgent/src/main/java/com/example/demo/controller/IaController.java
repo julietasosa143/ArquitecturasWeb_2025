@@ -24,21 +24,14 @@ public class IaController {
         System.out.println("ENTRO AL PROMPT: " + prompt);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        // Aquí auth.getName() normalmente te devuelve el username (email)
         String email = auth.getName();
 
-        // Chequear si es premium usando el microservicio user
         if (!iaService.esUsuarioPremium(email)) {
             return ResponseEntity.status(403)
                     .body(new RespuestaApi<>(false, "Acceso denegado: solo usuarios premium", null));
         }
 
         return iaService.procesarPrompt(prompt, true);
-    }
-
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("IA funcionando");
     }
 
 

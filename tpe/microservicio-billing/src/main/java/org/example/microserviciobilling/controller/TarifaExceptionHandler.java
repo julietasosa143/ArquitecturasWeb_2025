@@ -1,7 +1,8 @@
 package org.example.microserviciobilling.controller;
 
+import org.example.microserviciobilling.dto.ErrorDTO;
 import org.example.microserviciobilling.service.exception.TarifaNotFoundException;
-import org.example.microserviciostop.DTO.ErrorDTO;
+
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

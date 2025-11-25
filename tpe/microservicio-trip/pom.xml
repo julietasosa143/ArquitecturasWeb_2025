@@ -45,10 +45,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway-server-webmvc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
@@ -83,18 +79,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
             <version>1.14.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-csv</artifactId>
-            <version>1.14.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>integrador3</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

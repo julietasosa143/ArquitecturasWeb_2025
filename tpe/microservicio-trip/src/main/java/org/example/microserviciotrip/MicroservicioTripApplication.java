@@ -14,5 +14,5 @@ public class MicroservicioTripApplication {
     public static void main(String[] args) {
         SpringApplication.run(MicroservicioTripApplication.class, args);
     }
-
+    //URL SWAGGER http://localhost:8081/swagger-ui/index.html
 }

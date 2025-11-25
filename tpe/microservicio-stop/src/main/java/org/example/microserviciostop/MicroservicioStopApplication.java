@@ -9,5 +9,5 @@ public class MicroservicioStopApplication {
     public static void main(String[] args) {
         SpringApplication.run(MicroservicioStopApplication.class, args);
     }
-
+    //URL SWAGGER http://localhost:8084/swagger-ui/index.html
 }

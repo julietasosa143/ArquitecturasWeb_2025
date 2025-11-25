@@ -12,10 +12,9 @@ public FilterRegistrationBean<PremiumFilter> premiumFilterRegistration(PremiumFi
     FilterRegistrationBean<PremiumFilter> registration = new FilterRegistrationBean<>();
     registration.setFilter(filter);
 
-    // Aplica el filtro SOLO a /api/iachat/**
     registration.addUrlPatterns("/api/iachat/*");
 
-    registration.setOrder(2); // después del JwtFilter
+    registration.setOrder(2);
 
     return registration;
 }

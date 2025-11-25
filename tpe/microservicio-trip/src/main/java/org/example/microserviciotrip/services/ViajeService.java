@@ -1,10 +1,8 @@
 package org.example.microserviciotrip.services;
 
 
-import org.example.microserviciotrip.dto.ParadaDTO;
-import org.example.microserviciotrip.dto.ViajeDTO;
-import org.example.microserviciotrip.dto.ViajeDTOfin;
-import org.example.microserviciotrip.dto.ViajeDTOinicio;
+import org.example.microserviciotrip.dto.*;
+import org.example.microserviciotrip.entities.Pausa;
 import org.example.microserviciotrip.entities.Viaje;
 import jakarta.transaction.Transactional;
 import org.example.microserviciotrip.feignClient.FacturaFeignClient;
@@ -17,6 +15,7 @@ import org.example.microserviciotrip.services.exception.ViajeNotFoundException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,15 +95,32 @@ public class ViajeService {
     }
 
 
-    public List<ViajeDTO> getViajesXMonopatin(long id, LocalDate ultimoService) {
+    public List<ViajeDTOsinpausas> getViajesXMonopatin(long id, LocalDate ultimoService) {
 
         LocalDateTime ultimoServiceDT = ultimoService.atStartOfDay();
 
         List<Viaje> viajes = viajeRepository.getViajesXMonopatin(id, ultimoServiceDT);
 
-        return viajes.stream()
-                .map(this::toDTO)
-                .collect(Collectors.toList());
+        List<ViajeDTOsinpausas> dto= new ArrayList<>();
+        for(Viaje viaje: viajes){
+            dto.add(this.toDTOsinpausas(viaje));
+        }
+
+        return dto;
+    }
+    private ViajeDTOsinpausas toDTOsinpausas(Viaje v) {
+        return new ViajeDTOsinpausas(
+                v.getId(),
+                v.getIdParadaInicio(),
+                v.getIdParadaFin(),
+                v.getTiempo(),
+                v.getKilometros(),
+                v.getPrecio(),
+                v.getIdMonopatin(),
+                v.getIdUsuario(),
+                v.getFechaInicio(),
+                v.getFechaFin()
+        );
     }
 
     public List<Long> getMonopatinesXViajeXAnio(int anio, int minViajes){
@@ -121,6 +137,18 @@ public class ViajeService {
 
     public Double getTiempoViaje(long idUsuario, int mes, int anio){
         return viajeRepository.getTiempoViaje(idUsuario, mes, anio);
+    }
+
+    public Double getTiempoPausas(long id){
+        double tiempo =0.0;
+        Viaje v = viajeRepository.findById(id).orElse(null);
+        if(v!=null){
+            for(Pausa p : v.getPausas()){
+                tiempo+= p.getTotal();
+            }
+        }
+        return tiempo;
+
     }
 
     public ViajeDTO inicializarViaje(ViajeDTOinicio dto){

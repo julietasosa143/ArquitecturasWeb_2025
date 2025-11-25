@@ -8,6 +8,7 @@ import org.example.microserviciobilling.dto.FacturaDTO;
 import org.example.microserviciobilling.service.FacturaService;
 import org.example.microserviciobilling.service.TarifaService;
 import org.example.microserviciobilling.service.exception.FacturaNotFoundException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -89,7 +90,8 @@ public class FacturaController {
     public Double getPrecioViaje(@RequestParam long idViaje,
                                  @RequestParam double tiempoTotal,
                                  @RequestParam double tiempoPausas,
-                                 @RequestParam LocalDateTime fechaFin){
+                                 @RequestParam
+                                     LocalDateTime fechaFin){
         try{
             Double precio = facturaService.calcularPrecio(tiempoTotal, tiempoPausas, fechaFin.toLocalDate());
             facturaService.crear(idViaje, precio);

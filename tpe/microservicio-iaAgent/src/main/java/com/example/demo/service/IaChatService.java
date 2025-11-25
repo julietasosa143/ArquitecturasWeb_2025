@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.CuentaAnuladaDTO;
 import com.example.demo.dto.PremiumResponse;
 import com.example.demo.dto.RespuestaApi;
 import com.example.demo.dto.TarifaDTO;
@@ -37,9 +38,6 @@ public class IaChatService {
     private static final String CUENTA_SERVICE_URL = "http://localhost:8090/api/cuentas";
     private static final String TARIFA_SERVICE_URL = "http://localhost:8090/api/tarifas";
 
-    /**
-     * Procesa un prompt de usuario premium, llama a Groq y ejecuta la acción correspondiente
-     */
     public ResponseEntity<?> procesarPrompt(String promptUsuario, boolean esPremium) {
         if (!esPremium) {
             return ResponseEntity.status(403)
@@ -126,23 +124,24 @@ public class IaChatService {
                     yield restTemplate.getForObject(url, Object.class, Map.of("id", monopatinId));
                 }
 
-                case "anularCuenta" -> restTemplate.exchange(
-                        CUENTA_SERVICE_URL + "/anular/{id}",
-                        HttpMethod.PUT,
-                        null,
-                        //aca podemos cambiarlo a Object.class para asi lee un dto en el metodo pero tendriamos q crear uno eso como estudes gusten
-                        String.class,
-                        parametros
-                );
-                //tener en cuenta que si le pifiamos de anio de viaje o nos pasamos de min tira error raro dificil darse cuenta
+                case "anularCuenta" -> {
+                    ResponseEntity<String> r = restTemplate.exchange(
+                            CUENTA_SERVICE_URL + "/anular/{id}",
+                            HttpMethod.PUT,
+                            null,
+                            String.class,
+                            parametros
+                    );
+                    yield r.getBody();
+                }
+
+
                 case "monopatinesMasViajes" -> restTemplate.getForObject(
                         MONOPATIN_SERVICE_URL + "/cantidadViajes/anio?anio={anio}&minViajes={minViajes}",
                         Object.class, parametros);
-                //aca importante no pifiarle q pasa no hay datos con 2025 si no con 2024, me ubiera ahorrado tiempo una mejor exception f
                 case "totalFacturado" -> restTemplate.getForObject(
                         FACTURACION_SERVICE_URL + "/reporteXmeses?mesInicio={mesInicio}&mesFin={mesFin}&anio={anio}",
                         Object.class, parametros);
-                //dato re de color es que funciona con octubre ya q no hay otro mes en el csv asi ta dificil
                 case "usuariosMasActivos" -> {
                     Map<String, Object> params = new HashMap<>();
                     params.put("mes", parametros.get("mesInicio"));
@@ -157,13 +156,11 @@ public class IaChatService {
                 }
 
                 case "ajustarTarifa" -> {
-                    // Solo usamos los parámetros que sí nos sirven
-                    int anio = Integer.parseInt(parametros.get("anio").toString());
+                   int anio = Integer.parseInt(parametros.get("anio").toString());
                     int mesInicio = Integer.parseInt(parametros.get("mesInicio").toString());
                     int mesFin = Integer.parseInt(parametros.get("mesFin").toString());
 
                     LocalDate fechaCreacion = LocalDate.of(anio, mesInicio, 1);
-                    // Para fechaExpiracion, si querés el último día del mes:
                     LocalDate fechaExpiracion = LocalDate.of(anio, mesFin, 1).withDayOfMonth(
                             YearMonth.of(anio, mesFin).lengthOfMonth()
                     );
@@ -171,7 +168,6 @@ public class IaChatService {
                     double precio = Double.parseDouble(parametros.get("precio").toString());
                     double precioEspecial = Double.parseDouble(parametros.get("precioEspecial").toString());
 
-                    //ese null lo manejo en el metodo de ajustar
                     TarifaDTO dto = new TarifaDTO(null, fechaCreacion, fechaExpiracion, precio, precioEspecial);
 
                     yield restTemplate.postForObject(
@@ -197,7 +193,6 @@ public class IaChatService {
                         Object.class, params
                 );
                 }
-                //devuelve bien pero no es q se suma el tiempo si no q te devuelve un json ambien de la persona que lo usa asociado
                 case "reporteUsoUsuarioConAsociados" -> {
                     Map<String, Object> params = new HashMap<>();
                     params.put("mes", parametros.get("mesInicio"));
@@ -220,9 +215,6 @@ public class IaChatService {
         }
     }
 
-    /**
-     * Método de ejemplo para extraer la acción de la respuesta de Groq
-     */
     private String extraerAccion(String respuestaIa) {
         for (String linea : respuestaIa.split("\n")) {
             if (linea.toLowerCase().startsWith("accion:")) {
@@ -232,9 +224,6 @@ public class IaChatService {
         return "accionDesconocida";
     }
 
-    /**
-     * Extrae parámetros desde la respuesta de Groq
-     */
     private Map<String, Object> extraerParametros(String respuestaIa) {
         Map<String, Object> params = new HashMap<>();
 
@@ -243,10 +232,9 @@ public class IaChatService {
                 .findFirst()
                 .orElse("");
 
-        // Saco "PARAMETROS:"
+
         linea = linea.replace("PARAMETROS:", "").trim();
 
-        // Split por coma
         String[] pares = linea.split(",");
 
         for (String par : pares) {
@@ -256,10 +244,10 @@ public class IaChatService {
             String key = kv[0].trim();
             String value = kv[1].trim();
 
-            // Si value es vacío → no lo pongo
+
             if (value.isEmpty()) continue;
 
-            // Normalizo booleans
+
             if (value.equalsIgnoreCase("true") || value.equalsIgnoreCase("si")) {
                 params.put(key, true);
                 continue;
@@ -269,13 +257,12 @@ public class IaChatService {
                 continue;
             }
 
-            // Si es número entero
             if (value.matches("\\d+")) {
                 params.put(key, Integer.parseInt(value));
                 continue;
             }
 
-            // Otro caso → string
+
             params.put(key, value);
         }
 
@@ -291,7 +278,7 @@ public class IaChatService {
         return resp != null && Boolean.TRUE.equals(resp.getPremium());
     }
 
-    //tengo problemas para castear long y bolean
+
     private Long getLongParam(Map<String, Object> params, String key, Long defaultValue) {
         Object v = params.get(key);
         if (v == null) return defaultValue;

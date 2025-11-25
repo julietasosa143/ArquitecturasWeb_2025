@@ -3,11 +3,10 @@ package org.example.microservicioscooter.service;
 import org.example.microservicioscooter.dto.MonopatinDTO;
 import org.example.microservicioscooter.dto.MonopatinResponseDTO;
 import org.example.microservicioscooter.dto.ReporteMantenimientoDTOResponse;
+import org.example.microservicioscooter.dto.ViajeDTO;
 import org.example.microservicioscooter.entities.Monopatin;
 import org.example.microservicioscooter.feignClient.ViajeFeignClient;
 import org.example.microservicioscooter.repository.MonopatinRepository;
-import org.example.microserviciotrip.entities.Pausa;
-import org.example.microserviciotrip.entities.Viaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -94,19 +93,19 @@ public class MonopatinService {
         repository.delete(m);
     }
 
-    public ReporteMantenimientoDTOResponse getReporteMantenimientoSinPausa(long id){
+    public ReporteMantenimientoDTOResponse getReporteMantenimientoConPausa(long id){
 
         Monopatin mono = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Monopatín no encontrado"));
         System.out.println("Monopatín encontrado: " + mono);
         LocalDate fecha = mono.getUltimoService();
         System.out.println("Fecha de último service: " + fecha);
-        List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id,fecha);
+        List<ViajeDTO> viajes = viajeFeignClient.getViajesXMonopatin(id,fecha);
         if (viajes == null) viajes = new ArrayList<>();
 
         double kmRecorridos =0;
         double tiempoTotal = 0;
-        for(Viaje v: viajes){
+        for(ViajeDTO v: viajes){
             kmRecorridos+= v.getKilometros();
             tiempoTotal+= v.getTiempo();
         }
@@ -114,14 +113,14 @@ public class MonopatinService {
         return reporte;
 
     }
-    public ReporteMantenimientoDTOResponse getReporteMantenimientoConPausa(long id){
+    public ReporteMantenimientoDTOResponse getReporteMantenimientoSinPausa(long id){
         Monopatin mono = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Monopatín no encontrado"));
 
         System.out.println("Monopatín encontrado: " + mono);
         LocalDate fecha = mono.getUltimoService();
         System.out.println("Fecha de último service: " + fecha);
-        List<Viaje> viajes = viajeFeignClient.getViajesXMonopatin(id, fecha);
+        List<ViajeDTO> viajes = viajeFeignClient.getViajesXMonopatin(id, fecha);
         if (viajes == null) viajes = new ArrayList<>();
 
 
@@ -129,16 +128,10 @@ public class MonopatinService {
         double tiempoTotal = 0;
         double tiempoPausas=0;
         double tiempoFinal=0;
-        for(Viaje v: viajes){
+        for(ViajeDTO v: viajes){
             kmRecorridos+= v.getKilometros();
             tiempoTotal+= v.getTiempo();
-            List<Pausa> pausas= v.getPausas();
-
-            if (pausas != null) {
-                for (Pausa p : pausas) {
-                    tiempoPausas += p.getTotal();
-                }
-            }
+            tiempoPausas= viajeFeignClient.getTiempoPausas(v.getId());
             tiempoFinal = tiempoTotal-tiempoPausas;
         }
         ReporteMantenimientoDTOResponse reporte = new ReporteMantenimientoDTOResponse(kmRecorridos,tiempoFinal);
